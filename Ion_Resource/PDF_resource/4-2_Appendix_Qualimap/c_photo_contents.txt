@@ -1,0 +1,5 @@
+[[10]]
+¡Ü The Distribution of insert size of reads mapped on reference genome
+¡Ü Software Information: Qualimap_v.2.0.1
+¡Ü X-axis: Insert size(bp) 
+¡Ü Y-axis: Number of reads

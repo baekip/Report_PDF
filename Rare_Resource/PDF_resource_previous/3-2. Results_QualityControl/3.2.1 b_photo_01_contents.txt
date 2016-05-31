@@ -1,0 +1,6 @@
+¡Ü We generated these QC results using FastQC software
+¡Ü Delivery ID: ID provided by customer (Sample ID)
+¡Ü Pair Name: Forward, Reverse for sequencing strand
+¡Ü Per base qual: Quality values across all bases at each position
+¡Ü GC contents: GC content of each base position in a sample
+¡Ü Duplication level: Proportion of sequence duplication level

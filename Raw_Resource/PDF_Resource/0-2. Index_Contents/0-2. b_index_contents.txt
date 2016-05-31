@@ -1,0 +1,26 @@
+[[14]]
+
+
+
+
+
+
+General Information
+	1.1 Sample Information
+	1.2 Analysis Contents
+
+Workflow
+	2.1 Library Construction Process
+	2.2 Sequencing Method
+
+Data Analysis Results
+	3.1 Quality Controls
+		3.1.1 FastQC Results
+
+Appendix
+	4.1 Figure Description
+		4.1.1 FastQC
+	4.2 Explanation of Term Regarding Sequencing Statistics Result
+	4.3 Directory Structure
+
+

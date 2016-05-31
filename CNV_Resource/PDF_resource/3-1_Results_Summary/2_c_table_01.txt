@@ -1,0 +1,5 @@
+[[12]]
+Delivery ID	Sample ID	Average depth	Coverage 1x rate	Coverage 5x rate	Coverage 10x rate	Coverage 20x rate	Coverage 50x rate
+G5175	TN1507D0293	63.65	99.79	99.11	97.45	90.63	55.67
+G5261	TN1507D0294	70.46	99.9	99.35	97.99	92.4	61.23
+G5276	TN1507D0295	70.11	99.8	99.21	97.78	92.1	60.68

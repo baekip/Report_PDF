@@ -1,0 +1,7 @@
+[[10]]
+¡Ü Delivery ID (Sample ID): 
+¡Ü Sample Type 
+¡Ü Q-bit
+¡Ü Total Volume
+¡Ü 260/280: 
+¡Ü 260/230: 

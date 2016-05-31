@@ -1,0 +1,7 @@
+[[10]]
+¡ÜChr,Start,End: positions of copy number events detected
+¡ÜSegment: log2-ratio mean value
+¡ÜCNF: copy number fraction
+¡ÜCN: copy number value (rouned to nearest integer)
+¡ÜCall: copy number states refers to 2-copy deletions(-2), 1-copy deletion(-1), 1-copy duplication(1) and muliple-copies duplications(2)
+¡ÜProbcall: call probability

@@ -1,0 +1,8 @@
+[[10]]
+¡Ü Chrom: Chromosome (hg 19)
+¡Ü Position: Position (hg 19)
+¡Ü Protein change: If variant is coding, this field describes the variant using HGVS notation (Protein level)
+¡Ü Gene: Common gene name (HGNC)
+¡Ü SIFT: Predicts whether an amino acid substitution affects protein function, Scores range from 0 to 1. The smaller the score the more likely the SNP has damaging effect, SIFT predicts substitutions with scores less than 0.05 as deleterious
+¡Ü PolyPhen: Predicts possible impact of an amino acid substitution on the structure and function of a human protein using straightforward physical and comparative consideration, 0.957~1: porobably damaging(D), 0.453,0.956:possibly damaging(P), 0-0,0.45:benign(B)
+¡Ü 1000 Genome: Alternative allele frequency in the whole 1000Gp1 data

@@ -1,0 +1,14 @@
+[[9,8.5]]
+* If the variant is applicable to multiple regions, the variant will be counted repeatedly.
+	¡Ü Sample ID: Temporary ID from Theragen Etex
+	¡Ü DOWNSTREAM: Downstream of a gene (default length:5K bases)
+	¡Ü EXON: The variant hits a gene
+	¡Ü INTERGENIC: The variant is in an intergenic region
+	¡Ü INTRON: Variant hits and intron. Technically, hits no exon in the transcript
+	¡Ü SPLICE_SITE_ACCEPTOR: The variant hits a splice acceptor site
+	¡Ü SPLICE_SITE_DONOR: The variant hits a splice donor site
+	¡Ü SPLICE_SITE_REGION: The variant hits a splice region site
+	¡Ü TRANSCRIPT: The variant hits a transcript
+	¡Ü UPSTREAM: Upstream of a gene (default length: 5K bases)
+	¡Ü UTR_3_PRIME: Variant hits 3'UTR region
+	¡Ü UTR_5_PRIME: Variant hits 5'UTR region

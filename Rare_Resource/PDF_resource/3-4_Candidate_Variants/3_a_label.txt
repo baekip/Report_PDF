@@ -1,0 +1,2 @@
+[[15]]
+Candidate variants seleceted by filtering on dominant model

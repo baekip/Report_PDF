@@ -1,0 +1,6 @@
+[[10]]
+¡Ü We generated these QC results using Qualimap software
+¡Ü Delivery ID: ID provided by customer (Sample ID)
+¡Ü Insert Size: Histogram of insert size distribution of reads mapped on reference genome
+¡Ü GC contents: GC content of each base position in a sample
+¡Ü Reference coverage: Coverage per position(bp) of reference genome

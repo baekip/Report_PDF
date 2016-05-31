@@ -1,0 +1,18 @@
+[[10],[],[TT,c,l],[130]]
+용 어	설 명
+Total Reads	총 생산된 Read 개수
+Total Bases	총 생산된 nucleotide 개수
+Total Bases(Gb)	총 생산된 nucleotide의 개수를 giga(109) 단위로 표시
+GC Count	총 생산된 nucleotide 개수 중에서 guanine(G)과 cytokine(C)의 개수
+GC Rate	총 생산된 nucleotide 개수 중에서 guanine(G)의 cytokine(C)의 비율
+N ZeroReads	N(any base)이 없는 Read 개수
+N ZeroReadsRate	총 생산된 Read 개수 중 N(any base)의 개수가 없는 Read의 비율
+N5 LessReads	N(any base)의 개수가 5이하인 Read 개수
+N5 LessReadsRate	총 생산된 Read 개수 중 N(any base)의 개수가 5이하인 Read의 비율
+N Count	총 생산된 N(any base)의 개수
+N Rate	총 생산된 nucleotide 중에서 N(any base)의 비율
+Q30 MoreBases	총 생산된 nucleotide 개수 중에서 평균 Q30 (정확도: 99.9%) 이상인 nucleotide의 개수
+Q30 MoreBasesRate 	총 생산된 nucleotide 개수 중 평균 Q30 이상인 nucleotide의 비율
+Q20 MoreBases	총 생산된 nucleotide 개수 중에서 평균 Q20 (정확도: 99%) 이상인 nucleotide의 개수
+Q20 MoreBasesRate	총 생산된 nucleotide 개수 중 평균 Q20 이상인 nucleotide의 비율
+

@@ -1,0 +1,3 @@
+[[18,15],[],[R]]
+Whole Exome Sequencing
+	-BAM File

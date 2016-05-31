@@ -1,0 +1,31 @@
+[[16,12]]
+
+бс Basic Exome sequence analysis list of Theragen Etex
+	 - Quality control for sequencing data
+	 - Sequence Alignment
+	 - Sequence Mapping
+	 - Variants Calling
+	 - Variants Annotation
+	 - Pathogenic Analysis
+	 - Rare disease Analysis by filtering on models
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

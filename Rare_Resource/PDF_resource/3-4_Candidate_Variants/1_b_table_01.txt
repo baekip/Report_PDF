@@ -1,0 +1,9 @@
+[[10,10]]
+Filter Step	Filter Process	De-dovo	Recessive	Compound Hetero	X-Linked
+Raw		-	97	811	9590	65
+Filter1		Region	63	571	3595	53
+Filter2		SIFT	7	86	477	12
+Filter3		Polyphen	4	38	200	4
+Filter4	Phastcon	4	38	196	4
+Filter5	1000 genome	3	28	118	2
+Filter6	In-House	2	5	10	4

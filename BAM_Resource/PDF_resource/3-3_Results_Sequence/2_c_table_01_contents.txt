@@ -1,0 +1,10 @@
+[[10]]
+¡Ü Delivery ID: ID provided by customer
+¡Ü Sample ID: Temporary ID assigned by Theragen Etex
+¡Ü Sequence read: Number of raw sequence reads
+¡Ü Raw sequence depth: Depth of raw sequence reads
+¡Ü On target read (%): Percentage of reads on target regions
+¡Ü On target depth (mean): Mean of reads on target regions
+¡Ü On target depth (std): Standard deviation of reads on target regions
+¡Ü Sequence_Base : Raw Sequence Base
+¡Ü On-Target_Depth : Depth of sequence mapped on target region

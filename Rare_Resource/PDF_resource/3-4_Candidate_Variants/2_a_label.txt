@@ -1,0 +1,3 @@
+[[16,13]]
+3.4.2 Model Analysis
+	Candidate variants seleceted by filtering on recessive model

@@ -1,0 +1,41 @@
+[[11]]
+
+
+General Information
+	1.1 Sample Information
+	1.2 Analysis Contents
+
+Workflow
+	2.1 Exome Capturing Process
+	2.2 Sequencing Method
+	2.3 Analysis Pipeline
+
+Data Analysis Results
+	3.1 Basic Statistics
+		3.1.1 Mapping Summary for Produced Sequencing Data
+		3.1.2 Cumulative Coverage Distribution
+	3.2 Annotated Somatic Variants
+		3.2.1 Somatic Sample Infromation
+		3.2.2 Variants Categories
+		3.2.3 Number Variants By Type
+		3.2.4 Number of Effects by Functional Class
+		3.2.5 Ts/Tv (Transitions / Transversions)
+		3.2.6 Somatic Variants Information
+	3.3 Quality Controls
+		3.3.1 FastQC Results
+		3.3.2 Qualimap Results
+	3.4 Mapping and Alignment Statistics
+		3.4.1 Number of Sequenced Reads
+		3.4.2 Sequencing Depth Detail Description
+
+Appendix
+	4.1 Figure Description
+		4.1.1 FastQC
+		4.1.2 Qualimap
+	4.2 File Format Description
+		4.2.1 Variant Calling Format (VCF)
+		4.2.2 Annotation Result Excel Format (xls)
+	4.3 Directory Structure
+
+Reference
+

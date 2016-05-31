@@ -1,0 +1,10 @@
+[[12],[],[TT,l,l,l],[130,70]]
+Software Information	Version	Description
+FastQC	0.10.1	Checking quality for sequence data
+cutadapt	1.8.1	Trimming for fastq files considering quality
+BWA	0.7.12	Mapping and aligning sequencing reads to reference genome sequence
+Picard	1.92	Removing duplicated reads
+GenomeAnalysisTK	2.3-9	Improvement of alignments and genotype calling and refining with optimized parameters
+SAMtools	1.2	Converting from SAM format to sorted and indexed BAM (binary alignment map) files
+SnpEff	4.1g	Annotating genetic variants and predicting their effects
+Qualimap	2.1	Facilitating the quality control of sequencing alignment and its derivatives like feature counts

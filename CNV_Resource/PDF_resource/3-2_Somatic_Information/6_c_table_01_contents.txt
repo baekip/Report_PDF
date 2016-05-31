@@ -1,0 +1,10 @@
+[[10]]
+¡Ü Chr: chromsome
+¡Ü Pos: chromosome base pair position
+¡Ü Ref: reference allele
+¡Ü Alt: alternative allele
+¡Ü Var_Type: SNP or INDEL
+¡Ü Ann_Effect: Effect of this variant
+¡Ü Ann_Gene: Gene name
+¡Ü Ann_HGVS_C: Variant using HGVS notation (DNA level)
+¡Ü Ann_HGVS_P: If variant is coding, this field describes the variant using HGVS notation (Protein level). Since transcript ID is already mentioned in ¡®feature ID¡¯, it may be omitted here.

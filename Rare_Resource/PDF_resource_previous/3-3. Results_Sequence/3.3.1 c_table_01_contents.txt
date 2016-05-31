@@ -1,0 +1,5 @@
+¡Ü Sequence Read: Unfiltered sequence
+¡Ü Clean Read: filtered sequence (sequence quality>=Q 20)
+¡Ü De-Duplcation Read: Discarded clean reads following PCR duplicate
+¡Ü Mapping Read: De-duplication read followed by mapping onto the reference genome
+¡Ü On Target Read: Mapped de-duplicate reads (on target region)

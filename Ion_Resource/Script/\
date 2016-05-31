@@ -1,0 +1,150 @@
+#!/usr/bin/perl -w 
+
+use warnings;
+use strict;
+
+if (@ARGV !=2){
+	printUsage();
+}
+
+my $in_general_config = $ARGV[0];
+my $in_sample_config = $ARGV[1];
+
+my %info;
+read_general_config( $in_general_config, \%info );
+
+my $project_path = $info{project_path};
+my $figure_path = "$project_path/00_upload_file/01_figure_dir";
+my $resource_path = "$project_path/report/resource/";
+my $experiment_path = "$project_path/00_upload_file/00_Experiment_dir/";
+
+my $experiment_file = "$experiment_path/Experimental_Information.xls";
+my $sample_information = $in_sample_config;
+
+
+open my $fh_sample,'<:encoding(UTF-8)',$sample_information or die;
+print "Delivery ID\\n(Sample ID)\tSample Type\tQ-bit\\n(ng/nl)\ttotal volume\\n(ng)\t260/280\t260/230\n";
+while (my $row = <$fh_sample>){
+    chomp $row;
+    my @sample_information = split /\t/, $row;
+    my $tbi_id = $sample_information[1];
+    # print $tbi_id."\n";
+    
+=pod
+    my $sample_id = extraction ($tbi_id,"6"); 
+    my $sample_type = extraction ($tbi_id, "9");
+    my $q_bit = extraction ($tbi_id, 12);
+    my $total_volume = extraction ($tbi_id, "14");
+    my $acid_ratio = extraction ($tbi_id, "16");
+    my $protein_ratio = extraction ($tbi_id, "17");
+=cut
+
+    
+    my $sample_id = extraction ($tbi_id,"6"); 
+    my $sample_type = extraction ($tbi_id, "9");
+    my $q_bit = extraction ($tbi_id, 12);
+    my $total_volume = extraction ($tbi_id, "14");
+    my $acid_ratio = extraction ($tbi_id, "16");
+    my $protein_ratio = extraction ($tbi_id, "17");
+
+    print $q_bit."\n";
+    print "$sample_id\t($tbi_id)\t$sample_type\t$q_bit\t$total_volume\t$acid_ratio\t$protein_ratio\n";
+
+
+#5,9,12,14,16,17
+#Q-bit [ng/μl]  총량(ng)    260/280 260/230
+
+
+}close $fh_sample;
+
+sub extraction { 
+    my ($tbi_id, $number ) = @_;
+    my $value = `cat $experiment_file | grep \"$tbi_id\" | cut -f $number `;
+    print $value."\n";
+#    print $cmd_extract."\n";
+#    my $value = system ($cmd_extract);
+#    $value = chomp ($value);
+#    return $value;
+}
+
+
+sub cat_xls {
+    my ($xls_file, $tbi_id, $col_num) = @_;
+    my $cmd = "cat $xls_file | grep \"^$tbi_id\" | cut -f $col_num";
+    print $cmd."\n";
+}
+
+sub read_pipeline_config{
+	my $file = shift;
+	open my $fh, '<:encoding(UTF-8)', $file or die;
+	while (my $row = <$fh>) {
+		chomp $row;
+		if ($row =~ /^#/ or $row =~ /^\s/){ next; }
+	}
+	close($fh);	
+}
+
+sub changeGbp{
+	my $val = shift;
+	$val = $val / 1000000000;
+	$val = &RoundXL ($val, 2);
+	return $val;
+}
+
+sub RoundXL {
+	sprintf("%.$_[1]f", $_[0]);
+}
+
+sub read_general_config{
+	my ($file, $hash_ref) = @_;
+	open my $fh, '<:encoding(UTF-8)', $file or die;
+	while (my $row = <$fh>) {
+		chomp $row;
+		if ($row =~ /^#/){ next; } # pass header line
+		if (length($row) == 0){ next; }
+
+		my ($key, $value) = split /\=/, $row;
+		$key = trim($key);
+		$value = trim($value);
+		$hash_ref->{$key} = $value;
+	}
+	close($fh);	
+}
+
+sub trim {
+	my @result = @_;
+
+	foreach (@result) {
+		s/^\s+//;
+		s/\s+$//;
+	}
+
+	return wantarray ? @result : $result[0];
+}
+
+sub checkFile{
+	my $file = shift;
+	if (!-f $file){
+		die "ERROR ! not found <$file>\n";
+	}
+}
+
+sub num{
+        my $cnum = shift;
+        if ($cnum =~ /\d\./){
+                return $cnum;
+        }
+        while( $cnum =~ s/(\d+)(\d{3})\b/$1,$2/ ) {
+                1;
+        }
+        my $result = sprintf "%s", $cnum;
+        return $result;
+}
+
+sub printUsage{
+	print "Usage: perl $0 <in.config.file> <in.sample.information> \n";
+	print "Example: perl $0 \
+        /BiO/BioProjects/Ion_Torrent/RIKEN_Human_Ion-2016-01-TBO150146/Ion_Config.txt \
+        /BiO/BioProjects/Ion_Torrent/RIKEN_Human_Ion-2016-01-TBO150146/Ion_Sample.txt \n";
+	exit;
+}

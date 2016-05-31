@@ -1,0 +1,3 @@
+[[20],[16]]
+3.4 Mapping and Alignment Statistics
+	3.4.1 Number of Sequenced Reads
