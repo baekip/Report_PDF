@@ -1,0 +1,8 @@
+[[10]]
+¡Ü Delivery ID: Sample ID provided by customer
+¡Ü Sample ID: Temporary ID assigned by Theragen Etex
+¡Ü Total reads:The number of generated reads
+¡Ü Total bp: The number of base pairs of produced sequence data for each sample 
+¡Ü Total yield (Gbp): Giga base pairs of produced sequence data for each sample
+¡Ü GC Percent:   The GC ratio of the total yield
+¡Ü % of >= Q30 Bases (PF): The quality ratio satisfying Phred quality score greater than 30

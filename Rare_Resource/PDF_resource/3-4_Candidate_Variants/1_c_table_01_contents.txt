@@ -1,0 +1,6 @@
+[[10]]
+¡Ü Filter1(Region Filter): The variants included missense, nonsense, loss-of-stop codon, insertion/deletion and splice-site
+¡Ü Filter2(SIFT and PolyPhen2 Filter): The variants having at least one "D" score from PolyPhen2, SIFT
+¡Ü Filter3(Phastscon Filter): The variants included greater than 0.2 from phastCons100way
+¡Ü Filter4(1000genome Filter): The variants included less than 1% from 1000 Genome Project
+¡Ü Filter5(In-House Filter): The variants included less than 1% from In-House DB

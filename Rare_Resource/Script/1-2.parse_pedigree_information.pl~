@@ -43,9 +43,9 @@ foreach (@rare_list){
     
     #transfer to disease type
 
-    if ($disease eq "N"){
+    if ($disease eq "1"){
         $disease_type = "No";
-    }elsif ($disease eq "D"){
+    }elsif ($disease eq "2"){
         $disease_type = "Yes";
     }else {print "Error: Check your disease type in the configure file\n";
         exit;

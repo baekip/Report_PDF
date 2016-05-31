@@ -1,2 +1,2 @@
-[[11]]
-Refer to result file in excel 
+[[15]]
+Refer to result file in excel at your FTP server. 

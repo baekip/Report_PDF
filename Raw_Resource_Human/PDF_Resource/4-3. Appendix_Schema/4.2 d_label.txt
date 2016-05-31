@@ -1,0 +1,4 @@
+[[12]]
+ 
+
+ We provide analysis results as directory structure showing in upper figure. You can access our ftp server using the ftp infromation (server IP, ID, PW) provided by our company.

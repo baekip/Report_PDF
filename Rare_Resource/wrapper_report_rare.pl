@@ -21,7 +21,7 @@ my $dev_path = $info{dev_path};
 my $project_path = $info{project_path};
 my $project_id = $info{project_id};
 my $out_path = "$project_path/report";
-my $output_pdf = "$out_path/Analysis_repor_$project_id.pdf"; #########
+my $output_pdf = "$out_path/Analysis_report_$project_id.pdf"; #########
 my $Rscript = "Rscript";
 my $text2pdf = "$dev_path/wes/etc/text2pdf.jar"; ###
 checkFile ( $text2pdf );
