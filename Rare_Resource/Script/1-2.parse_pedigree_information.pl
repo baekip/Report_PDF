@@ -33,9 +33,9 @@ foreach (@rare_list){
 
     #transfer to gender type
 
-    if ($gender eq "1"){
+    if ($gender eq "M"){
         $gender_type = "Male";
-    }elsif ($gender eq "2"){
+    }elsif ($gender eq "F"){
         $gender_type = "Female";
     }else {print "Error: Check your gender type in the configure file\n";
         exit;
