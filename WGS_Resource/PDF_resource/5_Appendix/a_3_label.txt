@@ -1,0 +1,15 @@
+[[16,13,12]]
+¡à Base quality of reads
+	+ X axis: Position of reads (bp)
+	+ Y axis: Quality score
+		¡Ü Green area: good quality calls
+		¡Ü Orange area: calls of reasonable quality
+		¡Ü Red area: calls of poor quality
+
+¡à Legend
+	+ This figure shows an overview of the range of quality values across all bases at each position in the FastQ file
+	+ For each position a BoxWhisker type plot is drawn. The elements of the plot are as follows:
+		¡Ü The central red line is the median value
+		¡Ü The yellow box represents the inter-quartile range (25~75%)
+		¡Ü The upper and lower whiskers represent the 10% and 90% points
+		¡Ü The blue line represents the mean quality

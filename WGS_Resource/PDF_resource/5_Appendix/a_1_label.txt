@@ -1,0 +1,3 @@
+[[20,14]]
+1. FastQC Base Quality
+	 The below is an example for explanation of FastQC result; base quality of reads ( read1 and read2 ).

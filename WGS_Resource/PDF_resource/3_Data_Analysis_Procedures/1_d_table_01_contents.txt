@@ -1,9 +1,0 @@
-[[10]]
-¡Ü The mapping process is to compare the sequenced reads to a customer-designated reference gonome using string alignment algorithm.
-¡Ü We extract unique alignment, between each read and the reference genome after de-duplication.
-¡Ü Delivery ID: ID provided from customer
-¡Ü Sample ID:Temporary ID allocated by Theragen Etex
-¡Ü Sequence read: Number of reads in raw sequence
-¡Ü Deduplicated read: Number of reads after de-duplication
-¡Ü Mapping read: Number of mapped reads 
-¡Ü On-target read: Number of mapped reads to targeted regions on the genome

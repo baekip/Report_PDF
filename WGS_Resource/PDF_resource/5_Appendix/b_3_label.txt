@@ -1,0 +1,13 @@
+[[13,11]]
+¡Ü CHROM 
+	 An identifier from the reference genome. All entries for a specific CHROM should form a continuous block within the VCF file.
+¡Ü POS 
+	 The reference position, with the 1st base having position 1. Positions are sorted numerically, increasing order, within each reference sequence CHROM. The CHROM and POS give the contig on which the variant occurs. 
+¡Ü ID
+	 Semi-colon separated list of unique identifiers where available. If this is a dbSNP variant it is encouraged to use the rs number(s). No identifier should be present in more than one data record. If there is no identifier available, then the missing value should be used.
+¡Ü REF and ALT
+	 The reference base and alternative base that vary in the samples, or in the population in general. Note that REF and ALT are always given on the forward strand. For indels the REF and ALT bases always include at least one base each (the base before the event).
+¡Ü QUAL
+	 The Phred scaled probability that a REF/ALT polymorphism exists at this site given sequencing data. Because the Phred scale is -10 * log(1-p), a value of 10 indicates a 1 in 10 chance of error, while a 100 indicates a 1 in 10^10 chance. These values can grow very large when a large amount of NGS data is used for variant calling. 
+¡Ü FILTER
+	 Whatever approach is used to filter the SNPs, the VCFs produced by the GATK carry both the PASSing filter records (the ones that are good have PASS in their FILTER field) as well as those that fail (the filter field is anything but PASS or a dot). If this position has not passed all filters, a semicolon-separated list of codes for filters that fail. e.g. ¡°q10;s50¡± might indicate that at this site the quality is below 10 and the number of samples with data is below 50% of the

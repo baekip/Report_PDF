@@ -1,0 +1,17 @@
+[[20,13]]
+3. Phred Quality Score
+	 
+
+	 Phred quality scores Q are defined as a property which is logarithmically related to the base-calling error probabilities P.
+
+
+        	                                   ¡Ü Q = -10 log10 P
+
+
+	 If Phred assigns a quality score of 30 to a base, the chances that this base is called incorrectly are 1 in 1000. The high accuracy of Phred scores make them an ideal tool to assess the quality of sequences.
+
+
+
+
+
+	Table 1. Phred Quality Score and Base Calling Accuracy.

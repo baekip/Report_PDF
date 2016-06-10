@@ -1,0 +1,7 @@
+[[11]]
+a. The number of variats homogeneous to alternative genotype
+          ; both alleles are same to alternative genotype
+b. The number of variants heterogeneous genotype
+          ; one allele is same to reference, and another to alternative genotype
+c. The variation has more than one alternative genotype
+d. Total sum of homogenous and heterogeneous variants; not counting multi-allelic variants 

@@ -1,0 +1,7 @@
+[[11]]
+a. Total reads: The total number of reads generated.
+b. The number of reads after trimming with Sickle; (%) = No. of clean reads / No. of Total reads.
+c. Total bases: The total bases of total reads; Total reads * length of reads.
+d. Total bases of clean reads; (%) = No. of clean bases/No. of Total bases.
+e. The number of reads mapped to the reference using BWA mapping tool; (%) = No. of mapped reads / No. of clean reads. 
+f. The average read depth across the reference.

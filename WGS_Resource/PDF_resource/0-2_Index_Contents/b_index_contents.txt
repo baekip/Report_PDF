@@ -5,30 +5,25 @@
 
 
 Project Information
-	1.1 Sample Information
-	1.2 Analysis Contents
+	A. Client
+	B. Analysis Information
+	C. Sample Index
+	D. Reference Information
 
 Read Quality
-	2.1 Exome Capturing Process
-	2.2 Sequencing Method
-	2.3 Analysis Pipeline
+	A. Statistics of Raw Data
+	B. Statistics of Filtered Raw Data
+	C. Coverage Depth of Filtered Raw Data
 
 Data Analysis Procedures
-	3.1 Basic Statistics
-		3.1.1 Mapping Summary for Produced Sequencing Data
-		3.1.2 Cumulative Coverage Distribution
-	3.2 Quality Controls
-		3.2.1 FastQC Results
-		3.2.2 Qualimap Results
-	3.3 Mapping and Alignment Statistics
-		3.3.1 Number of Sequenced Reads
-		3.3.2 Sequencing Depth Detail Description
 
 Data Analysis Result
-	4.1 Figure Description
-		4.1.1 FastQC
-		4.1.2 Qualimap
-	4.2 Directory Structure
+	A. Data Delivery Server Information
+	B. Data Directory Information
+	C. Statistics of InDels and SNPs
+	D. Type of SNVs
 
-Appendix
+Appendix Sheets
+
+Reference
 

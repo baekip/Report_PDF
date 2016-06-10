@@ -1,0 +1,4 @@
+[[20,13]]
+D. Type of SNVs
+
+	Filtered Variants Hetero Ratio 40~60%

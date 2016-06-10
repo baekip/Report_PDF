@@ -1,3 +1,2 @@
-[[18,15],[],[R]]
-Whole Genome Resequencing Sequencing
-	-BAM File
+[[18],[],[R]]
+Whole Genome Re-Sequencing

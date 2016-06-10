@@ -1,2 +1,3 @@
-[[20]]
-2.2 Sequencing Method
+[[20,14]]
+B. Statistics of Filtered Raw Data
+	The below table shows the number of total reads, total bases of total reads,  clean reads, clean bases after trimming, mapped read after mapping and the average depth.  

@@ -1,2 +1,4 @@
-[[20]]
-2.1 Exome Capturing Process
+[[20,14]]
+A. Statistics of Raw Data
+	The below table shows the number of total reads, total bases of total reads,  GC content (%) of total bases, Q20 (%) and Q30 (%) of total bases.  
+

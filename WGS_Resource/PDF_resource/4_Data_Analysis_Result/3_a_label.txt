@@ -1,0 +1,5 @@
+[[20,13]]
+C. statistics of Indels and SNPs
+
+
+	Table 1. No. of InDels

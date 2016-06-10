@@ -1,0 +1,6 @@
+[[20,12,15,12]]
+2. VCF file field Information
+	 VCF stands for Variant Call Format which is a standardized text file format for representing SNP, Indel, and structural variant calls.
+
+		A. Variation Fields
+			The first 6 columns represent variations; ¡°CHROM¡±, ¡°POS¡±, ¡°REF¡±, ¡°ALT¡±, ¡°QUAL¡±.  

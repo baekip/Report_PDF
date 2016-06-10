@@ -1,0 +1,3 @@
+[[16]]
+C. Interpretation of  Genotype field
+
