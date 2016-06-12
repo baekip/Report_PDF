@@ -100,12 +100,15 @@ while (my $row = <$fh_dict>){
 #        print "$chr_name\t$chr_length\n";
         if ($chr_name =~ /^Chr/){
             $no_chr += 1;
+            $chr_length = num($chr_length); 
             print $fh_ref_tmp "$chr_name\t$chr_length\n";
         }elsif ($chr_name =~ /^Mit/){
-            print $no_mit += 1;
+            $no_mit += 1;
+            $chr_length = num($chr_length);
             print $fh_ref_tmp "$chr_name\t$chr_length\n";
         }elsif ($chr_name =~ /^Chl/){
             $no_chl += 1;
+            $chr_length = num($chr_length);
             print $fh_ref_tmp "$chr_name\t$chr_length\n";
         }elsif ($chr_name =~ /Scaffold/){
             $no_scaffold += 1;
