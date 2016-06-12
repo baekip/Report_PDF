@@ -21,6 +21,11 @@ read_general_config( $in_general_config, \%info );
 my @list_delivery_tbi_id = split /\,/, $info{delivery_tbi_id};
 my $project_path = $info{project_path};
 
+if ($#list_delivery_tbi_id > 7) {
+    my $cmd_new_page = "touch $project_path/report/resource/4_Data_Analysis_Result/4_c_0_new_page";
+    system($cmd_new_page);
+}
+
 print "[[8.5,8.5]]\n";
 print "Sample ID\tDOWNSTREAM\tEXON\tINTERGENIC\tINTRON\tSPLICE_SITE_ACCEPTOR\tSPLICE_SITE_DONOR\tSPLICE_SITE_REGION\tTRANSCRIPT\tUPSTREAM\tUTR_3_PRIME\tUTR_5_PRIME\tTotal\n";
 foreach ( @list_delivery_tbi_id ){
@@ -31,7 +36,6 @@ foreach ( @list_delivery_tbi_id ){
 	chomp($result_line);
 	print "$delivery_id\t$result_line\n";
 
-#cat /BiO/BioProjects/FOM-Human-WES-2015-07-TBO150049/result/01_fastqc_orig/TN1507D0293/TN1507D0293_1_fastqc/fastqc_data.txt | grep "Total Sequences" | sed 's/Total Sequences\s//g'
 }
 
 sub read_pipeline_config{
