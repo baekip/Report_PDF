@@ -54,7 +54,6 @@ foreach ( @list_delivery_tbi_id ){
 	chomp($q30);
 	print $fh_stat_rawdata "$delivery_id\\n($tbi_id)\t$sequence_read\t$sequence_base\t$gc_rate\t$q20\t$q30\n";
 }
-
 close $fh_stat_rawdata;
 
 #---------------------------Statistics_of_Filtered_Raw_Data------------------------------------
@@ -102,7 +101,6 @@ foreach ( @list_delivery_tbi_id ){
 
         my $average_depth = `cat $alignment_statistics_xls | grep \"^$delivery_id\" | cut -f 14 | head -n 1` ;
         chomp($average_depth);
-
 
 	print $fh_stat_filtered "$delivery_id\\n($tbi_id)\t$sequence_read\t$clean_read\\n($clean_rate)\t$sequence_base\t$clean_base\\n($clean_base_rate)\t$mapped_reads\\n($mapped_rate)\t$average_depth\n";
 }
@@ -156,7 +154,13 @@ foreach ( @list_delivery_tbi_id ){
 
 close $fh_coverage;
 
-#---------------------sub module-----------------------
+#---------------------------------------Reference Information--------------------------------------
+
+
+
+
+
+#---------------------------------------sub module--------------------------------------
 sub RoundXL {
     sprintf("%.$_[1]f", $_[0]);
 }

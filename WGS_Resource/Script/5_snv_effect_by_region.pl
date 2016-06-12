@@ -1,40 +1,71 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
+use File::Basename;
+use Cwd qw(abs_path);
+my $script_path = dirname (abs_path $0);
 
-if(@ARGV != 2){
+if(@ARGV != 1){
     printUsage();
 }
 
 my $in_general_config = $ARGV[0];
-my $in_pipeline_config = $ARGV[1];
 my @fh_table;
 
 my %info;
 read_general_config( $in_general_config, \%info);
 
 my $project_path = $info{project_path};
-my $output_path = "$project_path/report";
-my $resource_path = "$output_path/resource/3-3_Pathogenic_Variants/";
-
+my $report_path = "$project_path/report";
+my $result_path = "$project_path/result";
+my $resource_path = "$report_path/resource/4_Data_Analysis_Result/";
+my $script_html_parser = "$script_path/4_snpeff_html_parser.pl";
+checkFile( $script_html_parser);
 my @list_delivery_id = split /\,/, $info{delivery_tbi_id};
-my @pathogenic_total_list;
 
 
+#----------------------Make a snpeff categories table-------------------------
+for (my $i=0; $i < @list_delivery_id; $i++){
+    my ($delivery_id, $tbi_id, $type_id) = split /\:/, $list_delivery_id[$i];
+    my $snpeff_html = "$result_path/14_snpeff_run/".$delivery_id."/".$delivery_id.".snpeff.html";
+    checkFile($snpeff_html);
+
+    my $output_new_page = "$resource_path/4_".$i."_0_new_page.txt";
+    my $output_label = "$resource_path/4_".$i."_label.txt";
+    my $output_table = "$resource_path/4_".$i."_table_01.txt";
+
+    my $result_line = "perl $script_html_parser $snpeff_html";
+    print $result_line."\n";
+
+    open my $fh_new_page, '>', $output_new_page or die;
+    close $fh_new_page;
+
+    open my $fh_label, '>', $output_label or die;
+    my $k = $i + 1;
+    print $fh_label "[[13]]\n";
+    print $fh_label "$k) $delivery_id ($tbi_id) \n";
+    close $fh_label;
+
+    open my $fh_table, '>', $output_table or die;
+    print $fh_table "[[12],[],[],[300]]\n";
+    print $fh_table "Type\tCount\tPercentage(%)\n";
+    close $fh_table;
+}    
+
+=pod
 for (my $i=0; $i < @list_delivery_id; $i++){
 #    print $list_delivery_id[$i]."\n";
     my ($delivery_id, $tbi_id, $type_id) = split /\:/, $list_delivery_id[$i];
-    my $in_pathogenic_snpeff_tsv = "$project_path/result/14_snpeff_human_run/".$tbi_id."/".$tbi_id.".BOTH.snpeff.isoform.tsv";
+    my $snpeff_html = "$result_path/14_snpeff_run/".$delivery_id."/".$delivery_id.".snpeff.html";
+    checkFile($snpeff_html);
 
     my $output_new_page = "$resource_path/1_".$i."_0_new_page.txt";
     my $output_label = "$resource_path/1_".$i."_label.txt";
     my $output_table = "$resource_path/1_".$i."_table_01.txt";
     
-
-#    my $output_new_page = "3.4.1 ".$i."_0_new_page.txt";
-#    my $output_label = "3.4.1 ".$i."_label.txt";
-#    my $output_table = "3.4.1 ".$i."_table_01.txt";
-
+    my $result_line = `perl $script_html_parser $snpeff_html`;
+    chomp ($r
+    
     open (my $fh_new_page, '>', $output_new_page) or die;
     print $fh_new_page "h \n";
     close $fh_new_page;
@@ -118,15 +149,9 @@ for (my $i=0; $i < @list_delivery_id; $i++){
  
 close $fh_table;   
  }
-
-=pod
-sub tran_disease {
-    my $dis = shift;
-    chomp $dis;
-    my $dis =~ tr/2//;
-    # return $dis;
-}
 =cut
+
+#--------------sub perl definition--------------------
 
 sub comma {
     my $file = shift;
@@ -134,34 +159,6 @@ sub comma {
     my $depth = $value[1];
     return $depth;
 }
-
-    #print "\n";
-        
-        # check rountine for pattern
-        #if ($clnsig  =~ /\|/){
-        #    print $row."\n";
-        #    die;
-        #}
-
-#    print $delivery_id."\n";
-#    print $list_delivery_id;
-
-#    print "[[11]]\n";
-=pod
-        my ($delivery_id, $tbi_id, $type_id) = split /\:/, $list_delivery_id;
-        my $in_pathogenic_snpeff_tsv = "$project_path/result/14_snpeff_human_run/".$tbi_id."/".$tbi_id.".BOTH.snpeff.isoform.tsv";
-        checkFile( $in_pathogenic_snpeff_tsv );
-
-        open my $fh, '<:encoding(UTF-8)', $file or die;
-        while (my $row = <$fh>){
-            chomp $row;
-            if ( $row[30] == 5 || $row[30] ==6 ) {
-                my $clinical_effect = $row[30];
-                my $gene = $row[12];
-                my $dna_change = $row[17];
-=cut
-
-
 
 sub checkFile {
     my $file = shift;

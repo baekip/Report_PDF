@@ -63,13 +63,27 @@ checkFile( $script_1 );
 my $script_2 = $script_path."/2_read_quality.pl";
 checkFile( $script_2 );
 
-my $script_4 = $script_path."/4_1_data_analysis_result.pl";
-checkFile( $script_4);
+my $script_4_1 = $script_path."/4_1_data_analysis_result.pl";
+checkFile( $script_4_1);
+
+my $script_4_2 = $script_path."/4_2_variants_analysis_result.pl";
+checkFile( $script_4_2);
+
+my $script_5 = $script_path."/5_parse_summary_of_variant.pl";
+checkFile( $script_5);
+my $script_5_plot = $script_path."/5_parse_summary_of_variant.R";
+checkFile( $script_5_plot);
 
 run_script ($script_0, $general_config_file, "$resource_path/0-1_Cover_page/c_intro_title.txt");
 run_script_1 ($script_1, $general_config_file);
 run_script_1 ($script_2, $general_config_file);
-run_script_1 ($script_4, $general_config_file);
+run_script_1 ($script_4_1, $general_config_file);
+run_script_1 ($script_4_2, $general_config_file);
+run_script ($script_5, $general_config_file, "$resource_path/4_Data_Analysis_Result/4_c_table_01.txt");
+my $cmd_script_5_plot = "$Rscript $script_5_plot \"$resource_path/4_Data_Analysis_Result/4_c_table_01.txt\" \"$resource_path/4_Data_Analysis_Result/4_b_photo_01.PNG\"";
+system($cmd_script_5_plot);
+
+
 #--------------Make a Report--------------------------
 # sp : start page 
 # hl : header line

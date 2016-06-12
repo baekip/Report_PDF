@@ -74,8 +74,58 @@ foreach ( @list_delivery_tbi_id ){
 close $fh_table;
 
 #--------------Reference Information----------------
+my $ref_info_lable = "$resource_path/1_Project_Information/d_2_label.txt"; 
+my $ref_table_tmp = "$resource_path/1_Project_Information/d_3_tmp.txt";
+my $ref_info_table = "$resource_path/1_Project_Information/d_3_table_01.txt";
+my $no_scaffold = 0;
+my $no_chr = 0;
+my $no_mit = 0;
+my $no_chl = 0;
+
 open my $fh_dict, '<:encoding(UTF-8)', $reference_dict or die;
-close $fh_dict;
+open my $fh_ref_tmp, '>', $ref_table_tmp or die;
+open my $fh_ref_table, '>', $ref_info_table or die;
+
+print $fh_ref_table "[[12],[],[],[200]]\n";
+print $fh_ref_table "Chromosome\tSequence-Length(bp)\n";
+
+while (my $row = <$fh_dict>){
+    chomp $row;
+#    my $sn_header; my $chr_name;
+#    my $ln_header; my $chr_length;
+    if ( $row =~ /^\@SQ/){
+        my @row_list = split /\t/, $row;
+        my($sn_header, $chr_name) = split /\:/, $row_list[1];
+        my($ln_header, $chr_length) = split /\:/, $row_list[2];
+#        print "$chr_name\t$chr_length\n";
+        if ($chr_name =~ /^Chr/){
+            $no_chr += 1;
+            print $fh_ref_tmp "$chr_name\t$chr_length\n";
+        }elsif ($chr_name =~ /^Mit/){
+            print $no_mit += 1;
+            print $fh_ref_tmp "$chr_name\t$chr_length\n";
+        }elsif ($chr_name =~ /^Chl/){
+            $no_chl += 1;
+            print $fh_ref_tmp "$chr_name\t$chr_length\n";
+        }elsif ($chr_name =~ /Scaffold/){
+            $no_scaffold += 1;
+        }
+    }
+} close $fh_dict;
+close $fh_ref_table;
+close $fh_ref_tmp;
+my $cmd_arrage = "cat $ref_table_tmp \| sort >> $ref_info_table ";
+system($cmd_arrage); 
+#print $no_scaffold."\n";
+
+open my $fh_ref_lable, '>', $ref_info_lable or die;
+print $fh_ref_lable "[[15,12]]\n";
+print $fh_ref_lable "- Species: $species \n\n";
+print $fh_ref_lable "\t  - The Number of Scaffolds: $no_scaffold \n";
+print $fh_ref_lable "\t  - The Number of Chromosomes: $no_chr \n";
+print $fh_ref_lable "\t  - The Number of Chloroplasts: $no_chl \n";
+print $fh_ref_lable "\t  - The Number of Mitochodrion Sequences: $no_mit \n\n\n\n\n";
+close $fh_ref_lable;
 
 #--------------sub module---------------------------
 sub make_dir {
