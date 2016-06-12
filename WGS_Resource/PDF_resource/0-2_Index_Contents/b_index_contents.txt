@@ -10,12 +10,15 @@ Project Information
 	C. Sample Index
 	D. Reference Information
 
+
 Read Quality
 	A. Statistics of Raw Data
 	B. Statistics of Filtered Raw Data
 	C. Coverage Depth of Filtered Raw Data
 
+
 Data Analysis Procedures
+
 
 Data Analysis Result
 	A. Data Delivery Server Information
@@ -23,7 +26,9 @@ Data Analysis Result
 	C. Statistics of InDels and SNPs
 	D. Type of SNVs
 
+
 Appendix Sheets
+
 
 Reference
 

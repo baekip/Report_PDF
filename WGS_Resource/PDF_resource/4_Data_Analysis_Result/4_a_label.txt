@@ -2,5 +2,3 @@
 D. Type of SNVs
 
 	Filtered Variants Hetero Ratio 40~60%
-
-         Table 5. No. of SNV effect by Region
