@@ -1,6 +1,17 @@
-[[13]]
-At this site, the called genotype is?GT = 0/1, which is C/T. The confidence indicated by?GQ = 25.92?isn't so good, largely because there were only a total of 4 reads at this site (DP =4), 1 of which was REF (=had the reference base) and 3 of which were ALT (=had the alternate base) (indicated by?AD=1,3). 
-The lack of certainty is evident in the PL field, where?PL(0/1) = 0?(the normalized value that corresponds to a likelihood of 1.0). There's a chance that the subject is "homozygous variant allele"  since?PL(1/1) = 26, which corresponds to 10^(-2.6), or 0.0025, but either way, it's clear that the subject is definitely?not?"homozygous reference allele"  since?PL(0/0) = 103, which corresponds to 10^(-10.3), a very small number. It could say that the higher the value of PL, the lower probability to be the another GTs, in here homozygous variant allele or homozygous reference allele . 
+[[13,10]]
+¡Ü GT 
+	 The genotype of this sample. For a diploid organism, the GT field indicates the two alleles carried by the sample, encoded by a 0 for the REF allele, 1 for the first ALT allele, 2 for the second ALT allele, etc. When there is a single ALT allele (by far the more common case), GT will be either:
+	- 0/0 - the sample is homozygous reference
+	- 0/1 - the sample is heterozygous, carrying 1 copy of each of the REF and ALT alleles
+	- 1/1 - the sample is homozygous alternate
 
- GQ tells how confident GATK is that the genotype it assigned to a particular sample is correct. While QUAL tells how confident that there is some kind of variations at a given site and the variation may be present in one or more samples. QUAL (or more importantly, its normalized form, QD) is mostly useful in multi-sample context since it shows the evidence of variation overall.  If there is only one sample, especially if it has a good GQ ( and well separated PLs), QUAL may seem redundant; one knows what one have. If the GQ is not good, one can typically rely on the PLs to tell one whether one do probably have a variant; GATK is just not sure the variant is heterozygous or homozygous variant. If  homozygous reference allele is also a probability, the call may be a potential false positive. 
+¡Ü GQ
+	 The Genotype Quality, or Phred-scaled confidence that the true genotype is the one provided in GT. In the diploid case, if GT is 0/1, then GQ is really L(0/1) / (L(0/0) + L(0/1) + L(1/1)), where L is the likelihood that the sample is 0/0, 0/1/, or 1/1 under the model built for the NGS dataset. The GQ is simply the second most likely PL - the most likely PL. Because the most likely PL is always 0, GQ = second highest PL - 0. If the second most likely PL is greater than 99, we still assign a GQ of 99, so the highest value of GQ is 99.
 
+¡Ü AD and DP
+	 These are complementary fields that represent two important ways of thinking about the depth of the data for this sample at this site. See the Technical Documentation for details on AD (DepthPerAlleleBySample) and DP (Coverage). 
+	  - AD : The values in the field are ordered to match the order of alleles specified in the REF and ALT fields: REF, ALT1, ALT2 and so on if there are multiple ALT alleles. 
+	  - DP : At the sample level (FORMAT), the DP value is the count of reads that passed the caller's internal quality control metrics (such as MAPQ > 17, for example). At the site level (INFO), the DP value is the unfiltered depth over all samples.
+
+¡Ü PL
+	 This field provides the likelihoods of the given genotypes (here, 0/0, 0/1, and 1/1). These are normalized, Phred-scaled likelihoods for each of the 0/0, 0/1, and 1/1, without priors. To be concrete, for the heterozygous case, this is L(data given that the true genotype is 0/1). The most likely genotype (given in the GT field) is scaled so that it's P = 1.0 (0 when Phred-scaled), and the other likelihoods reflect their Phred-scaled likelihoods relative to this most likely genotype.

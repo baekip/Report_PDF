@@ -1,4 +1,4 @@
-[[11]]
+[[10]]
 a. Total reads: The total number of reads generated.
 b. Total bases: The total bases of total reads; Total reads * length of reads(101bp).
 c. GC (%): The percentage of nitrogenous bases either guanine or cytosine in total bases.

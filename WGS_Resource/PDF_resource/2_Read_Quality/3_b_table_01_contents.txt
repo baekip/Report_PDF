@@ -1,3 +1,7 @@
-[[11]]
+[[10]]
 a. Reference base count excepting 'N"
-b. Coverage nX(%): The rate of cumulative mapping depth against reference genome coverage more than nX
+b. Coverage 1X(%): The rate of cumulative mapping depth against reference genome coverage more than 1X
+c. Coverage 5X(%): The rate of cumulative mapping depth against reference genome coverage more than 5X
+d. Coverage 10X(%): The rate of cumulative mapping depth against reference genome coverage more than 10X
+e. Coverage 20X(%): The rate of cumulative mapping depth against reference genome coverage more than 20X
+f. Coverage 50X(%): The rate of cumulative mapping depth against reference genome coverage more than 50X
