@@ -2,4 +2,3 @@
 C. Coverage depth of Filtered Raw Data
 
 	The below table shows coverage depth of filtered raw data across referene sequence.  
-

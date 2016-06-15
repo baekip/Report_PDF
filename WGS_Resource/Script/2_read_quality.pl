@@ -62,7 +62,7 @@ my $stat_filtered = "$report_path/resource/2_Read_Quality/2_b_table_01.txt";
 open my $fh_stat_filtered, '>', $stat_filtered or die;
 print $fh_stat_filtered "[[11],[],[],[100]]\n";
 print $fh_stat_filtered "Delivery ID\\n(Sample ID)\tSequence\\nread\t".
-        "Total bases\\n(bp)\t".
+        "Total\\nbases\\n(bp)\t".
         "Clean\\nread\\n(%)\t".
         "Clean\\nbases\\n(%)\t".
 	"Mapped\\nreads\\n(%)\t".
