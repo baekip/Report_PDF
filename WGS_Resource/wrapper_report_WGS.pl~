@@ -101,7 +101,7 @@ system($cmd_script_5_plot);
 chdir $out_path;
 my $user_font_file = "$dev_path/wes/etc/Font/SangSangBodyM.ttf";
 my $user_CI_file = "$dev_path/wes/etc/CI/Theragen_CI.png";
-my $report_version = "Analysis Report V0.2";
+my $report_version = "Analysis Report V0.1";
 
 my $cmd_make_pdf = "$java -jar $text2pdf -sp 2 -hl -fl -ht $report_version -ha r -fa r -r $resource_path -of $output_pdf -f $user_font_file -fi $user_CI_file";
 print $cmd_make_pdf."\n";

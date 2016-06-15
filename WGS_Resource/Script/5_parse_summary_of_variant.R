@@ -24,7 +24,7 @@ Variant_table_malted <- melt(Variant_table[,-13])
 CairoPNG( output_png, width=2200, height=1200, res=480)
 #png ( output_png, width=2200, height=1200, res=480)
 
-ggplot(data=Variant_table_malted, aes(x=Sample.ID, y=value, fill=variable))  + 
+ggplot(data=Variant_table_malted, aes(x=Sample.ID, y=value, fill=variable))  +  theme_bw() + 
   geom_bar(stat="identity", width=.5) + 
 #  theme_bw() +
   theme(axis.title.x=element_blank(),
@@ -38,7 +38,7 @@ ggplot(data=Variant_table_malted, aes(x=Sample.ID, y=value, fill=variable))  +
 	legend.title = element_blank(),
 	legend.title = element_text(size=9, face="bold"),
 	legend.text = element_text(size=5),
-	legend.position = "right") + 
+	legend.position = "right") +
     scale_x_discrete(limits = Variant_table$Sample.ID)
 # +
 

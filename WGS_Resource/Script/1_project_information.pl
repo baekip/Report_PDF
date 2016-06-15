@@ -81,6 +81,7 @@ my $no_scaffold = 0;
 my $no_chr = 0;
 my $no_mit = 0;
 my $no_chl = 0;
+my $total_bp = 0; 
 
 open my $fh_dict, '<:encoding(UTF-8)', $reference_dict or die;
 open my $fh_ref_tmp, '>', $ref_table_tmp or die;
@@ -100,18 +101,22 @@ while (my $row = <$fh_dict>){
 #        print "$chr_name\t$chr_length\n";
         if ($chr_name =~ /^Chr/){
             $no_chr += 1;
+            $total_bp += $chr_length;
             $chr_length = num($chr_length); 
             print $fh_ref_tmp "$chr_name\t$chr_length\n";
         }elsif ($chr_name =~ /^Mit/){
             $no_mit += 1;
+            $total_bp += $chr_length;
             $chr_length = num($chr_length);
             print $fh_ref_tmp "$chr_name\t$chr_length\n";
         }elsif ($chr_name =~ /^Chl/){
             $no_chl += 1;
+            $total_bp += $chr_length;
             $chr_length = num($chr_length);
             print $fh_ref_tmp "$chr_name\t$chr_length\n";
         }elsif ($chr_name =~ /Scaffold/){
             $no_scaffold += 1;
+            $total_bp += $chr_length;
         }
     }
 } close $fh_dict;
@@ -121,9 +126,11 @@ my $cmd_arrage = "cat $ref_table_tmp \| sort >> $ref_info_table ";
 system($cmd_arrage); 
 #print $no_scaffold."\n";
 
+$no_scaffold = num($no_scaffold);
+$total_bp = num($total_bp);
 open my $fh_ref_lable, '>', $ref_info_lable or die;
 print $fh_ref_lable "[[15,12]]\n";
-print $fh_ref_lable "- Species: $species \n\n";
+print $fh_ref_lable "- Species: $species (Total $total_bp bp ) \n\n";
 print $fh_ref_lable "\t  - The Number of Scaffolds: $no_scaffold \n";
 print $fh_ref_lable "\t  - The Number of Chromosomes: $no_chr \n";
 print $fh_ref_lable "\t  - The Number of Chloroplasts: $no_chl \n";

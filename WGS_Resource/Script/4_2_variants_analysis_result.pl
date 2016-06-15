@@ -85,12 +85,12 @@ if ( $filtration =~ /^hetero/){
     my $hetero_table_contents = "$project_path/report/resource/4_Data_Analysis_Result/3_g_label.txt";
     open my $fh_contents,'>',$hetero_table_contents or die;
     print $fh_contents "[[11]]\n";
-    print $fh_contents "a. The number of variants homogeneous to alternatice genotype\n";
+    print $fh_contents "¡Ü The number of variants homogeneous to alternatice genotype\n";
     print $fh_contents "          ; both alleles are same to alternative genotype\n";
-    print $fh_contents "b. The number of variants heterogeneous genotype\n";
+    print $fh_contents "¡Ü The number of variants heterogeneous genotype\n";
     print $fh_contents "          ; one allele is same to reference, and another to alternative genotype\n";
-    print $fh_contents "c. The variation has more than one alternative genotype\n";
-    print $fh_contents "d. Total sum of homogenous and heterogeneous variants\n";
+    print $fh_contents "¡Ü The variation has more than one alternative genotype\n";
+    print $fh_contents "¡Ü Total sum of homogenous and heterogeneous variants\n";
     print $fh_contents "          ; not counting multi-allelic variants\n";
     close $fh_contents;
 }

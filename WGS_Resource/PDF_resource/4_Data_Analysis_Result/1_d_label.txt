@@ -1,5 +1,5 @@
 [[10]]
-a. FTP server where data is uploaded
-b. Server ID designated to the client by TheragenEtex
-c. Password for the server ID
-d. Directory name where data is located
+¡Ü FTP server where data is uploaded
+¡Ü Server ID designated to the client by TheragenEtex
+¡Ü Password for the server ID
+¡Ü Directory name where data is located

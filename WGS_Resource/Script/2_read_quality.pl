@@ -62,10 +62,10 @@ my $stat_filtered = "$report_path/resource/2_Read_Quality/2_b_table_01.txt";
 open my $fh_stat_filtered, '>', $stat_filtered or die;
 print $fh_stat_filtered "[[11],[],[],[100]]\n";
 print $fh_stat_filtered "Delivery ID\\n(Sample ID)\tSequence\\nread\t".
-	"Clean\\nread\\n(%)\t".
-	"Total bases\\n(bp)\t".
-	"Clean bases\\n(%)\t".
-	"Mapped reads\\n(%)\t".
+        "Total bases\\n(bp)\t".
+        "Clean\\nread\\n(%)\t".
+        "Clean\\nbases\\n(%)\t".
+	"Mapped\\nreads\\n(%)\t".
 	"Average\\nDepth\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
@@ -102,13 +102,18 @@ foreach ( @list_delivery_tbi_id ){
         my $average_depth = `cat $alignment_statistics_xls | grep \"^$delivery_id\" | cut -f 14 | head -n 1` ;
         chomp($average_depth);
 
-	print $fh_stat_filtered "$delivery_id\\n($tbi_id)\t$sequence_read\t$clean_read\\n($clean_rate)\t$sequence_base\t$clean_base\\n($clean_base_rate)\t$mapped_reads\\n($mapped_rate)\t$average_depth\n";
+	print $fh_stat_filtered "$delivery_id\\n($tbi_id)\t$sequence_read\t$sequence_base\t$clean_read\\n($clean_rate)\t$clean_base\\n($clean_base_rate)\t$mapped_reads\\n($mapped_rate)\t$average_depth\n";
 }
 close $fh_stat_filtered;
 
 #--------------------------Coverage_Depth_Of_Filtered_Raw_Data---------------------------------------------
 
-my $coverage_depth = "$report_path/resource/2_Read_Quality/3_b_table_01.txt";
+if ($#list_delivery_tbi_id > 7 ) { 
+    my $cmd_new_page = "touch $project_path/report/resource/2_Read_Quality/3_c_0_new_page";
+    system($cmd_new_page);
+}
+
+my $coverage_depth = "$report_path/resource/2_Read_Quality/3_c_table_01.txt";
 open my $fh_coverage, '>', $coverage_depth or die;
 
 print $fh_coverage "[[11],[],[],[100]]\n";

@@ -1,12 +1,12 @@
 [[11]]
-a. Unfiltered fastq.gz file 
-b. QC statistics file for raw read data
-c. Fastq.gz file after Trimming and filtering using sickle
-d. BAM file after sorting, merging, and removal of duplication
-e. Variant Call Format file for the sample
-f. Table of genes  variants occurred
-g. Html file for statistics of variants 
-h. Annotation file of the sample variation 
-i. Statistics of overall analysis about the sample
-j. Variant Call Format file for all sample
-k. Annotation file containing all sample genotype information
+¡Ü Unfiltered fastq.gz file 
+¡Ü QC statistics file for raw read data
+¡Ü Fastq.gz file after Trimming and filtering using sickle
+¡Ü BAM file after sorting, merging, and removal of duplication
+¡Ü Variant Call Format file for the sample
+¡Ü Table of genes  variants occurred
+¡Ü Html file for statistics of variants 
+¡Ü Annotation file of the sample variation 
+¡Ü Statistics of overall analysis about the sample
+¡Ü Variant Call Format file for all sample
+¡Ü Annotation file containing all sample genotype information
