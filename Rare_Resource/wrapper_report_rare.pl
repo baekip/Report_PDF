@@ -133,6 +133,7 @@ my $script_23 = $script_path."/23.parse_compound_hetero_model.pl";
 checkFile( $script_23 );
 
 run_script ( $script_0, $general_config_file, $pipeline_config_file, "$resource_path/0-1_Cover_page/c_intro_title.txt" );
+run_script_1 ( $script_0_1, $general_config_file, $pipeline_config_file);
 run_script ( $script_1, $general_config_file, $pipeline_config_file, "$resource_path/1-1_Sample_Information/1_b_table_01.txt" );
 run_script ( $script_1_2, $general_config_file, $pipeline_config_file, "$resource_path/1-1_Sample_Information/2_b_table_01.txt" );
 run_script ( $script_2, $general_config_file, $pipeline_config_file, "$resource_path/3-1_Results_Summary/1_c_table_01.txt" );
