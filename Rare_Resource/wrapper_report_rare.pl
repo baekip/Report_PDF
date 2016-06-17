@@ -174,7 +174,7 @@ system($cmd_script_13_plot);
 #$resource_path/3-3. Candidate_Variants/3.3.1 c_table_01.txt
 
 run_script_2 ($script_20, $general_config_file);
-run_script_2 ($script_21_1, $general_config_file);
+#run_script_2 ($script_21_1, $general_config_file);
 #run_script_1($script_21, $general_config_file, $pipeline_config_file);
 #run_script_1($script_22, $general_config_file, $pipeline_config_file);
 #run_script_1($script_23, $general_config_file, $pipeline_config_file);
