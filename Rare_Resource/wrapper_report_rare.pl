@@ -50,7 +50,7 @@ if (-d "$out_path/temp" or -d "$out_path/resource" or -f $output_pdf){
 	"rm -r $out_path/temp\n".
 	"rm -r $out_path/resource\n".
 	"rm $output_pdf\n";
-}
+}N
 =cut
 
 # copy template resource directory into out_path;
@@ -175,9 +175,12 @@ system($cmd_script_13_plot);
 
 run_script_2 ($script_20, $general_config_file);
 run_script_2 ($script_21_1, $general_config_file);
-#run_script ($script_21, $general_config_file, $pipeline_config_file, "$resource_path/3-4_Candidate_Variants/2_b_table_01.txt" );
-#run_script ($script_22, $general_config_file, $pipeline_config_file, "$resource_path/3-4_Candidate_Variants/3_b_table_01.txt" );
-#run_script ($script_23, $general_config_file, $pipeline_config_file, "$resource_path/3-4_Candidate_Variants/4_b_table_01.txt" );
+#run_script_1($script_21, $general_config_file, $pipeline_config_file);
+#run_script_1($script_22, $general_config_file, $pipeline_config_file);
+#run_script_1($script_23, $general_config_file, $pipeline_config_file);
+run_script ($script_21, $general_config_file, $pipeline_config_file, "$resource_path/3-4_Candidate_Variants/2_b_table_01.txt" );
+run_script ($script_22, $general_config_file, $pipeline_config_file, "$resource_path/3-4_Candidate_Variants/3_b_table_01.txt" );
+run_script ($script_23, $general_config_file, $pipeline_config_file, "$resource_path/3-4_Candidate_Variants/4_b_table_01.txt" );
 
 
 # sp : start page 

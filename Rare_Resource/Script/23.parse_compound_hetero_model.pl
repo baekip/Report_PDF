@@ -27,7 +27,7 @@ for (my $i=0; $i < @array; $i++){
         next;
     }
     my @line_array = split /\t/,$line;
-    my $second_col_value = $line_array[1];
+    my $second_col_value = $line_array[3];
     if ($second_col_value == 0){
         last;
     }
@@ -38,23 +38,16 @@ $last_value = alt($last_value);
 my $compound_model_xls = "$compound_model_path/multisample.compound_hetero.".$last_value.".xls";
 checkFile($compound_model_xls);
 
-sub alt {
-    my $file =shift;
-    $file =~ tr/F/f/;
-    return $file;
-}
-
-my @contents = `cat $compound_model_xls | sed -n '1!p' | awk '{print\$1,\$2,\$17,\$24,\$25,\$19,\$39,\$41,\$49,\$50,\$59,\$65}' | tr ' ' '\t'`;
+#my @contents = `cat $compound_model_xls | sed -n '1!p' | awk '{print\$1,\$2,\$17,\$24,\$25,\$19,\$39,\$41,\$49,\$50,\$59,\$65}' | tr ' ' '\t' | head -n 10`;
+#my @contents = `cat $compound_model_xls | sed -n '1!p' | awk '{print \$1,\$2,\$7,\$19,\$21,\$24,\$25,\$38,\$40,\$50,\$66}' | tr ' ' '\t' | head -n 10`;
+my @contents = `cat $compound_model_xls | sed -n '1!p' | awk '{print \$1,\$2,\$8,\$20,\$22,\$25,\$26,\$39,\$41,\$51,\$67}' | tr ' ' '\t' | head -n 10`;
 
 print "[[11]]\n";
-print "Chr\tPos\tVariant\\nType\tcDNA change\tAmino2change\tGene\tSIFT\tPolyPhen\tCADD\t1000G\tExAC\tIn-House\n";
+#print "Chr\tPos\tVariant\\nType\tcDNA change\tAmino2change\tGene\tSIFT\tPolyPhen\tCADD\t1000G\tExAC\tIn-House\n";
+print "Chr\tPos\tVariant\\nType\tGene\tTranscript\\nID\tcDNA\\nchange\tAmino\\nchange\tSIFT\tPolyPhen\t1000G\tIn-House\n";
 print "@contents";
 
-#project_path      =    /BiO/BioProjects/Aju-Human-WES-2015-08-TBO150056/family1/
-
-my $dominant_model_xls = "$project_path/result/31-2_variants_filter_run/multisample/multisample.dominant.filter6.xls";
-checkFile ($dominant_model_xls);
-
+#project_path      =    /BiO/BioProjects/Aju-Human-WES-2015-08-TBO150056/family1/dd
 #my %hash_sample;
 #print "[[11]]\n"
 #print "Chr\tPos\tRegion\tcDNA change\tAmino2change\tGene\tSIFT\tPolyPhen\tCADD\t1000G\tExAC\tIn-House\n";
@@ -96,6 +89,12 @@ checkFile ($dominant_model_xls);
 #    my $in_house_score = `cat $dominant_model_xls | cut -f 65 `;
 #    chomp ($in_house_score);
 
+#----------------------------------sub module--------------------------
+sub alt {
+    my $file =shift;
+    $file =~ tr/F/f/;
+    return $file;
+}
 
 sub checkFile {
      my $file = shift;

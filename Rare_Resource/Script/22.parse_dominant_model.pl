@@ -49,14 +49,14 @@ sub alt {
     return $file;
 }
 
-my @contents = `cat $dominant_model_xls | sed -n '1!p' | awk '{print \$1,\$2,\$17,\$24,\$25,\$19,\$39,\$41,\$49,\$50,\$59,\$65}'     | tr ' ' '\t'`;
+#my @contents = `cat $dominant_model_xls | sed -n '1!p' | awk '{print \$1,\$2,\$17,\$24,\$25,\$19,\$39,\$41,\$49,\$50,\$59,\$65}'     | tr ' ' '\t' | head -n 10`;
+my @contents = `cat $dominant_model_xls | sed -n '1!p' | awk '{print \$1,\$2,\$7,\$19,\$21,\$24,\$25,\$38,\$40,\$50,\$66}' | tr ' ' '\t' | head -n 10`;
 
 print "[[11]]\n";
-print "Chr\tPos\tVariant\\nType\tcDNA\\nchange\tAmino2Change\tGene\tSIFT\tPolyPhen\tCADD\t1000G\tExAC\tIn-House\n";
+#print "Chr\tPos\tVariant\\nType\tcDNA\\nchange\tAmino2Change\tGene\tSIFT\tPolyPhen\tCADD\t1000G\tExAC\tIn-House\n";
+print "Chr\tPos\tVariant\\nType\tGene\tTranscript\\nID\tcDNA\\nchange\tAmino\\nchange\tSIFT\tPolyPhen\t1000G\tIn-House\n";
 print "@contents";
 
-#print "$array[2]";
-#my @contents = `cat $dominant_model_xls`
 
 #my $dominant_model_xls = "$result_path/result/31-2_variants_filter_run/multisample/multisample.dominant.filter6.xls";
 #checkFile ($dominant_model_xls);
