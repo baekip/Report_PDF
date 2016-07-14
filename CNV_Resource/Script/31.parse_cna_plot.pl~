@@ -39,6 +39,7 @@ for (my $i; $i<@list_pair_id; $i++) {
 }
 
 #----------------------------sub module--------------------------------
+
 sub delivery_split {
     my ($delivery_list, $del_ref_hash) = @_;
     for (@$delivery_list) {
@@ -46,6 +47,7 @@ sub delivery_split {
         $del_ref_hash->{$tbi_id}=$delivery_id;
     }
 }
+
 
 sub read_config {
     my ($file, $hash_ref) = @_;

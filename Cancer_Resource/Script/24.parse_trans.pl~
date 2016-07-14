@@ -78,7 +78,7 @@ for (my $i=0; $i<@list_pair_id; $i++) {
             $ratio = 'Illegal Division';
         }else{
             $ratio = $ts/$tv;
-            $ratio = &RoundXL ($ratio, 2);
+            $ratio = &RoundXL ($ratio, 3);
         }
         print "$tmp_id\t$ts\t$tv\t$ratio\n";
 }
