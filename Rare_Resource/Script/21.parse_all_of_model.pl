@@ -105,7 +105,7 @@ while (my $row = <$fh_file_3>){
         system ($cmd_generator);
         # print "$compound_stat_file_4\n"; }
     }else{
-        my $cmd_generator = "cat $compound_stat_file_5 | cut -f 1,2,8,21,25,28,29,42,44,54,70 | sed -n \'1!p\' | head -n 10 >> $compound_resource_file";
+        my $cmd_generator = "cat $compound_stat_file_5 | cut -f 1,2,8,23,25,28,29,42,44,54,70 | sed -n \'1!p\' | head -n 10 >> $compound_resource_file";
         system ($cmd_generator);
         #print "$compound_stat_file_5\n";}
     last;}
