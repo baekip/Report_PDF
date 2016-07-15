@@ -14,66 +14,50 @@ read_general_config ($in_general_config, \%info);
 
 my @list_delivery_tbi_id = split /\,/, $info{delivery_tbi_id};
 my $project_path = $info{project_path};
-my $recessive_model_path = "$project_path/result/31-1_variants_filter_run/multisample";
-my $recessive_stat_file_5 = "$recessive_model_path/multisample.recessive.filter5.xls";
-checkFile ( $recessive_stat_file_5);
-my $recessive_stat_file_4 = "$recessive_model_path/multisample.recessive.filter4.xls";
-checkFile ( $recessive_stat_file_4);
+my $compound_model_path = "$project_path/result/31-3_variants_filter_run/multisample/";
+my $filter_statistics_xls = "$project_path/result/32_filter_sta_run/multisample/multisample.filter.statistics.xls";
+checkFile( $filter_statistics_xls );
 
-my $recessive_resource_file = "$project_path/report/resource/3-4_Candidate_Variants/2_b_table_01.txt";
-
-open my $fh_file, '<:encoding(UTF-8)',$recessive_stat_file_5 or die;
-while (my $row = <$fh_file>){
-    if ($row =~ /^#/){next;}
-    if (! $row) { 
-        my $cmd_generator = "cat $recessive_stat_file_4 | cuf -f 1,2,17,24,25,19,39,41,49,50,59,65";
-        system ($cmd_generator);
-        print "$recessive_stat_file_4\n"; }
-    
-    else{
-        my $cmd_generator = "cat $recessive_stat_file_5 | cut -f 1,2,17,24,25,19,39,41,49,50,59,65";
-        system ($cmd_generator);
-        print "$recessive_stat_file_5\n";}
+my $filter_statistics_contents = `cat $filter_statistics_xls`;
+my @array = split /\n/, $filter_statistics_contents;
+my $last_value;
+for (my $i=0; $i < @array; $i++){
+    my $line = $array[$i];
+    if ($line =~ /^Filtering/){
+        next;
+    }
+    my @line_array = split /\t/,$line;
+    my $second_col_value = $line_array[3];
+    if ($second_col_value == 0){
+        last;
+    }
+    $last_value = $line_array[0];
 }
 
+$last_value = alt($last_value);
+my $compound_model_xls = "$compound_model_path/multisample.compound_hetero.".$last_value.".xls";
+checkFile($compound_model_xls);
 
+#my @contents = `cat $compound_model_xls | sed -n '1!p' | awk '{print\$1,\$2,\$17,\$24,\$25,\$19,\$39,\$41,\$49,\$50,\$59,\$65}' | tr ' ' '\t' | head -n 10`;
+#my @contents = `cat $compound_model_xls | sed -n '1!p' | awk '{print \$1,\$2,\$7,\$19,\$21,\$24,\$25,\$38,\$40,\$50,\$66}' | tr ' ' '\t' | head -n 10`;
+my @contents = `cat $compound_model_xls | sed -n '1!p' | awk '{print \$1,\$2,\$8,\$20,\$22,\$25,\$26,\$39,\$41,\$51,\$67}' | tr ' ' '\t' | head -n 10`;
 
-
-#my $filter_statistics_contents = `cat $filter_statistics_xls`;
-#my @array = split /\n/, $filter_statistics_contents;
-#my $last_value;
-#for (my $i=0; $i<@array; $i++){
-#    my $line = $array[$i];
-#    if ($line =~ /^Filtering/){
-#        next;
-#    }
-#    my @line_array = split /\t/, $line;
-#    my $second_col_value = $line_array[1];
-#    if ($second_col_value == 0){
-#        last;
-#    }
-#    $last_value = $line_array[0];
-#}
-
-#$last_value = alt($last_value);
-#my $recessive_model_xls = "$recessive_model_path/multisample.recessive.".$last_value.".xls";
-#checkFile( $recessive_model_xls);
-
-sub alt {
-    my $file = shift;
-    $file =~ tr/F/f/;
-    return $file;
-}
-
-
-#print $last_value."\n";
-
-#my @contents = `cat $recessive_model_xls | sed -n \'1!p\' | awk '{print\$1,\$2,\$17,\$24,\$25,\$19,\$39,\$41,\$49,\$50,\$59,\$65}' | tr ' ' '\t'`;
-
-
-#print "[[11]]\n";
+print "[[11]]\n";
 #print "Chr\tPos\tVariant\\nType\tcDNA change\tAmino2change\tGene\tSIFT\tPolyPhen\tCADD\t1000G\tExAC\tIn-House\n";
-#print "@contents";
+print "Chr\tPos\tVariant\\nType\tGene\tTranscript\\nID\tcDNA\\nchange\tAmino\\nchange\tSIFT\tPolyPhen\t1000G\tIn-House\n";
+print "@contents";
+
+#project_path      =    /BiO/BioProjects/Aju-Human-WES-2015-08-TBO150056/family1/dd
+#my %hash_sample;
+#print "[[11]]\n"
+#print "Chr\tPos\tRegion\tcDNA change\tAmino2change\tGene\tSIFT\tPolyPhen\tCADD\t1000G\tExAC\tIn-House\n";
+#print %contents;
+
+
+
+#my %contents = `cat $dominant_model_xls | sed -n \'1!p\' | awk '{print $1,$2,$17,$24,$25,$19,$39,$41,$49,$50,$59,$65}';
+
+
 
 #sed -n '1!p'
 
@@ -105,6 +89,21 @@ sub alt {
 #    my $in_house_score = `cat $dominant_model_xls | cut -f 65 `;
 #    chomp ($in_house_score);
 
+#----------------------------------sub module--------------------------
+sub alt {
+    my $file =shift;
+    $file =~ tr/F/f/;
+    return $file;
+}
+
+sub checkFile {
+     my $file = shift;
+     if ( !-f $file ) {
+         print "ERROR! not found <$file>\n";
+     }
+ }
+
+
 sub read_general_config {
     my ($file, $hash_ref) = @_;
     open my $fh, '<:encoding(UTF-8)', $file or die;
@@ -131,16 +130,11 @@ sub trim {
     return wantarray ? @result : $result[0];
 }
 
-sub checkFile {
-    my $file = shift;
-    if ( !-f $file){
-        die "ERROR ! not found <$file>\n";
-    }
-}
-   
+
 
 sub printUsage {
     print "Usage: perl $0 <in.config> <in.pipelien.config>\n";
     print "Exampel: perl $0 /BiO/BioProject/FOM-Human-WES-2015-07-TBO150049/wes_config.human.txt /BiO/BioProjects/FOM-Human-WES-2015-07-TBO150049/wes_pipeline_config.human.txt\n";
     exit;
 }
+
