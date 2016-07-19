@@ -20,8 +20,8 @@ my $alignment_xls = "$project_path/report/alignment.statistics.xls";
 my $sample_list = $info{delivery_tbi_id};
 my @sample_tbi_list = split /\,/, $sample_list;
 
-print "[[11],[],[],[0,90]]\n";
-print "Delivery ID\tSample ID\tSequence\\nRead\tClean\\nRead\tDe-Duplicated\\nRead\tMapping\\nRead\tUnique\\nRead\tOn-Target\\nRead\n";
+print "[[11],[],[],[100]]\n";
+print "Sample ID\tSequence\\nRead\tClean\\nRead\tDe-Duplicated\\nRead\tMapping\\nRead\tUnique\\nRead\tOn-Target\\nRead\n";
 
 foreach (@sample_tbi_list){
     my ($delivery_id, $tbi_id, $type) = split /\:/, $_;
@@ -51,7 +51,7 @@ foreach (@sample_tbi_list){
     $on_target_read = num($on_target_read);
 
 
-    print "$delivery_id\t$tbi_id\t$sequence_read\t$clean_read\t$deduplicated_read\t$mapping_read\t$unique_read\t$on_target_read\n";}
+    print "$delivery_id\t$sequence_read\t$clean_read\t$deduplicated_read\t$mapping_read\t$unique_read\t$on_target_read\n";}
 
 sub num {
     my $cnum = shift;

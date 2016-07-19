@@ -1,6 +1,5 @@
 [[10]]
-¡Ü Delivery ID: ID provided by customer
-¡Ü Sample ID: Temporary ID assigned by Theragen Etex
+¡Ü Sample ID: ID provided by customer
 ¡Ü Sequence Read: Unfiltered sequence
 ¡Ü De-Duplcated Read: Discarded clean reads following PCR duplicate
 ¡Ü Mapping Read: De-duplication read followed by mapping onto the reference genome

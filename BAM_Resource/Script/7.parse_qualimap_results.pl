@@ -21,7 +21,7 @@ my %hash_sample;
 print "[[12],[],[],[82]]\n";
 
 #print "Delivery ID\tCoverage His\tGC contents\tReference Coverage\n";
-print "Delivery ID\tInsert Size\tGC contents\tReference Coverage\n";
+print "Sample ID\tInsert Size\tGC contents\tReference Coverage\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 
@@ -34,7 +34,7 @@ foreach ( @list_delivery_tbi_id ){
         my $png_genome_gc_content_per_window = "$qualimap_path/genome_gc_content_per_window.png";
 	my $png_genome_coverage_across_reference = "$qualimap_path/genome_coverage_across_reference.png";
 
-	print "$delivery_id\\n\($tbi_id\)\t<img:$png_genome_insert_size_histogram>\t<img:$png_genome_gc_content_per_window>\t<img:$png_genome_coverage_across_reference>\n";
+	print "$delivery_id\t<img:$png_genome_insert_size_histogram>\t<img:$png_genome_gc_content_per_window>\t<img:$png_genome_coverage_across_reference>\n";
 
 
 }

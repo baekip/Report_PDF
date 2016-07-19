@@ -23,12 +23,12 @@ checkFile ( $alignment_statistics_xls );
 
 
 my %hash_sample;
-print "[[12],[],[],[0,95]]\n";
+print "[[12],[],[],[110]]\n";
 
-print "Delivery ID\tSample ID\tSequence read\t".
-	"Deduplication read\\n(%)\t".
-	"Mapping read\\n(%)\t".
-	"On target read\\n(%)\n";
+print "Sample ID\tSequence\\nread\t".
+	"Deduplication\\nread(%)\t".
+	"Mapping\\nread(%)\t".
+	"On target\\nread(%)\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 
@@ -42,7 +42,7 @@ foreach ( @list_delivery_tbi_id ){
 	my $on_target_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 20`;
 	chomp($on_target_read_rate);
  
-	print "$delivery_id\t$tbi_id\t$sequence_read\t$deduplication_read_rate\t$mapping_read_rate\t$on_target_read_rate\n";
+	print "$delivery_id\t$sequence_read\t$deduplication_read_rate\t$mapping_read_rate\t$on_target_read_rate\n";
 
 #cat /BiO/BioProjects/FOM-Human-WES-2015-07-TBO150049/result/01_fastqc_orig/TN1507D0293/TN1507D0293_1_fastqc/fastqc_data.txt | grep "Total Sequences" | sed 's/Total Sequences\s//g'
 }

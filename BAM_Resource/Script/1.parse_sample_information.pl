@@ -26,8 +26,8 @@ my $Sequencing_Statistics_Result_xls = "$rawdata_path/Sequencing_Statistics_Resu
 checkFile( $Sequencing_Statistics_Result_xls );
 
 my %hash_sample;
-print "[[12],[],[],[0,90]]\n";
-print "Delivery ID\tSample ID\tTotal reads\tTotal yield(Gbp)\tN rate\tQ30\\nMoreBases\\nRate\tQ20\\nMoreBases\\nRate\n";
+print "[[12],[],[],[110]]\n";
+print "Sample ID\tTotal reads\tTotal yield(Gbp)\tN rate\tQ30\\nMoreBases\\nRate\tQ20\\nMoreBases\\nRate\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 
@@ -54,7 +54,7 @@ foreach ( @list_delivery_tbi_id ){
 	my $q20_base_pf = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 17`;
 	chomp($q20_base_pf);
 	
-	print "$delivery_id\t$tbi_id\t$total_reads\t$total_yield\t$N_rate\t$q30_base_pf\t$q20_base_pf\n";
+	print "$delivery_id\t$total_reads\t$total_yield\t$N_rate\t$q30_base_pf\t$q20_base_pf\n";
 }
 
 #cat_xls ($Sequencing_Statistics_Result_xls, 3);

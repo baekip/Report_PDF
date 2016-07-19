@@ -9,7 +9,7 @@ input_table = args[1]
 output_png = args[2]
 
 Alignment_table <- read.table( input_table, sep="\t", header=TRUE, skip=1,colClasses="character")
-col2cvt <- 3:8
+col2cvt <- 2:7
 Alignment_table[,col2cvt] <- lapply(Alignment_table[,col2cvt],function(x){as.numeric(gsub(",","",x))})
 Alignment <- melt(Alignment_table)
 

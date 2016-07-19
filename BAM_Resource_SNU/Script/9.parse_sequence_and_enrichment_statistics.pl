@@ -25,12 +25,12 @@ checkFile ( $alignment_statistics_xls );
 #chomp($bed_size);
 
 my %hash_sample;
-print "[[12]]\n";
+print "[[12],[],[],[110]]\n";
 
-print "Delivery ID\tSample ID\tSequence read\tRaw sequence depth\t".
-	"On target read\\n(%)\t".
-	"On target depth\\n(mean)\t".
-	"On target depth\\n(std)\n";
+print "Sample ID\tSequence\\nread\tRaw sequence depth\t".
+	"On target\\nread(%)\t".
+	"On target\\ndepth(mean)\t".
+	"On target\\ndepth(std)\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 
@@ -58,7 +58,7 @@ foreach ( @list_delivery_tbi_id ){
 	chomp($on_target_depth_std);
         $on_target_depth_std = &RoundXL ($on_target_depth_std, 2);
 
-	print "$delivery_id\t$tbi_id\t$sequence_read\t$raw_sequence_depth\t$on_target_read_rate\t$on_target_depth_mean\t$on_target_depth_std\n";
+	print "$delivery_id\t$sequence_read\t$raw_sequence_depth\t$on_target_read_rate\t$on_target_depth_mean\t$on_target_depth_std\n";
 }
 
 
