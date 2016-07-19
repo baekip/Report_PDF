@@ -16,7 +16,7 @@ my $pipeline_config_file = $ARGV[1];
 my %info;
 read_general_config( $general_config_file, \%info );
 
-my $version = "V0.1";
+my $version = "V1.1";
 my $dev_path = $info{dev_path};
 my $project_path = $info{project_path};
 my $project_id = $info{project_id};

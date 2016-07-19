@@ -1,6 +1,5 @@
 [[10]]
-¡Ü Delivery ID: Sample ID provided by customer
-¡Ü Sample ID: Temporary ID assigned by Theragen Etex
+¡Ü Sample ID: Sample ID provided by customer
 ¡Ü Total reads: Total number of produced reads
 ¡Ü N rate: The ratio of N, which is the base call instead of an A, C, G, or T
 ¡Ü Total yield (Gbp): Giga base pairs of produced sequence data for each sample

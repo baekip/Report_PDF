@@ -42,7 +42,7 @@ for (my $i=0; $i < @list_delivery_id; $i++){
     my $k = $i + 1;
     open (my $fh_txt,'>',$output_label) or die;
     print $fh_txt "[[13]]\n";
-    print $fh_txt $k.") ".$delivery_id."(".$tbi_id.")\n";
+    print $fh_txt $k.") $delivery_id\n";
     close $fh_txt;
 
     print "Processing Pathogenic Analysis: ".$delivery_id."\n";

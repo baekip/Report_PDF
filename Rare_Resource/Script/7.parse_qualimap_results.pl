@@ -30,7 +30,7 @@ foreach ( @list_delivery_tbi_id ){
 	my $png_genome_gc_content_per_window = "$qualimap_path/genome_gc_content_per_window.png";
 	my $png_genome_coverage_across_reference = "$qualimap_path/genome_coverage_across_reference.png";
 
-	print "$delivery_id\\n($tbi_id)\t<img:$png_genome_insert_size_histogram>\t<img:$png_genome_gc_content_per_window>\t<img:$png_genome_coverage_across_reference>\n";
+	print "$delivery_id\t<img:$png_genome_insert_size_histogram>\t<img:$png_genome_gc_content_per_window>\t<img:$png_genome_coverage_across_reference>\n";
 
 
 }

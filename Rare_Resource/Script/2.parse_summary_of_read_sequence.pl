@@ -23,9 +23,9 @@ checkFile ( $alignment_statistics_xls );
 
 
 my %hash_sample;
-print "[[12],[],[],[130]]\n";
+print "[[12],[],[],[110]]\n";
 
-print "Delivery ID\\n(Sample ID)\tSequence\\nread\t".
+print "Sample ID\tSequence\\nread\t".
 	"Deduplicated\\nread\\n(%)\t".
 	"Mapping\\nread\\n(%)\t".
 	"On target\\nread\\n(%)\n";

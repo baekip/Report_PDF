@@ -1,4 +1,5 @@
 [[10]]
+¡Ü Sample ID: ID provided from customer
 ¡Ü Sequence Read: Unfiltered sequence
 ¡Ü Clean Read: filtered sequence (sequence quality>=Q 20)
 ¡Ü De-Duplcation Read: Discarded clean reads following PCR duplicate

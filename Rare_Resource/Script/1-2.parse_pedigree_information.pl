@@ -24,8 +24,9 @@ my %disease;
 #print Dumper %disease;
 
 #die;
-print "[[12],[],[],[0,95]]\n";
-print "Delivery ID\tSample ID\tGender\tDisease\n";
+#print "[[12],[],[],[110]]\n";
+print "[[12]]\n";
+print "Sample ID\tGender\tDisease\n";
 foreach (@rare_list){
     my ($delivery_id,$tbi_id,$gender,$disease) = split /\:/, $_;
     my $gender_type;
@@ -51,7 +52,7 @@ foreach (@rare_list){
         exit;
     }
 
-    print "$delivery_id\t$tbi_id\t$gender_type\t$disease_type\n";
+    print "$delivery_id\t$gender_type\t$disease_type\n";
 }
 
 #print $control_id[1];

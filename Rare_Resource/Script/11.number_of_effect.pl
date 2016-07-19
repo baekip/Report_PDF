@@ -27,8 +27,8 @@ my $project_path = $info{project_path};
 
 
 my %hash_sample;
-print "[[10,10]]\n";
-print "Delivery ID\tSample ID\tSilent\\nMutation\tMissense\\nMutation\tNonsense\\nMutation\tTOTAL\n";
+print "[[10,10],[],[],[110]]\n";
+print "Sample ID\tSilent\\nMutation\tMissense\\nMutation\tNonsense\\nMutation\tTOTAL\n";
 
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
@@ -40,7 +40,7 @@ foreach ( @list_delivery_tbi_id ){
 	my $result_line = `perl $script_snpeff_html_parser $snpeff_html`;
 	chomp($result_line);
 
-	print "$delivery_id\t$tbi_id\t$result_line\n";
+	print "$delivery_id\t$result_line\n";
 
 #cat /BiO/BioProjects/FOM-Human-WES-2015-07-TBO150049/result/01_fastqc_orig/TN1507D0293/TN1507D0293_1_fastqc/fastqc_data.txt | grep "Total Sequences" | sed 's/Total Sequences\s//g'
 }

@@ -22,8 +22,8 @@ my @list_sample_id = split /\,/, $hash{delivery_tbi_id};
 
 my $project_path = $hash{project_path};
 
-print "[[13]]\n";
-print "Delivery ID\tSample ID\tTransitions\tTransversions\tTs/Tv\\nratio\n";
+print "[[13],[],[],[110]]\n";
+print "Sample ID\tTransitions\tTransversions\tTs/Tv\\nratio\n";
 
 foreach (@list_sample_id) {
     my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
@@ -63,7 +63,7 @@ foreach (@list_sample_id) {
         my $tv = num($transversion);
         
 
-        print "$delivery_id\t$tbi_id\t$ts\t$tv\t$ratio\n";
+        print "$delivery_id\t$ts\t$tv\t$ratio\n";
 }
 
 sub RoundXL {

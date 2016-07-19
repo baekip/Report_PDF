@@ -1,6 +1,6 @@
 [[9,8.5]]
 * If the variant is applicable to multiple regions, the variant will be counted repeatedly.
-	¡Ü Sample ID: Temporary ID from Theragen Etex
+	¡Ü Sample ID: ID provided from customer
 	¡Ü DOWNSTREAM: Downstream of a gene (default length:5K bases)
 	¡Ü EXON: The variant hits a gene
 	¡Ü INTERGENIC: The variant is in an intergenic region

@@ -67,15 +67,14 @@ my $UTR_3_PRIME = $hash_sum{UTR_3_PRIME};
 my $UTR_5_PRIME = $hash_sum{UTR_5_PRIME};
 
 
-my $total = $silent+$missense+$nonsense;
 #$total = num($total);$silent = num($silent);$missense = num($missense);$nonsense = num($nonsense);
 #$DOWNSTREAM = num($DOWNSTREAM);$EXON = num($EXON);$INTERGENIC = num($INTERGENIC);$INTRON = num($INTRON);$SPLICE_SITE_ACCEPTOR = num($SPLICE_SITE_ACCEPTOR);$SPLICE_SITE_DONOR = num($SPLICE_SITE_DONOR);$SPLICE_SITE_REGION = num($SPLICE_SITE_REGION);$TRANSCRIPT = num($TRANSCRIPT);$UPSTREAM = num($UPSTREAM);$UTR_3_PRIME = num($UTR_3_PRIME);$UTR_5_PRIME = num($UTR_5_PRIME);
 
-$snp = check_null($snp);$ins = check_null($ins);$del = check_null($del);
-$DOWNSTREAM = check_null($DOWNSTREAM);$EXON = check_null($EXON);$INTERGENIC = check_null($INTERGENIC);$INTRON = check_null($INTRON);$SPLICE_SITE_ACCEPTOR = check_null($SPLICE_SITE_ACCEPTOR);$SPLICE_SITE_DONOR = check_null($SPLICE_SITE_DONOR);$SPLICE_SITE_REGION = check_null($SPLICE_SITE_REGION);$TRANSCRIPT = check_null($TRANSCRIPT);$UPSTREAM = check_null($UPSTREAM);$UTR_3_PRIME = check_null($UTR_3_PRIME);$UTR_5_PRIME = check_null($UTR_5_PRIME);
 $silent = check_null($silent); $missense = check_null($missense); $nonsense = check_null($nonsense);
-
+my $total = $silent+$missense+$nonsense;
 $total = check_null($total);
+
+$silent = num($silent);$missense = num($missense);$nonsense = num($nonsense);$total = num($total);
 print "$silent\t$missense\t$nonsense\t$total\n";
 
 #print "#Number of lines (all vcf files)\t$num_line\n";
@@ -104,7 +103,7 @@ sub check_null {
     if (!$check_value){
         return 0;
     }else{
-        return num($check_value);
+        return $check_value;
     }
 }
 sub read_snpeff_html{

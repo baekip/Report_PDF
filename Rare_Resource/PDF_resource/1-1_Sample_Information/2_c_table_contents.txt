@@ -1,6 +1,5 @@
 [[10]]
-¡Ü Delivery ID: Sample ID provided by customer
-¡Ü Sample ID: Temporary ID assigned by Theragen Etex
+¡Ü Sample ID: Sample ID provided by customer
 ¡Ü Disease: Disease(Yes), Non-Disease(No)
 ¡Ü Gender: Male, Female
 

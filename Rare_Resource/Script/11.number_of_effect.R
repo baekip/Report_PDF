@@ -10,7 +10,7 @@ output_png = args[2]
 
 options(bitmapType='cairo')
 Variant_table <- read.table( input_table, sep="\t", header = TRUE, skip=1, colClasses="character")
-col2cvt <- 3:6
+col2cvt <- 2:4
 Variant_table[,col2cvt] <- lapply(Variant_table[,col2cvt],function(x){as.numeric(gsub(",", "", x))})
 
 Variant_table_malted <- melt(Variant_table[,-6])
