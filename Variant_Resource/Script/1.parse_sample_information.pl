@@ -1,3 +1,4 @@
+#!/usr/bin/perl
 use warnings;
 use strict;
 
@@ -25,8 +26,8 @@ my $Sequencing_Statistics_Result_xls = "$rawdata_path/Sequencing_Statistics_Resu
 checkFile( $Sequencing_Statistics_Result_xls );
 
 my %hash_sample;
-print "[[12],[],[],[0,90]]\n";
-print "Delivery ID\\n(Sample ID)\tTotal reads\tTotal yield (Gbp)\tN rate\tQ30\\nMoreBases\\nRate\tQ20\\nMoreBases\\nRate\n";
+print "[[12],[],[],[110]]\n";
+print "Sample ID\tTotal reads\tTotal\\nyield(Gbp)\tN rate\tQ30\\nMoreBases\\nRate\tQ20\\nMoreBases\\nRate\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 
@@ -51,7 +52,7 @@ foreach ( @list_delivery_tbi_id ){
 	my $q20_base_pf = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 17`;
 	chomp($q20_base_pf);
 	
-	print "$delivery_id\\n($tbi_id)\t$total_reads\t$total_yield\t$N_rate\t$q30_base_pf\t$q20_base_pf\n";
+	print "$delivery_id\t$total_reads\t$total_yield\t$N_rate\t$q30_base_pf\t$q20_base_pf\n";
 }
 
 #cat /BiO/BioProjects/FOM-Human-WES-2015-07-TBO150049/result/01_fastqc_orig/TN1507D0293/TN1507D0293_1_fastqc/fastqc_data.txt | grep "Total Sequences" | sed 's/Total Sequences\s//g'
