@@ -9,12 +9,11 @@ input_table = args[1]
 output_png = args[2]
 
 Variant_table <- read.table( input_table, sep="\t", header = TRUE, skip=1 )
-Variant_table_malted <- melt(Variant_table[,c(2,4,6)])
+Variant_table_malted <- melt(Variant_table[,c(1,3,5)])
 
 #png ( output_png, res=200, heigh=398, width=549)
-#png ( output_png, width=2200, height=1200, res=480)
 CairoPNG (output_png, width=2200, height=1200, res=480)
-
+#png ( output_png, width=2200, height=1200, res=480)
 
 ggplot(data=Variant_table_malted, aes(x=Sample.ID, y=value, fill=variable)) + 
   geom_bar(stat="identity", position="dodge", width=.5) +  

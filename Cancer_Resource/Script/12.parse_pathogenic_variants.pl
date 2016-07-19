@@ -15,7 +15,7 @@ read_general_config( $in_general_config, \%info);
 
 my $project_path = $info{project_path};
 my $output_path = "$project_path/report";
-my $resource_path = "$output_path/resource/3-3. Pathogenic_Variants/";
+my $resource_path = "$output_path/resource/3-3_Pathogenic_Variants/";
 
 my @list_delivery_id = split /\,/, $info{delivery_tbi_id};
 my @pathogenic_total_list;
@@ -26,9 +26,9 @@ for (my $i=0; $i < @list_delivery_id; $i++){
     my ($delivery_id, $tbi_id, $type_id) = split /\:/, $list_delivery_id[$i];
     my $in_pathogenic_snpeff_tsv = "$project_path/result/14_snpeff_human_run/".$tbi_id."/".$tbi_id.".BOTH.snpeff.isoform.tsv";
 
-    my $output_new_page = "$resource_path/3.4.1 ".$i."_0_new_page.txt";
-    my $output_label = "$resource_path/3.4.1 ".$i."_label.txt";
-    my $output_table = "$resource_path/3.4.1 ".$i."_table_01.txt";
+    my $output_new_page = "$resource_path/1_".$i."_0_new_page.txt";
+    my $output_label = "$resource_path/1_".$i."_label.txt";
+    my $output_table = "$resource_path/1_".$i."_table_01.txt";
     
 
 #    my $output_new_page = "3.4.1 ".$i."_0_new_page.txt";
@@ -42,7 +42,7 @@ for (my $i=0; $i < @list_delivery_id; $i++){
     my $k = $i + 1;
     open (my $fh_txt,'>',$output_label) or die;
     print $fh_txt "[[13]]\n";
-    print $fh_txt $k.") ".$delivery_id."(".$tbi_id.")\n";
+    print $fh_txt $k.") $delivery_id\n";
     close $fh_txt;
 
     print "Processing Pathogenic Analysis: ".$delivery_id."\n";

@@ -16,7 +16,7 @@ if (@ARGV !=2){
 my %info;
 read_general_config ($general_config_file, \%info);
 
-my $version = "V0.4";
+my $version = "V1.1";
 my $project_path = $info{project_path};
 my $out_path = "$project_path/report";
 my $project_id = $info{project_id};

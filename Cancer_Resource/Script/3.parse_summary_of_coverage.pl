@@ -22,13 +22,13 @@ my $alignment_statistics_xls = "$project_path/report/alignment.statistics.xls";
 checkFile ( $alignment_statistics_xls );
 
 my %hash_sample;
-print "[[12],[],[],[130]]\n";
-print "Delivery ID\\n(Sample ID)\tAverage depth\t".
-    "Coverage 1x rate\\n(%)\t".
-    "Coverage 5x rate\\n(%)\t".
-    "Coverage 10x rate\\n(%)\t".
-    "Coverage 20x rate\\n(%)\t".
-    "Coverage 50x rate\\n(%)\n";
+print "[[12],[],[],[110]]\n";
+print "Sample ID\tAverage\\ndepth\t".
+    "Coverage\\n1x rate\\n(%)\t".
+    "Coverage\\n5x rate\\n(%)\t".
+    "Coverage\\n10x rate\\n(%)\t".
+    "Coverage\\n20x rate\\n(%)\t".
+    "Coverage\\n50x rate\\n(%)\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 
@@ -56,7 +56,7 @@ foreach ( @list_delivery_tbi_id ){
 	my $coverage_50x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 20 | head -n 1`;
 	chomp($coverage_50x_rate);
  
-	print "$delivery_id\\n($tbi_id)\t$average_depth\t$coverage_1x_rate\t$coverage_5x_rate\t$coverage_10x_rate\t$coverage_20x_rate\t$coverage_50x_rate\n";
+	print "$delivery_id\t$average_depth\t$coverage_1x_rate\t$coverage_5x_rate\t$coverage_10x_rate\t$coverage_20x_rate\t$coverage_50x_rate\n";
 
 #cat /BiO/BioProjects/FOM-Human-WES-2015-07-TBO150049/result/01_fastqc_orig/TN1507D0293/TN1507D0293_1_fastqc/fastqc_data.txt | grep "Total Sequences" | sed 's/Total Sequences\s//g'
 }

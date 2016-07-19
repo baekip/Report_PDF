@@ -25,23 +25,17 @@ checkFile ( $alignment_statistics_xls );
 #chomp($bed_size);
 
 my %hash_sample;
-print "[[12],[],[],[0,90]]\n";
+print "[[12],[],[],[110]]\n";
 
-print "Delivery ID\tSample ID\tSequence read\tRaw sequence depth\t".
-	"On target read\\n(%)\t".
-	"On target depth\\n(mean)\t".
-	"On target depth\\n(std)\n";
+print "Sample ID\tSequence read\tRaw sequence depth\t".
+	"On target\\nread\\n(%)\t".
+	"On target\\ndepth\\n(mean)\t".
+	"On target\\ndepth\\n(std)\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 
-        my $cmd_get_sequence_read = "cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1";
-        #print $cmd_get_sequence_read."\n";
-        my $sequence_read = `$cmd_get_sequence_read`;
+	my $sequence_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1`;
 	chomp($sequence_read);
-
-        if (length($sequence_read) == 0){
-            die "ERROR! not found result with command <$cmd_get_sequence_read>\n";
-        }
 #        $sequence_read = num($sequence_read);
 
 	my $sequence_base = $sequence_read * 101;
@@ -64,7 +58,7 @@ foreach ( @list_delivery_tbi_id ){
 	chomp($on_target_depth_std);
         $on_target_depth_std = &RoundXL ($on_target_depth_std, 2);
 
-	print "$delivery_id\t$tbi_id\t$sequence_read\t$raw_sequence_depth\t$on_target_read_rate\t$on_target_depth_mean\t$on_target_depth_std\n";
+	print "$delivery_id\t$sequence_read\t$raw_sequence_depth\t$on_target_read_rate\t$on_target_depth_mean\t$on_target_depth_std\n";
 }
 
 

@@ -9,13 +9,12 @@ input_table = args[1]
 output_png = args[2]
 
 Alignment_table <- read.table( input_table, sep="\t", header=TRUE, skip=1,colClasses="character")
-col2cvt <- 3:7
+col2cvt <- 2:6
 Alignment_table[,col2cvt] <- lapply(Alignment_table[,col2cvt],function(x){as.numeric(gsub(",","",x))})
 Alignment <- melt(Alignment_table)
 
-
-#png ( output_png, width=2200, height=1200, res=480)
 CairoPNG (output_png, width=2200, height=1200, res=480)
+#png ( output_png, width=2200, height=1200, res=480)
 
 ggplot(data=Alignment, aes(x=Sample.ID, y=value, fill=variable)) + 
   geom_bar(stat="identity", position="dodge", width=.5) +

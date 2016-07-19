@@ -38,7 +38,7 @@ for (my $i=0; $i<@pair_list; $i++) {
     my $delivery_control = $delivery_hash{$control};
     my $tmp_id = $delivery_case."_".$no; 
 
-    print "$no\t$tmp_id\t$delivery_case\\n($case)\t$delivery_control\\n($control)\n";
+    print "$no\t$tmp_id\t$delivery_case\t$delivery_control\n";
 }
 
 sub delivery_split {

@@ -21,7 +21,7 @@ my $rev = @delivery_tbi_list % 2;
 
 if ( @delivery_tbi_list != 1) {
     print "[[12],[],[],[100,0,100]]\n";
-    print "Delivery ID\\n(Sample ID)\tDistribution of Allele Frequency\tDelivery ID\\n(Sample ID)\tDistribution of Allele Frequency\n"; 
+    print "Sample ID\tDistribution of Allele Frequency\tSample ID\tDistribution of Allele Frequency\n"; 
     if($rev == 0){
         for(my $i=0; $i<@delivery_tbi_list; $i=$i+2){
 
@@ -31,7 +31,7 @@ if ( @delivery_tbi_list != 1) {
             my $allele_fig_name_1 = "<img:$allele_path/$tbi_id_1/$tbi_id_1.allele.frq.png>";
             my $allele_fig_name_2 = "<img:$allele_path/$tbi_id_2/$tbi_id_2.allele.frq.png>";
 
-            print "$delivery_id_1\\n($tbi_id_1)\t$allele_fig_name_1\t$delivery_id_2\\n($tbi_id_2)\t$allele_fig_name_2\n";
+            print "$delivery_id_1\t$allele_fig_name_1\t$delivery_id_2\\n($tbi_id_2)\t$allele_fig_name_2\n";
         }
     }elsif ($rev == 1){ 
         for (my $j=0; $j<@delivery_tbi_list-1; $j=$j+2){
@@ -42,18 +42,18 @@ if ( @delivery_tbi_list != 1) {
             my $allele_fig_name_1 = "<img:$allele_path/$tbi_id_1/$tbi_id_1.allele.frq.png>";
             my $allele_fig_name_2 = "<img:$allele_path/$tbi_id_2/$tbi_id_2.allele.frq.png>";
 
-            print "$delivery_id_1\\n($tbi_id_1)\t$allele_fig_name_1\t$delivery_id_2\\n($tbi_id_2)\t$allele_fig_name_2\n";
+            print "$delivery_id_1\t$allele_fig_name_1\t$delivery_id_2\\n($tbi_id_2)\t$allele_fig_name_2\n";
         }
         my($delivery_id, $tbi_id, $type_id) = split /\:/, $delivery_tbi_list[-1];
         my $allele_fig_name = "<img:$allele_path/$tbi_id/$tbi_id.allele.frq.png>";
-        print "$delivery_id\\n($tbi_id)\t$allele_fig_name\n";
+        print "$delivery_id\t$allele_fig_name\n";
     }      
 }elsif ( @delivery_tbi_list == 1){
     print "[[12],[],[],[150]]\n";
-    print "Delivery ID\\n(Sample ID)\tDistribution of Allele Frequency\n";
+    print "Sample ID\tDistribution of Allele Frequency\n";
     my ($delivery_id, $tbi_id, $type_id) = split /\:/, $delivery_tbi_list[0];
     my $allele_fig_name = "<img:$allele_path/$tbi_id/$tbi_id.allele.frq.png>";
-    print "$delivery_id\\n($tbi_id)\t$allele_fig_name\n";
+    print "$delivery_id\t$allele_fig_name\n";
 }
 
 =pod

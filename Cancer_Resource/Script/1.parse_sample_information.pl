@@ -1,3 +1,4 @@
+#!/usr/bin/perl
 use warnings;
 use strict;
 
@@ -17,40 +18,41 @@ my @list_delivery_tbi_id = split /\,/, $info{delivery_tbi_id};
 
 my $project_path = $info{project_path};
 
-my $rawdata_path = "$project_path/rawdata";
+#my $rawdata_path = "$project_path/rawdata";
+my $rawdata_path = $info{rawdata_path};
 
 # Index, Total yield, Q20/Q30 Bases PF
 my $Sequencing_Statistics_Result_xls = "$rawdata_path/Sequencing_Statistics_Result.xls";
 checkFile( $Sequencing_Statistics_Result_xls );
 
 my %hash_sample;
-print "[[12],[],[],[130]]\n";
-print "Delivery ID\\n(Sample ID)\tTotal reads\tTotal yield(Gbp)\tN rate\tQ30\\nMoreBases\\nRate\tQ20\\nMoreBases\\nRate\n";
+print "[[12],[],[],[110]]\n";
+print "Sample ID\tTotal reads\tTotal\\nyield(Gbp)\tN rate\tQ30\\nMoreBases\\nRate\tQ20\\nMoreBases\\nRate\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 
 	# Total reads 
-	my $total_reads = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 3 | head -n 1`;
+	my $total_reads = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 3`;
 	chomp($total_reads);
-    $total_reads = num($total_reads);
+        $total_reads = num($total_reads);
 
-    #   my $index = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 2`;
-    #   chomp($index);
+        #my $index = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 2`;
+	#chomp($index);
 
-	my $total_yield = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 4 | head -n 1`;
+	my $total_yield = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 4`;
 	chomp($total_yield);
 	$total_yield = changeGbp($total_yield);
 
-        my $N_rate = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 13 | head -n 1`;
+        my $N_rate = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 13`;
         chomp($N_rate);
-
-	my $q30_base_pf = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 15 | head -n 1`;
+        
+        my $q30_base_pf = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 15`;
 	chomp($q30_base_pf);
 
-	my $q20_base_pf = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 17 | head -n 1`;
+	my $q20_base_pf = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 17`;
 	chomp($q20_base_pf);
 	
-	print "$delivery_id\\n($tbi_id)\t$total_reads\t$total_yield\t$N_rate\t$q30_base_pf\t$q20_base_pf\n";
+	print "$delivery_id\t$total_reads\t$total_yield\t$N_rate\t$q30_base_pf\t$q20_base_pf\n";
 }
 
 #cat /BiO/BioProjects/FOM-Human-WES-2015-07-TBO150049/result/01_fastqc_orig/TN1507D0293/TN1507D0293_1_fastqc/fastqc_data.txt | grep "Total Sequences" | sed 's/Total Sequences\s//g'

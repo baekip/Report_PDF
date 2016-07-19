@@ -16,12 +16,11 @@ read_general_config( $in_general_config, \%info );
 my @list_delivery_tbi_id = split /\,/, $info{delivery_tbi_id};
 
 my $project_path = $info{project_path};
-my $pair_id = $info{pair_id};
-my @pair_list = split /\,/, $pair_id;
 
+my %hash_sample;
 #print "[[12],[],[],[82.50]]\n";
 print "[[12],[],[],[82,50]]\n";
-print "Delivery ID\tPair Num\tPer base qual\tGC contents\tDuplication\n";
+print "Sample ID\tPair Num\tPer base qual\tGC contents\tDuplication\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 
@@ -36,8 +35,8 @@ foreach ( @list_delivery_tbi_id ){
 	my $png_per_base_sequence_content_r2 = "$r2_images_path/per_base_sequence_content.png";
 	my $png_duplication_levels_r2 = "$r2_images_path/duplication_levels.png";
 	
-	print "$delivery_id\\n\($tbi_id\)\tForward\t<img:$png_per_base_quality_r1>\t<img:$png_per_base_sequence_content_r1>\t<img:$png_duplication_levels_r1>\n";
-	print "$delivery_id\\n\($tbi_id\)\tReverse\t<img:$png_per_base_quality_r2>\t<img:$png_per_base_sequence_content_r2>\t<img:$png_duplication_levels_r2>\n";
+	print "$delivery_id\tForward\t<img:$png_per_base_quality_r1>\t<img:$png_per_base_sequence_content_r1>\t<img:$png_duplication_levels_r1>\n";
+	print "$delivery_id\tReverse\t<img:$png_per_base_quality_r2>\t<img:$png_per_base_sequence_content_r2>\t<img:$png_duplication_levels_r2>\n";
 
 
 }
