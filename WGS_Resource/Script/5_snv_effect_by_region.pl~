@@ -43,7 +43,7 @@ for (my $i=0; $i < @list_delivery_id; $i++){
     open my $fh_label, '>', $output_label or die;
     my $k = $i + 1;
     print $fh_label "[[13]]\n";
-    print $fh_label "$k) $delivery_id \n";
+    print $fh_label "$k) $delivery_id ($tbi_id) \n";
     close $fh_label;
 
     open my $fh_table, '>', $output_table or die;

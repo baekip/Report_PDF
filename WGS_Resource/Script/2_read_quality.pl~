@@ -61,7 +61,7 @@ close $fh_stat_rawdata;
 my $stat_filtered = "$report_path/resource/2_Read_Quality/2_b_table_01.txt";
 open my $fh_stat_filtered, '>', $stat_filtered or die;
 print $fh_stat_filtered "[[11],[],[],[100]]\n";
-print $fh_stat_filtered "Sample ID\tSequence\\nread\t".
+print $fh_stat_filtered "Delivery ID\\n(Sample ID)\tSequence\\nread\t".
         "Total\\nbases\\n(bp)\t".
         "Clean\\nread\\n(%)\t".
         "Clean\\nbases\\n(%)\t".
@@ -102,7 +102,7 @@ foreach ( @list_delivery_tbi_id ){
         my $average_depth = `cat $alignment_statistics_xls | grep \"^$delivery_id\" | cut -f 14 | head -n 1` ;
         chomp($average_depth);
 
-	print $fh_stat_filtered "$delivery_id\t$sequence_read\t$sequence_base\t$clean_read\\n($clean_rate)\t$clean_base\\n($clean_base_rate)\t$mapped_reads\\n($mapped_rate)\t$average_depth\n";
+	print $fh_stat_filtered "$delivery_id\\n($tbi_id)\t$sequence_read\t$sequence_base\t$clean_read\\n($clean_rate)\t$clean_base\\n($clean_base_rate)\t$mapped_reads\\n($mapped_rate)\t$average_depth\n";
 }
 close $fh_stat_filtered;
 
@@ -117,7 +117,7 @@ my $coverage_depth = "$report_path/resource/2_Read_Quality/3_c_table_01.txt";
 open my $fh_coverage, '>', $coverage_depth or die;
 
 print $fh_coverage "[[11],[],[],[100]]\n";
-print $fh_coverage "Sample ID\tReference\\nLength\t".
+print $fh_coverage "Delivery ID\\n(Sample ID)\tReference\\nLength\t".
 	"Coverage\\n1X(%)\t".
 #	"Coverage\\n2X(%)\t".
 	"Coverage\\n5X(%)\t".
@@ -154,7 +154,7 @@ foreach ( @list_delivery_tbi_id ){
 	chomp($coverage_50x);
         $coverage_50x = $coverage_50x."%";
         
-        print $fh_coverage "$delivery_id\t$reference_bp\t$coverage_1x\t$coverage_5x\t$coverage_10x\t$coverage_20x\t$coverage_30x\t$coverage_50x\n";
+        print $fh_coverage "$delivery_id\\n($tbi_id)\t$reference_bp\t$coverage_1x\t$coverage_5x\t$coverage_10x\t$coverage_20x\t$coverage_30x\t$coverage_50x\n";
 }
 
 close $fh_coverage;
