@@ -26,7 +26,7 @@ my %hash_sample;
 print "[[12],[],[],[110]]\n";
 
 print "Sample ID\tSequence\\nread\t".
-	"Deduplication\\nread(%)\t".
+	"Deduplicated\\nread(%)\t".
 	"Mapping\\nread(%)\t".
 	"On target\\nread(%)\n";
 foreach ( @list_delivery_tbi_id ){
