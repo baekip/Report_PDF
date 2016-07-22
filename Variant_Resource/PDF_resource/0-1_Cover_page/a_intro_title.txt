@@ -1,4 +1,4 @@
-[[40, 20],[],[R]]
+[[40, 15],[],[R]]
 
 Analysis Report
 	Version 2.2
