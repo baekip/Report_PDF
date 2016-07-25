@@ -36,7 +36,7 @@ for (my $i=0; $i<@list_pair_id; $i++){
     my $no_somatic = $i+1;
     my $somatic_id = $list_pair_id[$i];
     my ($control, $case) = split /\_/, $list_pair_id[$i];
-    my $delivery_case = substr ($delivery_hash{$case},0,10);
+    my $delivery_case = substr ($delivery_hash{$case},0,15);
     my $tmp_id = $delivery_case."_".$no_somatic;
 #    my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 

@@ -37,7 +37,7 @@ for (my $i=0; $i<@pair_id_list; $i++ ){
     my $no_somatic = $i+1;
     my $somatic_id = $pair_id_list[$i];
     my ($control, $case) = split /\_/, $pair_id_list[$i];
-    my $delivery_case = substr ($delivery_hash{$case},0,10);
+    my $delivery_case = substr ($delivery_hash{$case},0,15);
     my $tmp_id = $delivery_case."_".$no_somatic;
     
     my $SNP_snpeff_html = "$project_path/result/30-2_snpeff_cancer_run/$somatic_id/$somatic_id.SNP.snpeff.html";

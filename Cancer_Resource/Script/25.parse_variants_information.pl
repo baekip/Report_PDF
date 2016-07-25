@@ -30,7 +30,7 @@ for (my $i=0; $i < @list_pair_id; $i++){
     my $no_somatic = $i + 1; 
     my $somatic_id = $list_pair_id[$i];
     my ($control, $case) = split /\_/, $list_pair_id[$i];
-    my $delivery_case = substr ($delivery_hash{$case}, 0, 10);
+    my $delivery_case = substr ($delivery_hash{$case}, 0, 25);
     my $tmp_id = $delivery_case."_".$no_somatic;
     my $SNP_snpeff_tsv = "$project_path/result/30-2_snpeff_cancer_run/".$somatic_id."/".$somatic_id.".SNP.snpeff.isoform.tsv";
     my $INDEL_snpeff_tsv = "$project_path/result/32-2_snpeff_cancer_run/".$somatic_id."/".$somatic_id.".INDEL.snpeff.isoform.tsv";
@@ -57,7 +57,7 @@ for (my $i=0; $i < @list_pair_id; $i++){
     open (my $fh_table,'>',$output_table) or die;
     print $fh_table "[[10],[],[],[30,50,30,30,40,0,70]]\n";
     print $fh_table "Chr\tPos\tRef\tAlt\tVar_Type\tAnn_Effect\tAnn_Gene\tAnn_HGVS_C\tAnn_HGVS_P\n";
-    open (my $fh_snp, '<:encoding(UTF-8)', $SNP_snpeff_tsv) or die 'Could open not <$SNP_snpeff_tsv>';
+    open (my $fh_snp, '<:encoding(UTF-8)', $SNP_snpeff_tsv) or die "Could open not <$SNP_snpeff_tsv>";
     while (my $row = <$fh_snp>){
         chomp $row;
         if ( $row =~ /^#/) {next;}

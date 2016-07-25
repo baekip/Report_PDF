@@ -26,7 +26,7 @@ delivery_split (\@delivery_tbi_list, \%delivery_hash);
 #for (my $i=1; $i++; 
 #print $delivery_tbi_list[0]."\n";
 
-print "[[12],[],[],[60,120]]\n";
+print "[[12],[],[],[50]]\n";
 print "No.\tTemporary ID\tCase\tControl\n";
 for (my $i=0; $i<@pair_list; $i++) {
    
@@ -34,7 +34,7 @@ for (my $i=0; $i<@pair_list; $i++) {
     $no=$i+1;
     my ($control, $case) = split /\_/, $pair_list[$i];
     
-    my $delivery_case = substr ($delivery_hash{$case},0,10);
+    my $delivery_case = substr ($delivery_hash{$case},0,15);
     my $delivery_control = $delivery_hash{$control};
     my $tmp_id = $delivery_case."_".$no; 
 

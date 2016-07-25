@@ -61,11 +61,11 @@ sub parse_snpeff_html {
             $key = "num_line";
             $value = rm_tag($lines[$i+1]);
         }elsif ($line =~ /Number of variants \(before filter\)/){
-            $key = "num_variant
+            $key = "num_variant"
 
 
         #print @mutect_html_array; 
-
+    }}}
 
 #print $pair_id;
 

@@ -29,7 +29,8 @@ print "[[12],[],[],[110]]\n";
 
 print "Sample ID\tSequence read\tRaw sequence depth\t".
 	"On target\\nread\\n(%)\t".
-	"On target\\ndepth\\n(mean)\n";
+	"On target\\ndepth\\n(mean)\t".
+	"On target\\ndepth\\n(std)\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 
@@ -53,11 +54,11 @@ foreach ( @list_delivery_tbi_id ){
 	my $on_target_depth_mean = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 13 | head -n 1`;
 	chomp($on_target_depth_mean);
 
-#	my $on_target_depth_std = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 14 | head -n 1`;
-#	chomp($on_target_depth_std);
-#        $on_target_depth_std = &RoundXL ($on_target_depth_std, 2);
+	my $on_target_depth_std = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 14 | head -n 1`;
+	chomp($on_target_depth_std);
+        $on_target_depth_std = &RoundXL ($on_target_depth_std, 2);
 
-	print "$delivery_id\t$sequence_read\t$raw_sequence_depth\t$on_target_read_rate\t$on_target_depth_mean\n";
+	print "$delivery_id\t$sequence_read\t$raw_sequence_depth\t$on_target_read_rate\t$on_target_depth_mean\t$on_target_depth_std\n";
 }
 
 
