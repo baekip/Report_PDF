@@ -25,19 +25,19 @@ checkFile( $Sequencing_Statistics_Result_xls );
 
 my %hash_sample;
 print "[[12],[],[],[110]]\n";
-print "Sample ID\tTotal reads\tTotal\\nyield (Gbp)\tN rate\tQ30\\nMoreBases\\nRate\tQ20\\nMoreBases\\nRate\n";
+print "Samople ID\tTotal reads\tTotal yield(Gbp)\tN rate\tQ30\\nMoreBases\\nRate\tQ20\\nMoreBases\\nRate\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 
 	# Total reads 
 	my $total_reads = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 3`;
 	chomp($total_reads);
-    $total_reads = num($total_reads);
+        $total_reads = num($total_reads);
 
     #   my $index = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 2`;
     #   chomp($index);
 
-        my $total_yield = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 4`;
+	my $total_yield = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 4`;
 	chomp($total_yield);
         $total_yield = changeGbp($total_yield);
 

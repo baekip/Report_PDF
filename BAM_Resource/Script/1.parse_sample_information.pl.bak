@@ -1,3 +1,5 @@
+#!/usr/bin/perl -w 
+
 use warnings;
 use strict;
 
@@ -25,21 +27,23 @@ checkFile( $Sequencing_Statistics_Result_xls );
 
 my %hash_sample;
 print "[[12],[],[],[110]]\n";
-print "Sample ID\tTotal reads\tTotal\\nyield (Gbp)\tN rate\tQ30\\nMoreBases\\nRate\tQ20\\nMoreBases\\nRate\n";
+print "Sample ID\tTotal reads\tTotal yield(Gbp)\tN rate\tQ30\\nMoreBases\\nRate\tQ20\\nMoreBases\\nRate\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 
 	# Total reads 
-	my $total_reads = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 3`;
-	chomp($total_reads);
-    $total_reads = num($total_reads);
-
+        my $total_reads = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 3`;
+	#my $total_reads = cat_xls($Sequencing_Statistics_Result_xls, $tbi_id, 3);        
+        chomp($total_reads);
+        $total_reads = num($total_reads);
+    
+    #    print $total_reads."\n";
     #   my $index = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 2`;
     #   chomp($index);
 
-        my $total_yield = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 4`;
+	my $total_yield = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 4`;
 	chomp($total_yield);
-        $total_yield = changeGbp($total_yield);
+	$total_yield = changeGbp($total_yield);
 
         my $N_rate = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 13`;
         chomp($N_rate);
@@ -52,6 +56,18 @@ foreach ( @list_delivery_tbi_id ){
 	
 	print "$delivery_id\t$total_reads\t$total_yield\t$N_rate\t$q30_base_pf\t$q20_base_pf\n";
 }
+
+#cat_xls ($Sequencing_Statistics_Result_xls, 3);
+sub cat_xls {
+    my ($xls_file, $tbi_id, $col_num) = @_;
+    my $cmd = "cat $xls_file | grep \"^$tbi_id\" | cut -f $col_num";
+    print $cmd."\n";
+    system ($cmd);
+    # print $cmd."\n";
+}
+
+
+
 
 #cat /BiO/BioProjects/FOM-Human-WES-2015-07-TBO150049/result/01_fastqc_orig/TN1507D0293/TN1507D0293_1_fastqc/fastqc_data.txt | grep "Total Sequences" | sed 's/Total Sequences\s//g'
 
