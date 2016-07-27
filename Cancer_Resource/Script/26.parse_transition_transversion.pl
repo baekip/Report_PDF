@@ -40,7 +40,7 @@ for (my $i=0; $i < @list_pair_id; $i++){
     my $tmp_id = $delivery_case."_".$no_somatic;
     my $mutect_tsv = "$project_path/result/30-1_mutect_run/".$somatic_id."/".$somatic_id.".mutect.pass.vcf";
 
-    open (my $fh_mutect, '<:encoding(UTF-8)', $mutect_tsv) or die 'Could open not <$SNP_snpeff_tsv>';
+    open (my $fh_mutect, '<:encoding(UTF-8)', $mutect_tsv) or die "Could open not <$mutect_tsv>";
     while (my $row = <$fh_mutect>){
         chomp $row;
         if ($row =~ /^#/) {next;}

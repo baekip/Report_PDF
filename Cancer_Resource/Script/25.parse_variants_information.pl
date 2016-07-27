@@ -71,7 +71,7 @@ for (my $i=0; $i < @list_pair_id; $i++){
 #       print "$chr\t$pos\t$ref\t$alt\t$var_type\t$ann_effect\t$ann_gene\n";
     }
     
-    open (my $fh_indel, '<:encoding(UTF-8)', $INDEL_snpeff_tsv) or die 'Could open not <$INDEL_snpeff_tsv>'; 
+    open (my $fh_indel, '<:encoding(UTF-8)', $INDEL_snpeff_tsv) or die "Could open not <$INDEL_snpeff_tsv>"; 
             #print "$clinical_effect\t$gene\t$dna_change\t$protein_change\t$variant_count\t$depth\t$exonic_effect\t$disease\n";
     while (my $row = <$fh_indel>){
         chomp $row;
