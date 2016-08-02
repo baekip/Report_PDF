@@ -27,7 +27,7 @@ checkFile( $Sequencing_Statistics_Result_xls );
 
 my %hash_sample;
 print "[[12],[],[],[50,110]]\n";
-print "No.\tSample ID\\n(TBI ID)\tTotal reads\tTotal\\nyield(Gbp)\tN rate\tQ30\\nMoreBases\\nRate\tQ20\\nMoreBases\\nRate\n";
+print "No.\tSample ID\tTotal reads\tTotal\\nyield(Gbp)\tN rate\tQ30\\nMoreBases\\nRate\tQ20\\nMoreBases\\nRate\n";
 for ( my $i=0; $i<@list_delivery_tbi_id; $i++ ){
         my $no = 0;
         $no=$i+1;
@@ -54,7 +54,7 @@ for ( my $i=0; $i<@list_delivery_tbi_id; $i++ ){
 	my $q20_base_pf = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 17 | head -n 1`;
 	chomp($q20_base_pf);
 	
-	print "$no\t$delivery_id\\n($tbi_id)\t$total_reads\t$total_yield\t$N_rate\t$q30_base_pf\t$q20_base_pf\n";
+	print "$no\t$delivery_id\t$total_reads\t$total_yield\t$N_rate\t$q30_base_pf\t$q20_base_pf\n";
 }
 
 #cat /BiO/BioProjects/FOM-Human-WES-2015-07-TBO150049/result/01_fastqc_orig/TN1507D0293/TN1507D0293_1_fastqc/fastqc_data.txt | grep "Total Sequences" | sed 's/Total Sequences\s//g'
