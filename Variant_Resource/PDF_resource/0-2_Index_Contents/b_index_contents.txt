@@ -1,6 +1,7 @@
 [[11]]
 
 
+
 General Information
 	1.1 Sample Information
 	1.2 Analysis Contents
@@ -23,9 +24,6 @@ Data Analysis Results
 	3.4 Quality Controls
 		3.4.1 FastQC Results
 		3.4.2 Qualimap Results
-	3.5 Mapping and Alignment Statistics
-		3.5.1 Number of Sequenced Reads
-		3.5.2 Sequencing Depth Detail Description
 
 Appendix
 	4.1 Figure Description

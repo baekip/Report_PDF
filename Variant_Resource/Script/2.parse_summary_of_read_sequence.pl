@@ -23,36 +23,45 @@ checkFile ( $alignment_statistics_xls );
 
 
 my %hash_sample;
-print "[[12],[],[],[130]]\n";
+print "[[12],[],[],[100]]\n";
 
 print "Sample ID\tSequence\\nread\t".
 	"Deduplicated\\nread\\n(%)\t".
 	"Mapping\\nread\\n(%)\t".
+        "Unique\\nread\\n(%)\t".
 	"On target\\nread\\n(%)\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
-=pod	
-        my $sequence_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1`;
-	chomp($sequence_read);
-    $sequence_read = num($sequence_read);
-	my $deduplication_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 4 | head -n 1`;
-	chomp($deduplication_read_rate);
-	my $mapping_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 6 | head -n 1`;
-	chomp($mapping_read_rate);
-	my $on_target_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 12 | head -n 1`;
-	chomp($on_target_read_rate);
-=cut
-	my $sequence_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1`;
-	chomp($sequence_read);
-    $sequence_read = num($sequence_read);
-	my $deduplication_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 9 | head -n 1`;
-	chomp($deduplication_read_rate);
+
+        my $sequence_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 `;
+        chomp $sequence_read;
+        $sequence_read = num($sequence_read);
+    
+        my $deduplicated_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 8 | head -n 1 `;
+        chomp $deduplicated_read;
+        $deduplicated_read = num($deduplicated_read);
+	my $deduplicated_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 9 | head -n 1`;
+	chomp($deduplicated_read_rate);
+
+        my $mapping_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 10 | head -n 1`;
+        chomp $mapping_read;
+        $mapping_read = num($mapping_read);
 	my $mapping_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 11 | head -n 1`;
 	chomp($mapping_read_rate);
+
+        my $unique_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 14 | head -n 1 `;
+        chomp $unique_read;
+        $unique_read = num($unique_read);
+	my $unique_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 15 | head -n 1`;
+	chomp($unique_read_rate);
+
+        my $on_target_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 16 | head -n 1`;
+        chomp $on_target_read;
+        $on_target_read = num($on_target_read);
 	my $on_target_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 17 | head -n 1`;
 	chomp($on_target_read_rate);
  
-	print "$delivery_id\t$sequence_read\t$deduplication_read_rate\t$mapping_read_rate\t$on_target_read_rate\n";
+	print "$delivery_id\t$sequence_read\t$deduplicated_read\\n($deduplicated_read_rate)\t$mapping_read\\n($mapping_read_rate)\t$unique_read\\n($unique_read_rate)\t$on_target_read\\n($on_target_read_rate)\n";
 
 #cat /BiO/BioProjects/FOM-Human-WES-2015-07-TBO150049/result/01_fastqc_orig/TN1507D0293/TN1507D0293_1_fastqc/fastqc_data.txt | grep "Total Sequences" | sed 's/Total Sequences\s//g'
 }

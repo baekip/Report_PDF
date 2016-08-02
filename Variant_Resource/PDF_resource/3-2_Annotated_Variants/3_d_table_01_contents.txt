@@ -1,5 +1,14 @@
-[[10]]
-°‹ Sample ID: ID provided from customer
-°‹ Silent Mutation: Number of Silent mutation, which is mutation in DNA tha do not significantly alter the phenotype of organism in which it occurs.
-°‹ Missense Mutation: Number of Missense mutation, which is a point mutation in which a single nucleotide change results in a codon that codes for a different amino acid.
-°‹ Nonsense Mutation: Number of Nonsense mutation, which is a point mutation in a sequence of DNA results in a premature stop codon
+[[9,8.5]]
+* If the variant is applicable to multiple regions, the variant will be counted repeatedly.
+	‚óè Sample ID: ID provided from customer
+	‚óè DOWNSTREAM: Downstream of a gene (default length:5K bases)
+	‚óè EXON: The variant hits a gene
+	‚óè INTERGENIC: The variant is in an intergenic region
+	‚óè INTRON: Variant hits and intron. Technically, hits no exon in the transcript
+	‚óè SPLICE_SITE_ACCEPTOR: The variant hits a splice acceptor site
+	‚óè SPLICE_SITE_DONOR: The variant hits a splice donor site
+	‚óè SPLICE_SITE_REGION: The variant hits a splice region site
+	‚óè TRANSCRIPT: The variant hits a transcript
+	‚óè UPSTREAM: Upstream of a gene (default length: 5K bases)
+	‚óè UTR_3_PRIME: Variant hits 3'UTR region
+	‚óè UTR_5_PRIME: Variant hits 5'UTR region

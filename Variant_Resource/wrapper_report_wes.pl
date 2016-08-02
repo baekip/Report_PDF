@@ -23,7 +23,7 @@ if (@ARGV !=2){
 my %info;
 read_general_config ($general_config_file, \%info);
 
-my $version = "V2.2";
+my $version = "V2.3";
 my $project_path = $info{project_path};
 my $out_path = "$project_path/report";
 my $project_id = $info{project_id};
@@ -81,6 +81,8 @@ checkFile( $script_2 );
 
 my $script_3 = $script_path."/3.parse_summary_of_coverage.pl";
 checkFile( $script_3 );
+my $script_3_plot = $script_path."/3.parse_summary_of_coverage.R";
+checkFile ( $script_3_plot );
 
 my $script_4 = $script_path."/4.parse_summary_of_variant.pl";
 checkFile( $script_4 );
@@ -129,35 +131,42 @@ run_script ( $script_0, $general_config_file, $pipeline_config_file, "$resource_
 run_script_1 ($script_0_1, $general_config_file, $pipeline_config_file);
 run_script ( $script_1, $general_config_file, $pipeline_config_file, "$resource_path/1-1_Sample_Information/c_table_01.txt" );
 run_script ( $script_2, $general_config_file, $pipeline_config_file, "$resource_path/3-1_Results_Summary/1_c_table_01.txt" );
+
 run_script ( $script_3, $general_config_file, $pipeline_config_file, "$resource_path/3-1_Results_Summary/2_c_table_01.txt" );
-run_script ( $script_4, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Annotated_Variants/1_c_table_01.txt" );
-my $cmd_script_4_plot = "$Rscript $script_4_plot \"$resource_path/3-2_Annotated_Variants/1_c_table_01.txt\" \"$resource_path/3-2_Annotated_Variants/1_b_photo_01.PNG\"";
-system($cmd_script_4_plot);
+my $cmd_script_3_plot = "$Rscript $script_3_plot \"$resource_path/3-1_Results_Summary/2_c_table_01.txt\" \"$resource_path/3-1_Results_Summary/2_b_photo_01.PNG\"";
+system($cmd_script_3_plot);
+
 #run_script ( $script_5, $general_config_file, $pipeline_config_file, "$resource_path/3-3. Results_QualityControl/3.2.3 b_photoMap_01.txt" );
 run_script ( $script_6, $general_config_file, $pipeline_config_file, "$resource_path/3-4_Results_QualityControl/1_a_photoMap_01.txt" );
 run_script ( $script_7, $general_config_file, $pipeline_config_file, "$resource_path/3-4_Results_QualityControl/2_b_photoMap_01.txt" );
 
-run_script ($script_8, $general_config_file, $pipeline_config_file, "$resource_path/3-5_Results_Sequence/1_c_table_01.txt");
-my $cmd_script_8_plot = "$Rscript $script_8_plot \"$resource_path/3-5_Results_Sequence/1_c_table_01.txt\" \"$resource_path/3-5_Results_Sequence/1_b_photo_01.PNG\"";
-system($cmd_script_8_plot);
+#run_script ($script_8, $general_config_file, $pipeline_config_file, "$resource_path/3-5_Results_Sequence/1_c_table_01.txt");
+#my $cmd_script_8_plot = "$Rscript $script_8_plot \"$resource_path/3-5_Results_Sequence/1_c_table_01.txt\" \"$resource_path/3-5_Results_Sequence/1_b_photo_01.PNG\"";
+#system($cmd_script_8_plot);
 
-run_script ( $script_9, $general_config_file, $pipeline_config_file, "$resource_path/3-5_Results_Sequence/2_c_table_01.txt" );
-my $cmd_script_9_plot = "$Rscript $script_9_plot \"$resource_path/3-5_Results_Sequence/2_c_table_01.txt\" \"$resource_path/3-5_Results_Sequence/2_b_photo_01.PNG\"";
-system($cmd_script_9_plot);
+#run_script ( $script_9, $general_config_file, $pipeline_config_file, "$resource_path/3-5_Results_Sequence/2_c_table_01.txt" );
+#my $cmd_script_9_plot = "$Rscript $script_9_plot \"$resource_path/3-5_Results_Sequence/2_c_table_01.txt\" \"$resource_path/3-5_Results_Sequence/2_b_photo_01.PNG\"";
+#system($cmd_script_9_plot);
 
-run_script ($script_10, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Annotated_Variants/2_c_table_01.txt" );
-my $cmd_script_10_plot = "$Rscript $script_10_plot \"$resource_path/3-2_Annotated_Variants/2_c_table_01.txt\" \"$resource_path/3-2_Annotated_Variants/2_b_photo_01.PNG\"";
+run_script ($script_10, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Annotated_Variants/1_c_table_01.txt" );
+my $cmd_script_10_plot = "$Rscript $script_10_plot \"$resource_path/3-2_Annotated_Variants/1_c_table_01.txt\" \"$resource_path/3-2_Annotated_Variants/1_b_photo_01.PNG\"";
 system($cmd_script_10_plot);
 
-run_script ($script_11, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Annotated_Variants/3_c_table_01.txt" );
-my $cmd_script_11_plot = "$Rscript $script_11_plot \"$resource_path/3-2_Annotated_Variants/3_c_table_01.txt\" \"$resource_path/3-2_Annotated_Variants/3_b_photo_01.PNG\"";
+run_script ($script_13, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Annotated_Variants/2_c_table_01.txt" );
+my $cmd_script_13_plot = "$Rscript $script_13_plot \"$resource_path/3-2_Annotated_Variants/2_c_table_01.txt\" \"$resource_path/3-2_Annotated_Variants/2_b_photo_01.PNG\"";
+system($cmd_script_13_plot);
+
+run_script ( $script_4, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Annotated_Variants/3_c_table_01.txt" );
+my $cmd_script_4_plot = "$Rscript $script_4_plot \"$resource_path/3-2_Annotated_Variants/3_c_table_01.txt\" \"$resource_path/3-2_Annotated_Variants/3_b_photo_01.PNG\"";
+system($cmd_script_4_plot);
+
+run_script ($script_11, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Annotated_Variants/4_c_table_01.txt" );
+my $cmd_script_11_plot = "$Rscript $script_11_plot \"$resource_path/3-2_Annotated_Variants/4_c_table_01.txt\" \"$resource_path/3-2_Annotated_Variants/4_b_photo_01.PNG\"";
 system($cmd_script_11_plot);
 
 run_script_1 ($script_12, $general_config_file, $pipeline_config_file);
 
-run_script ($script_13, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Annotated_Variants/4_c_table_01.txt" );
-my $cmd_script_13_plot = "$Rscript $script_13_plot \"$resource_path/3-2_Annotated_Variants/4_c_table_01.txt\" \"$resource_path/3-2_Annotated_Variants/4_b_photo_01.PNG\"";
-system($cmd_script_13_plot);
+
 
 # sp : start page 
 # hl : header line

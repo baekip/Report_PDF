@@ -22,7 +22,7 @@ my @list_sample_id = split /\,/, $hash{delivery_tbi_id};
 
 my $project_path = $hash{project_path};
 
-print "[[13],[],[],[110]]\n";
+print "[[13]]\n";
 print "Sample ID\tTransitions\tTransversions\tTs/Tv\\nratio\n";
 
 foreach (@list_sample_id) {

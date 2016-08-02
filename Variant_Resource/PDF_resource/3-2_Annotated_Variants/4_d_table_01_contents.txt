@@ -1,5 +1,5 @@
 [[10]]
 ¡Ü Sample ID: ID provided from customer
-¡Ü Transitions: Number of transitions, which are point mutations that changes a purine nucleotide to another purine or a pyrimidine nucleotide to another pyrimidine
-¡Ü Transversions: Number of transversions, which refer to the substitution of a purine for a pyrimidine or vice versa, in deoxyribonucleic acid (DNA)
-¡Ü Ts/Tv ratio: The ratio of the number of transitions to the number of transversions for a pair of sequences 
+¡Ü Silent Mutation: Number of Silent mutation, which is mutation in DNA tha do not significantly alter the phenotype of organism in which it occurs.
+¡Ü Missense Mutation: Number of Missense mutation, which is a point mutation in which a single nucleotide change results in a codon that codes for a different amino acid.
+¡Ü Nonsense Mutation: Number of Nonsense mutation, which is a point mutation in a sequence of DNA results in a premature stop codon
