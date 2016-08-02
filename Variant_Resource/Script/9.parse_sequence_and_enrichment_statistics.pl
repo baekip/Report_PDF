@@ -14,8 +14,8 @@ read_general_config( $in_general_config, \%info );
 #read_pipeline_config();
 
 my @list_delivery_tbi_id = split /\,/, $info{delivery_tbi_id};
-
 my $project_path = $info{project_path};
+my $read_length = $info{read_length};
 
 my $alignment_statistics_xls = "$project_path/report/alignment.statistics.xls";
 checkFile ( $alignment_statistics_xls );
@@ -33,7 +33,7 @@ print "Sample ID\tSequence read\tRaw sequence depth\t".
 	"On target\\ndepth\\n(std)\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
-
+=pod
 	my $sequence_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1`;
 	chomp($sequence_read);
 #        $sequence_read = num($sequence_read);
@@ -55,6 +55,30 @@ foreach ( @list_delivery_tbi_id ){
 	chomp($on_target_depth_mean);
 
 	my $on_target_depth_std = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 14 | head -n 1`;
+	chomp($on_target_depth_std);
+        $on_target_depth_std = &RoundXL ($on_target_depth_std, 2);
+
+=cut
+        my $sequence_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1`;
+	chomp($sequence_read);
+
+	my $sequence_base = $sequence_read * $read_length;
+	chomp($sequence_base);
+        
+        $sequence_read = num($sequence_read);
+        
+        my $bed_size = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 20 | head -n 1`;
+
+	my $raw_sequence_depth = $sequence_base/$bed_size;
+	$raw_sequence_depth = &RoundXL ($raw_sequence_depth, 2);
+
+	my $on_target_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 17 | head -n 1`;
+	chomp($on_target_read_rate);
+
+	my $on_target_depth_mean = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 18 | head -n 1`;
+	chomp($on_target_depth_mean);
+
+	my $on_target_depth_std = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 19 | head -n 1`;
 	chomp($on_target_depth_std);
         $on_target_depth_std = &RoundXL ($on_target_depth_std, 2);
 

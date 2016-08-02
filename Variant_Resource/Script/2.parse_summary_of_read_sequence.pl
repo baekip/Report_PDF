@@ -31,8 +31,8 @@ print "Sample ID\tSequence\\nread\t".
 	"On target\\nread\\n(%)\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
-
-	my $sequence_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1`;
+=pod	
+        my $sequence_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1`;
 	chomp($sequence_read);
     $sequence_read = num($sequence_read);
 	my $deduplication_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 4 | head -n 1`;
@@ -40,6 +40,16 @@ foreach ( @list_delivery_tbi_id ){
 	my $mapping_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 6 | head -n 1`;
 	chomp($mapping_read_rate);
 	my $on_target_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 12 | head -n 1`;
+	chomp($on_target_read_rate);
+=cut
+	my $sequence_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1`;
+	chomp($sequence_read);
+    $sequence_read = num($sequence_read);
+	my $deduplication_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 9 | head -n 1`;
+	chomp($deduplication_read_rate);
+	my $mapping_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 11 | head -n 1`;
+	chomp($mapping_read_rate);
+	my $on_target_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 17 | head -n 1`;
 	chomp($on_target_read_rate);
  
 	print "$delivery_id\t$sequence_read\t$deduplication_read_rate\t$mapping_read_rate\t$on_target_read_rate\n";

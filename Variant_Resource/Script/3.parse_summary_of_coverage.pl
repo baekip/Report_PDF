@@ -31,20 +31,11 @@ print "Sample ID\tAverage\\ndepth\t".
     "Coverage\\n50x rate\\n(%)\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
-
-	my $sequence_base = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1`;
+=pod	
+        my $sequence_base = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1`;
         chomp($sequence_base);
-#        my $average_depth = $sequence_base * 101;
-#        chomp($average_depth);
-        
         my $average_depth = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 13 | head -n 1`;
         chomp ($average_depth);
-
-#        my $target_region = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 15`;
-#        my $average_depth = $sequence_base * 101 /$target_region;
-#        $average_depth = &RoundXL ($average_depth, 2);
-
-
 	my $coverage_1x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 16 | head -n 1`;
 	chomp($coverage_1x_rate);
 	my $coverage_5x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 17 | head -n 1`;
@@ -54,6 +45,30 @@ foreach ( @list_delivery_tbi_id ){
 	my $coverage_20x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 19 | head -n 1`;
 	chomp($coverage_20x_rate);
 	my $coverage_50x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 20 | head -n 1`;
+	chomp($coverage_50x_rate);
+=cut
+	my $sequence_base = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1`;
+        chomp($sequence_base);
+#        my $average_depth = $sequence_base * 101;
+#        chomp($average_depth);
+        
+        my $average_depth = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 18 | head -n 1`;
+        chomp ($average_depth);
+
+#        my $target_region = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 15`;
+#        my $average_depth = $sequence_base * 101 /$target_region;
+#        $average_depth = &RoundXL ($average_depth, 2);
+
+
+	my $coverage_1x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 21 | head -n 1`;
+	chomp($coverage_1x_rate);
+	my $coverage_5x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 22 | head -n 1`;
+	chomp($coverage_5x_rate);
+	my $coverage_10x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 23 | head -n 1`;
+	chomp($coverage_10x_rate);
+	my $coverage_20x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 24 | head -n 1`;
+	chomp($coverage_20x_rate);
+	my $coverage_50x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 25 | head -n 1`;
 	chomp($coverage_50x_rate);
  
 	print "$delivery_id\t$average_depth\t$coverage_1x_rate\t$coverage_5x_rate\t$coverage_10x_rate\t$coverage_20x_rate\t$coverage_50x_rate\n";

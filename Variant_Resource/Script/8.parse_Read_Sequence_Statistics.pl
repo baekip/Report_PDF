@@ -25,7 +25,7 @@ print "Sample ID\tSequence\\nRead\tDe-Duplicated\\nRead\tMapping\\nRead\tUnique\
 
 foreach (@sample_tbi_list){
     my ($delivery_id, $tbi_id, $type) = split /\:/, $_;
-    
+=pod 
     my $sequence_read = `cat $alignment_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1`;
     chomp $sequence_read;
     $sequence_read = num($sequence_read);
@@ -43,6 +43,26 @@ foreach (@sample_tbi_list){
     $unique_read = num($unique_read);
 
     my $on_target_read = `cat $alignment_xls | grep \"^$tbi_id\" | cut -f 11 | head -n 1`;
+    chomp $on_target_read;
+    $on_target_read = num($on_target_read);
+=cut
+    my $sequence_read = `cat $alignment_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1`;
+    chomp $sequence_read;
+    $sequence_read = num($sequence_read);
+    
+    my $deduplicated_read = `cat $alignment_xls | grep \"^$tbi_id\" | cut -f 8 | head -n 1`;
+    chomp $deduplicated_read;
+    $deduplicated_read = num($deduplicated_read);
+
+    my $mapping_read = `cat $alignment_xls | grep \"^$tbi_id\" | cut -f 10 | head -n 1`;
+    chomp $mapping_read;
+    $mapping_read = num($mapping_read);
+
+    my $unique_read = `cat $alignment_xls | grep \"^$tbi_id\" | cut -f 14 | head -n 1`;
+    chomp $unique_read;
+    $unique_read = num($unique_read);
+
+    my $on_target_read = `cat $alignment_xls | grep \"^$tbi_id\" | cut -f 16 | head -n 1`;
     chomp $on_target_read;
     $on_target_read = num($on_target_read);
 

@@ -100,14 +100,14 @@ checkFile( $script_12);
 my $script_20 = $script_path."/20.somatic_information.pl";
 checkFile( $script_20);
 
-my $script_21 = $script_path."/21.parse_summary_of_somatic.pl";
+my $script_21 = $script_path."/21.number_variant_by_type.pl";
 checkFile( $script_21);
-my $script_21_plot = $script_path."/21.parse_summary_of_somatic.R";
+my $script_21_plot = $script_path."/21.number_variant_by_type.R";
 checkFile( $script_21_plot);
 
-my $script_22 = $script_path."/22.number_variant_by_type.pl";
+my $script_22 = $script_path."/22.parse_summary_of_somatic.pl";
 checkFile( $script_22);
-my $script_22_plot = $script_path."/22.number_variant_by_type.R";
+my $script_22_plot = $script_path."/21.parse_summary_of_somatic.R";
 checkFile( $script_22_plot);
 
 my $script_23 = $script_path."/23.number_of_effect.pl";
