@@ -11,12 +11,12 @@ output_png = args[2]
 options(bitmapType='cairo')
 variant_table <- read.table( input_table, sep="\t", header = TRUE, skip=1, colClasses="character")
 sample_column <- variant_table[,1]
-col2cvt <- 3:8
+col2cvt <- 4:8
 variant_table[,col2cvt] <- lapply(variant_table[,col2cvt],function(x){as.numeric(gsub("%", "", x))})
 
 variant_table_malted <- variant_table[,col2cvt]
 final_table <- cbind(sample_column, variant_table_malted)
-colnames(final_table) <- c("sample_id","1X","5X","10X","20X","30X","50X")
+colnames(final_table) <- c("sample_id","1X","5X","10X","20X","50X")
 
 ggplot_data <- melt(final_table)
 #colnames(ggplot_data) <- c("sample_id","coverage","percentage(%)")
