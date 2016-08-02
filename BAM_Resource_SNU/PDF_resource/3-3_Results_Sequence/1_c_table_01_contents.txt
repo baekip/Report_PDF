@@ -1,7 +1,0 @@
-[[10]]
-¡Ü Sample ID: ID provided by customer
-¡Ü Sequence Read: Unfiltered sequence
-¡Ü De-Duplcated Read: Discarded clean reads following PCR duplicate
-¡Ü Mapping Read: De-duplication read followed by mapping onto the reference genome
-¡Ü Unique Read: Reads with the same starting position on each end
-¡Ü On Target Read: Mapped de-duplicate reads (on target region)

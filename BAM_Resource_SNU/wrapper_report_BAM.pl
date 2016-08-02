@@ -68,6 +68,8 @@ checkFile( $script_2 );
 
 my $script_3 = $script_path."/3.parse_summary_of_coverage.pl";
 checkFile( $script_3 );
+my $script_3_plot = $script_path."/3.parse_summary_of_coverage.R";
+checkFile( $script_3_plot );
 
 #my $script_5 = $script_path."/5.parse_allele_frq.pl";
 #checkFile( $script_5);
@@ -84,26 +86,27 @@ checkFile ( $script_8_plot );
 
 my $script_9 = $script_path."/9.parse_sequence_and_enrichment_statistics.pl";
 checkFile( $script_9 );
-
 my $script_9_plot = $script_path."/9.parse_sequence_and_enrichment_statistics.R";
 checkFile ( $script_9_plot );
 
 run_script ( $script_0, $general_config_file, $pipeline_config_file, "$resource_path/0-1_Cover_page/c_intro_title.txt" );
 run_script_1 ( $script_0_1, $general_config_file, $pipeline_config_file);
 run_script ( $script_1, $general_config_file, $pipeline_config_file, "$resource_path/1-1_Sample_Information/c_table_01.txt" );
-run_script ( $script_2, $general_config_file, $pipeline_config_file, "$resource_path/3-1_Results_Summary/1_c_table_01.txt" );
+run_script ( $script_2, $general_config_file, $pipeline_config_file, "$resource_path/3-1_Results_Summary/1_d_table_01.txt" );
 run_script ( $script_3, $general_config_file, $pipeline_config_file, "$resource_path/3-1_Results_Summary/2_c_table_01.txt" );
+my $cmd_script_3_plot = "$Rscript $script_3_plot \"$resource_path/3-1_Results_Summary/2_c_table_01.txt\" \"$resource_path/3-1_Results_Summary/2_b_photo_01.PNG\"";
+system($cmd_script_3_plot);
 
 #run_script ( $script_5, $general_config_file, $pipeline_config_file, "$resource_path/3-4. Allele_Distribution/3.4.1 b_photoMap_01.txt" );
 run_script ( $script_6, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Results_QualityControl/1_a_photoMap_01.txt" );
 run_script ( $script_7, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Results_QualityControl/2_b_photoMap_01.txt" );
 
-run_script ($script_8, $general_config_file, $pipeline_config_file, "$resource_path/3-3_Results_Sequence/1_c_table_01.txt" );
-my $cmd_script_8_plot = "$Rscript $script_8_plot \"$resource_path/3-3_Results_Sequence/1_c_table_01.txt\" \"$resource_path/3-3_Results_Sequence/1_b_photo_01.PNG\"";
-system($cmd_script_8_plot);
-run_script ( $script_9, $general_config_file, $pipeline_config_file, "$resource_path/3-3_Results_Sequence/2_c_table_01.txt" );
-my $cmd_script_9_plot = "$Rscript $script_9_plot \"$resource_path/3-3_Results_Sequence/2_c_table_01.txt\" \"$resource_path/3-3_Results_Sequence/2_b_photo_01.PNG\"";
-system($cmd_script_9_plot);
+#run_script ($script_8, $general_config_file, $pipeline_config_file, "$resource_path/3-1_Results_Summary/0_Summary_of_Reads.txt" );
+#my $cmd_script_8_plot = "$Rscript $script_8_plot \"$resource_path/3-1_Results_Summary/0_Summary_of_Reads.txt\" \"$resource_path/3-1_Results_Summary/1_c_photo_01.PNG\"";
+#system($cmd_script_8_plot);
+#run_script ( $script_9, $general_config_file, $pipeline_config_file, "$resource_path/3-3_Results_Sequence/2_c_table_01.txt" );
+#my $cmd_script_9_plot = "$Rscript $script_9_plot \"$resource_path/3-3_Results_Sequence/2_c_table_01.txt\" \"$resource_path/3-3_Results_Sequence/2_b_photo_01.PNG\"";
+#system($cmd_script_9_plot);
 
 # sp : start page 
 # hl : header line
@@ -116,7 +119,7 @@ system($cmd_script_9_plot);
 chdir $out_path;
 my $user_font_file = "$dev_path/wes/etc/Font/SangSangBodyM.ttf";
 my $user_CI_file = "$dev_path/wes/etc/CI/Theragen_CI.png";
-my $report_version = "Analysis Report V2.2";
+my $report_version = "Analysis Report V2.3";
 
 my $cmd_make_pdf = "$java -jar $text2pdf -sp 2 -hl -fl -ht $report_version -ha r -fa r -r $resource_path -of $output_pdf -f $user_font_file -fi $user_CI_file";
 print $cmd_make_pdf."\n";
