@@ -74,6 +74,8 @@ checkFile( $script_2 );
 
 my $script_3 = $script_path."/3.parse_summary_of_coverage.pl";
 checkFile( $script_3 );
+my $script_3_plot = $script_path."/3.parse_summary_of_coverage.R";
+checkFile( $script_3_plot );
 
 my $script_5 = $script_path."/5.parse_allele_frq.pl";
 checkFile ( $script_5 );
@@ -134,6 +136,8 @@ run_script_1 ( $script_0_1, $general_config_file, $pipeline_config_file);
 run_script ( $script_1, $general_config_file, $pipeline_config_file, "$resource_path/1-1_Sample_Information/c_table_01.txt" );
 run_script ( $script_2, $general_config_file, $pipeline_config_file, "$resource_path/3-1_Results_Summary/1_c_table_01.txt" );
 run_script ( $script_3, $general_config_file, $pipeline_config_file, "$resource_path/3-1_Results_Summary/2_c_table_01.txt" );
+my $cmd_script_3_plot = "$Rscript $script_3_plot \"$resource_path/3-1_Results_Summary/2_c_table_01.txt\" \"$resource_path/3-1_Result_Summary/2_b_photo_01.PNG\"";
+system($cmd_script_3_plot);
 
 #run_script ( $script_5, $general_config_file, $pipeline_config_file, "$resource_path/3-3. Results_QualityControl/3.2.3 b_photoMap_01.txt" );
 
