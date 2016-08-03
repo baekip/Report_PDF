@@ -25,7 +25,7 @@ my @list_pair_id = split /\,/, $info{pair_id};
 my %delivery_hash;
 delivery_split (\@list_delivery_id, \%delivery_hash);
 
-my $output_table = "$resource_path/6_c_table_01.txt";
+my $output_table = "$resource_path/4_c_table_01.txt";
 
 open (my $fh_table, '>', $output_table) or die;
 print $fh_table "[[10]]\n";

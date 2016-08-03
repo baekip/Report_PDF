@@ -5,7 +5,7 @@ use File::Basename;
 use Cwd qw(abs_path);
 my $script_path = dirname (abs_path $0);
 
-my $script_snpeff_html_parser = "$script_path/21.snpeff_html_parser.pl";
+my $script_snpeff_html_parser = "$script_path/24.snpeff_html_parser.pl";
 checkFile( $script_snpeff_html_parser );
 
 if (@ARGV !=2){
@@ -46,22 +46,39 @@ for (my $i=0; $i<@pair_id_list; $i++ ){
     my $INDEL_snpeff_html = "$project_path/result/32-2_snpeff_cancer_run/$somatic_id/$somatic_id.INDEL.snpeff.html";
     checkFile( $INDEL_snpeff_html );
 
+#    print "perl $script_snpeff_html_parser $SNP_snpeff_html \n";
     my @SNP_result_line = `perl $script_snpeff_html_parser $SNP_snpeff_html`;
     my @INDEL_result_line = `perl $script_snpeff_html_parser $INDEL_snpeff_html`;
 #	chomp($result_line);
     
-    my $DOWNSTREAM = $SNP_result_line[0] + $INDEL_result_line[0];
-    my $EXON = $SNP_result_line[1] + $INDEL_result_line[1];
-    my $INTERGENIC = $SNP_result_line[2] + $INDEL_result_line[2];
-    my $INTRON = $SNP_result_line[3] + $INDEL_result_line[3];
-    my $SPLICE_SITE_ACCEPTOR = $SNP_result_line[4] + $INDEL_result_line[4];
-    my $SPLICE_SITE_DONOR = $SNP_result_line[5] + $INDEL_result_line[5];
-    my $SPLICE_SITE_REGION = $SNP_result_line[6] + $INDEL_result_line[6];
-    my $TRANSCRIPT = $SNP_result_line[7] + $INDEL_result_line[7];
-    my $UPSTREAM = $SNP_result_line[8] + $INDEL_result_line[8];
-    my $UTR_3_PRIME = $SNP_result_line[9] + $INDEL_result_line[9];
-    my $UTR_5_PRIME = $SNP_result_line[10] + $INDEL_result_line[10];
-    my $total = $SNP_result_line[11] + $INDEL_result_line[11];
+#    my $DOWNSTREAM = $SNP_result_line[0] + $INDEL_result_line[0];
+#    my $EXON = $SNP_result_line[1] + $INDEL_result_line[1];
+#    my $INTERGENIC = $SNP_result_line[2] + $INDEL_result_line[2];
+#    my $INTRON = $SNP_result_line[3] + $INDEL_result_line[3];
+#    my $SPLICE_SITE_ACCEPTOR = $SNP_result_line[4] + $INDEL_result_line[4];
+#    my $SPLICE_SITE_DONOR = $SNP_result_line[5] + $INDEL_result_line[5];
+#    my $SPLICE_SITE_REGION = $SNP_result_line[6] + $INDEL_result_line[6];
+#    my $TRANSCRIPT = $SNP_result_line[7] + $INDEL_result_line[7];
+#    my $UPSTREAM = $SNP_result_line[8] + $INDEL_result_line[8];
+#    my $UTR_3_PRIME = $SNP_result_line[9] + $INDEL_result_line[9];
+#    my $UTR_5_PRIME = $SNP_result_line[10] + $INDEL_result_line[10];
+#    my $total = $SNP_result_line[11] + $INDEL_result_line[11];
+#    print "$tmp_id\t$DOWNSTREAM\t$EXON\t$INTERGENIC\t$INTRON\t".
+#    "$SPLICE_SITE_ACCEPTOR\t$SPLICE_SITE_DONOR\t$SPLICE_SITE_REGION\t".
+#    "$TRANSCRIPT\t$UPSTREAM\t$UTR_3_PRIME\t$UTR_5_PRIME\t$total\n";
+    
+    my $DOWNSTREAM = check_null($SNP_result_line[0]) + check_null($INDEL_result_line[0]);
+    my $EXON = check_null($SNP_result_line[1]) + check_null($INDEL_result_line[1]);
+    my $INTERGENIC = check_null($SNP_result_line[2]) + check_null($INDEL_result_line[2]);
+    my $INTRON = check_null($SNP_result_line[3]) + check_null($INDEL_result_line[3]);
+    my $SPLICE_SITE_ACCEPTOR = check_null($SNP_result_line[4]) + check_null($INDEL_result_line[4]);
+    my $SPLICE_SITE_DONOR = check_null($SNP_result_line[5]) + check_null($INDEL_result_line[5]);
+    my $SPLICE_SITE_REGION = check_null($SNP_result_line[6]) + check_null($INDEL_result_line[6]);
+    my $TRANSCRIPT = check_null($SNP_result_line[7]) + check_null($INDEL_result_line[7]);
+    my $UPSTREAM = check_null($SNP_result_line[8]) + check_null($INDEL_result_line[8]);
+    my $UTR_3_PRIME = check_null($SNP_result_line[9]) + check_null($INDEL_result_line[9]);
+    my $UTR_5_PRIME = check_null($SNP_result_line[10]) + check_null($INDEL_result_line[10]);
+    my $total = check_null($SNP_result_line[11]) + check_null($INDEL_result_line[11]);
     print "$tmp_id\t$DOWNSTREAM\t$EXON\t$INTERGENIC\t$INTRON\t".
     "$SPLICE_SITE_ACCEPTOR\t$SPLICE_SITE_DONOR\t$SPLICE_SITE_REGION\t".
     "$TRANSCRIPT\t$UPSTREAM\t$UTR_3_PRIME\t$UTR_5_PRIME\t$total\n";
@@ -73,6 +90,16 @@ for (my $i=0; $i<@pair_id_list; $i++ ){
 
 #cat /BiO/BioProjects/FOM-Human-WES-2015-07-TBO150049/result/01_fastqc_orig/TN1507D0293/TN1507D0293_1_fastqc/fastqc_data.txt | grep "Total Sequences" | sed 's/Total Sequences\s//g'
 }
+
+sub check_null {
+    my $check_value = shift;
+    if (!$check_value){
+        return 0;
+    }else{
+        return $check_value;
+    }
+}
+
 
 sub delivery_split{
     my ($delivery_list, $del_ref_hash) = @_;

@@ -5,7 +5,7 @@ use File::Basename;
 use Cwd qw(abs_path);
 my $script_path = dirname (abs_path $0);
 
-my $script_snpeff_html_parser = "$script_path/22.snpeff_html_parser.pl";
+my $script_snpeff_html_parser = "$script_path/21.snpeff_html_parser.pl";
 checkFile( $script_snpeff_html_parser );
 
 if (@ARGV !=2){

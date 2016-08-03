@@ -39,9 +39,9 @@ my $num_variants = $hash_sum{num_variant};
 my $genome_total_len = num($hash_sum{genome_total_len});
 my $genome_eff_len = num($hash_sum{genome_effect_len});
 
-my $snp = check_null($hash_sum{SNP});
-my $ins = check_null($hash_sum{INS});
-my $del = check_null($hash_sum{DEL});
+my $snp = $hash_sum{SNP};
+my $ins = $hash_sum{INS};
+my $del = $hash_sum{DEL};
 
 my $high = $hash_sum{HIGH};
 my $low = $hash_sum{LOW};
@@ -80,9 +80,19 @@ $UTR_5_PRIME = check_null($UTR_5_PRIME);
 
 my $total = $DOWNSTREAM + $EXON + $INTERGENIC + $INTRON + $SPLICE_SITE_ACCEPTOR + $SPLICE_SITE_DONOR + $SPLICE_SITE_REGION + $TRANSCRIPT + $UPSTREAM + $UTR_3_PRIME + $UTR_5_PRIME;
 #print "$DOWNSTREAM\t$EXON\t$INTERGENIC\t$INTRON\t$SPLICE_SITE_ACCEPTOR\t$SPLICE_SITE_DONOR\t$SPLICE_SITE_REGION\t$TRANSCRIPT\t$UPSTREAM\t$UTR_3_PRIME\t$UTR_5_PRIME\t$total\n";
-print "$snp\n";
-print "$ins\n";
-print "$del\n";
+
+print $DOWNSTREAM."\n";
+print $EXON."\n";
+print $INTERGENIC."\n";
+print $INTRON."\n";
+print $SPLICE_SITE_ACCEPTOR."\n";
+print $SPLICE_SITE_DONOR."\n";
+print $SPLICE_SITE_REGION."\n";
+print $TRANSCRIPT."\n";
+print $UPSTREAM."\n";
+print $UTR_3_PRIME."\n";
+print $UTR_5_PRIME."\n";
+print $total."\n";
 
 sub check_null {
     my $check_value = shift;

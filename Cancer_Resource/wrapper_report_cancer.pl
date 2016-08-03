@@ -105,29 +105,28 @@ checkFile( $script_21);
 my $script_21_plot = $script_path."/21.number_variant_by_type.R";
 checkFile( $script_21_plot);
 
-my $script_22 = $script_path."/22.parse_summary_of_somatic.pl";
-checkFile( $script_22);
-my $script_22_plot = $script_path."/22.parse_summary_of_somatic.R";
-checkFile( $script_22_plot);
+my $script_22 = $script_path."/22.parse_trans.pl";
+checkFile ($script_22);
+my $script_22_plot = $script_path."/22.parse_trans.R";
+checkFile ($script_22_plot);
 
-my $script_23 = $script_path."/23.number_of_effect.pl";
-checkFile ($script_23);
-my $script_23_plot = $script_path."/23.number_of_effect.R";
-checkFile ($script_23_plot);
+my $script_23 = $script_path."/23.parse_transition_transversion.pl";
+checkFile($script_23);
+my $script_23_plot = $script_path."/23.parse_transition_transversion.R";
+checkFile($script_23_plot);
 
-my $script_24 = $script_path."/24.parse_trans.pl";
-checkFile ($script_24);
-my $script_24_plot = $script_path."/24.parse_trans.R";
-checkFile ($script_24_plot);
+my $script_24 = $script_path."/24.parse_summary_of_somatic.pl";
+checkFile( $script_24);
+my $script_24_plot = $script_path."/24.parse_summary_of_somatic.R";
+checkFile( $script_24_plot);
 
-my $script_25 = $script_path."/25.parse_variants_information.pl";
+my $script_25 = $script_path."/25.number_of_effect.pl";
 checkFile ($script_25);
+my $script_25_plot = $script_path."/25.number_of_effect.R";
+checkFile ($script_25_plot);
 
-my $script_26 = $script_path."/26.parse_transition_transversion.pl";
-checkFile($script_26);
-my $script_26_plot = $script_path."/26.parse_transition_transversion.R";
-checkFile($script_26_plot);
-
+my $script_26 = $script_path."/26.parse_variants_information.pl";
+checkFile ($script_26);
 
 ####################Run Script#######################
 run_script ( $script_0, $general_config_file, $pipeline_config_file, "$resource_path/0-1_Cover_page/c_intro_title.txt" );
@@ -142,13 +141,13 @@ run_script ( $script_3, $general_config_file, $pipeline_config_file, "$resource_
 run_script ( $script_6, $general_config_file, $pipeline_config_file, "$resource_path/3-3_Results_QualityControl/1_a_photoMap_01.txt" );
 run_script ( $script_7, $general_config_file, $pipeline_config_file, "$resource_path/3-3_Results_QualityControl/2_b_photoMap_01.txt" );
 
-run_script ($script_8, $general_config_file, $pipeline_config_file, "$resource_path/3-4_Results_Sequence/1_c_table_01.txt");
-my $cmd_script_8_plot = "$Rscript $script_8_plot \"$resource_path/3-4_Results_Sequence/1_c_table_01.txt\" \"$resource_path/3-4_Results_Sequence/1_b_photo_01.PNG\"";
-system($cmd_script_8_plot);
-
-run_script ( $script_9, $general_config_file, $pipeline_config_file, "$resource_path/3-4_Results_Sequence/2_c_table_01.txt" );
-my $cmd_script_9_plot = "$Rscript $script_9_plot \"$resource_path/3-4_Results_Sequence/2_c_table_01.txt\" \"$resource_path/3-4_Results_Sequence/2_b_photo_01.PNG\"";
-system($cmd_script_9_plot);
+#run_script ($script_8, $general_config_file, $pipeline_config_file, "$resource_path/3-4_Results_Sequence/1_c_table_01.txt");
+#my $cmd_script_8_plot = "$Rscript $script_8_plot \"$resource_path/3-4_Results_Sequence/1_c_table_01.txt\" \"$resource_path/3-4_Results_Sequence/1_b_photo_01.PNG\"";
+#system($cmd_script_8_plot);
+#
+#run_script ( $script_9, $general_config_file, $pipeline_config_file, "$resource_path/3-4_Results_Sequence/2_c_table_01.txt" );
+#my $cmd_script_9_plot = "$Rscript $script_9_plot \"$resource_path/3-4_Results_Sequence/2_c_table_01.txt\" \"$resource_path/3-4_Results_Sequence/2_b_photo_01.PNG\"";
+#system($cmd_script_9_plot);
 
 #run_script_1 ($script_12, $general_config_file, $pipeline_config_file);
 
@@ -170,13 +169,13 @@ run_script ( $script_24, $general_config_file, $pipeline_config_file, "$resource
 my $cmd_script_24_plot = "$Rscript $script_24_plot \"$resource_path/3-2_Somatic_Information/5_c_table_01.txt\" \"$resource_path/3-2_Somatic_Information/5_b_photo_01.PNG\"";
 system($cmd_script_24_plot);
 
-run_script_1 ( $script_25, $general_config_file, $pipeline_config_file);
 
-run_script ( $script_26, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Somatic_Information/6_c_table_01.txt");
-my $cmd_script_26_plot = "$Rscript $script_26_plot \"$resource_path/3-2_Somatic_Information/6_c_table_01.txt\" \"$resource_path/3-2_Somatic_Information/6_b_photo_01.PNG\"";
-system($cmd_script_26_plot);
+run_script ( $script_25, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Somatic_Information/6_c_table_01.txt");
+my $cmd_script_25_plot = "$Rscript $script_25_plot \"$resource_path/3-2_Somatic_Information/6_c_table_01.txt\" \"$resource_path/3-2_Somatic_Information/6_b_photo_01.PNG\"";
+system($cmd_script_25_plot);
 
 
+run_script_1 ( $script_26, $general_config_file, $pipeline_config_file);
 
 
 # sp : start page 
