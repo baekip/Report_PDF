@@ -1,2 +1,2 @@
 [[16]]
-3.2.4 Ts/Tv (Transitions / Transversions)
+3.2.4 Number of Effects by Fuctional Class
