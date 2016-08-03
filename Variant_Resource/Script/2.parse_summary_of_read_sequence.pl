@@ -33,7 +33,7 @@ print "Sample ID\tSequence\\nread\t".
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 
-        my $sequence_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 `;
+        my $sequence_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1 `;
         chomp $sequence_read;
         $sequence_read = num($sequence_read);
     

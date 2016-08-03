@@ -16,7 +16,7 @@ if (@ARGV !=2){
 my %info;
 read_general_config ($general_config_file, \%info);
 
-my $version = "V1.1";
+my $version = "V1.2";
 my $project_path = $info{project_path};
 my $out_path = "$project_path/report";
 my $project_id = $info{project_id};
@@ -107,7 +107,7 @@ checkFile( $script_21_plot);
 
 my $script_22 = $script_path."/22.parse_summary_of_somatic.pl";
 checkFile( $script_22);
-my $script_22_plot = $script_path."/21.parse_summary_of_somatic.R";
+my $script_22_plot = $script_path."/22.parse_summary_of_somatic.R";
 checkFile( $script_22_plot);
 
 my $script_23 = $script_path."/23.number_of_effect.pl";
