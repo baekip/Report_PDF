@@ -17,11 +17,11 @@ Data Analysis Results
 		3.1.2 Cumulative Coverage Distribution
 	3.2 Annotated Somatic Variants
 		3.2.1 Somatic Sample Infromation
-		3.2.2 Variants Categories
-		3.2.3 Number Variants By Type
-		3.2.4 Number of Effects by Functional Class
-		3.2.5 Ts/Tv (Transitions / Transversions)
-		3.2.6 Somatic Variants Information
+		3.2.2 Number Variants By Type
+		3.2.3 Ts/Tv (Transitions / Transversions)
+		3.2.4 Proportion of Alterations
+		3.2.5 Variants Categories
+		3.2.6 Number of Effects by Functional Class
 	3.3 Quality Controls
 		3.3.1 FastQC Results
 		3.3.2 Qualimap Results
