@@ -16,7 +16,7 @@ Data Analysis Results
 		3.1.1 Mapping Summary for Produced Sequencing Data
 		3.1.2 Cumulative Coverage Distribution
 	3.2 Annotated Variants
-		3.2.1 Number Variants By Typee
+		3.2.1 Number Variants By Type
 		3.2.2 Ts/Tv (Transitions / Transversions)
 		3.2.3 Variants Categories
 		3.2.4 Number of Effects by Fuctional Class
