@@ -153,8 +153,8 @@ my $cmd_script_10_plot = "$Rscript $script_10_plot \"$resource_path/3-2_Annotate
 system($cmd_script_10_plot);
 
 run_script ($script_13, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Annotated_Variants/2_c_table_01.txt" );
-my $cmd_script_13_plot = "$Rscript $script_13_plot \"$resource_path/3-2_Annotated_Variants/2_c_table_01.txt\" \"$resource_path/3-2_Annotated_Variants/2_b_photo_01.PNG\"";
-system($cmd_script_13_plot);
+#my $cmd_script_13_plot = "$Rscript $script_13_plot \"$resource_path/3-2_Annotated_Variants/2_c_table_01.txt\" \"$resource_path/3-2_Annotated_Variants/2_b_photo_01.PNG\"";
+#system($cmd_script_13_plot);
 
 run_script ( $script_4, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Annotated_Variants/3_c_table_01.txt" );
 my $cmd_script_4_plot = "$Rscript $script_4_plot \"$resource_path/3-2_Annotated_Variants/3_c_table_01.txt\" \"$resource_path/3-2_Annotated_Variants/3_b_photo_01.PNG\"";

@@ -21,9 +21,11 @@ my @list_sample_id = split /\,/, $hash{delivery_tbi_id};
 # my @trans_arr;
 
 my $project_path = $hash{project_path};
+my $alignment_statistics_xls = "$project_path/report/alignment.statistics.xls";
+checkFile ( $alignment_statistics_xls );
 
-print "[[13]]\n";
-print "Sample ID\tTransitions\tTransversions\tTs/Tv\\nratio\n";
+print "[[11],[],[],[100]]\n";
+print "Sample ID\tTS\tTV\tTs/Tv\tHetero\\nVariants\tHomo\\nVariants\tHetero\\n/Homo\n";
 
 foreach (@list_sample_id) {
     my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
@@ -56,18 +58,33 @@ foreach (@list_sample_id) {
         my $ratio = $transition / $transversion;
         $ratio = &RoundXL ($ratio, 3);
 
-        #print @Ts;
-        #print @Tv;
-
         my $ts = num($transition);
         my $tv = num($transversion);
-        
+       
+        my $hetero = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 35 | head -n 1 `;
+        chomp $hetero;
+        $hetero = num($hetero);
 
-        print "$delivery_id\t$ts\t$tv\t$ratio\n";
+        my $homo = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 36 | head -n 1 `;
+        chomp $homo;
+        $homo = num($homo);
+        
+        my $hh_ratio = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 37 | head -n 1 `;
+        chomp $hh_ratio;
+        $hh_ratio = num($hh_ratio);
+        
+        print "$delivery_id\t$ts\t$tv\t$ratio\t$hetero\t$homo\t$hh_ratio\n";
 }
 
 sub RoundXL {
     sprintf ("%.$_[1]f", $_[0]);
+}
+
+sub checkFile {
+    my $file = shift;
+    if ( !-f $file) {
+        die "ERROR! not found <$file>\n";
+    }
 }
 
 
