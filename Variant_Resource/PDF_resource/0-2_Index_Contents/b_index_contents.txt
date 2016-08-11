@@ -19,7 +19,7 @@ Data Analysis Results
 		3.2.1 Number Variants By Type
 		3.2.2 Ts/Tv and Hetero/Homo
 		3.2.3 Variants Categories
-		3.2.4 Number of Effects by Fuctional Class
+		3.2.4 Number of Effects by Functional Class
 	3.3 Clinical Analysis Result
 	3.4 Quality Controls
 		3.4.1 FastQC Results
