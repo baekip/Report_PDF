@@ -136,7 +136,9 @@ run_script_1 ( $script_0_1, $general_config_file, $pipeline_config_file);
 run_script ( $script_1, $general_config_file, $pipeline_config_file, "$resource_path/1-1_Sample_Information/c_table_01.txt" );
 run_script ( $script_2, $general_config_file, $pipeline_config_file, "$resource_path/3-1_Results_Summary/1_c_table_01.txt" );
 run_script ( $script_3, $general_config_file, $pipeline_config_file, "$resource_path/3-1_Results_Summary/2_c_table_01.txt" );
-my $cmd_script_3_plot = "$Rscript $script_3_plot \"$resource_path/3-1_Results_Summary/2_c_table_01.txt\" \"$resource_path/3-1_Result_Summary/2_b_photo_01.PNG\"";
+my $cmd_script_3_plot = "$Rscript $script_3_plot \"$resource_path/3-1_Results_Summary/2_c_table_01.txt\" \"$resource_path/3-1_Results_Summary/2_b_photo_01.PNG\"";
+print $cmd_script_3_plot."\n";
+die;
 system($cmd_script_3_plot);
 
 #run_script ( $script_5, $general_config_file, $pipeline_config_file, "$resource_path/3-3. Results_QualityControl/3.2.3 b_photoMap_01.txt" );
@@ -162,8 +164,8 @@ my $cmd_script_21_plot = "$Rscript $script_21_plot \"$resource_path/3-2_Somatic_
 system($cmd_script_21_plot);
 
 run_script ( $script_22, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Somatic_Information/3_c_table_01.txt");
-my $cmd_script_22_plot = "$Rscript $script_22_plot \"$resource_path/3-2_Somatic_Information/3_c_table_01.txt\" \"$resource_path/3-2_Somatic_Information/3_b_photo_01.PNG\"";
-system($cmd_script_22_plot);
+#my $cmd_script_22_plot = "$Rscript $script_22_plot \"$resource_path/3-2_Somatic_Information/3_c_table_01.txt\" \"$resource_path/3-2_Somatic_Information/3_b_photo_01.PNG\"";
+#system($cmd_script_22_plot);
 
 run_script ( $script_23, $general_config_file, $pipeline_config_file, "$resource_path/3-2_Somatic_Information/4_c_table_01.txt");
 my $cmd_script_23_plot = "$Rscript $script_23_plot \"$resource_path/3-2_Somatic_Information/4_c_table_01.txt\" \"$resource_path/3-2_Somatic_Information/4_b_photo_01.PNG\"";
