@@ -35,7 +35,7 @@ ggplot(data=Alignment_ratio, aes(x=Temporary.ID, y=Rate, fill=variable)) +
 	legend.title = element_text (size=9, face = "bold"),
 	legend.text = element_text (size=5),
 	legend.position = "right") + 
-scale_x_discrete(limits = Alignment_table$Sample.ID)
+scale_x_discrete(limits = Alignment_table$Temporary.ID)
 
 
 #  scale_x_discrete(breaks = c("TN1508D0113","TN1508D0114","TN1508D0115","TN1508D0116","TN1508D0117"),
