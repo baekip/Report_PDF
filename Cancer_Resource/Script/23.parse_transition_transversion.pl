@@ -28,7 +28,7 @@ delivery_split (\@list_delivery_id, \%delivery_hash);
 my $output_table = "$resource_path/4_c_table_01.txt";
 
 open (my $fh_table, '>', $output_table) or die;
-print $fh_table "[[10]]\n";
+print $fh_table "[[10],[],[],[100]]\n";
 print $fh_table "Temporary ID\tT/A->G/C\tT/A->C/G\tT/A->A/T\tC/G->A/T\tC/G->G/C\tC/G->T/A\tTotal\n";
 
 for (my $i=0; $i < @list_pair_id; $i++){
