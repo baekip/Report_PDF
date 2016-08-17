@@ -30,28 +30,28 @@ print "Sample ID\tRaw sequence\\ndepth\tOn-target\\ndepth\\n(std)\t".
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 
-	my $sequence_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2`;
+	my $sequence_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 2 | head -n 1`;
         chomp($sequence_read);
         my $sequence_base = $sequence_read * $read_length;
-        my $bed_size = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 20`;
+        my $bed_size = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 20 | head -n 1`;
         my $raw_sequence_depth = $sequence_base/$bed_size;
         $raw_sequence_depth = &RoundXL($raw_sequence_depth,2);
 
-        my $ontarget_depth_mean = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 18`;
+        my $ontarget_depth_mean = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 18 | head -n 1`;
         chomp ($ontarget_depth_mean);
-        my $ontarget_depth_std = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 19`;
+        my $ontarget_depth_std = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 19 | head -n 1`;
         chomp ($ontarget_depth_std);
         $ontarget_depth_std = &RoundXL($ontarget_depth_std,2);
 
-        my $coverage_1x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 21`;
+        my $coverage_1x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 21 | head -n 1`;
 	chomp($coverage_1x_rate);
-	my $coverage_5x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 22`;
+	my $coverage_5x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 22 | head -n 1`;
 	chomp($coverage_5x_rate);
-	my $coverage_10x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 23`;
+	my $coverage_10x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 23 | head -n 1`;
 	chomp($coverage_10x_rate);
-	my $coverage_20x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 24`;
+	my $coverage_20x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 24 | head -n 1`;
 	chomp($coverage_20x_rate);
-	my $coverage_50x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 25`;
+	my $coverage_50x_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 25 | head -n 1`;
 	chomp($coverage_50x_rate);
  
 	print "$delivery_id\t$raw_sequence_depth\t$ontarget_depth_mean\\n($ontarget_depth_std)\t$coverage_1x_rate\t$coverage_5x_rate\t$coverage_10x_rate\t$coverage_20x_rate\t$coverage_50x_rate\n";
