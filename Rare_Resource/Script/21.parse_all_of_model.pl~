@@ -41,8 +41,7 @@ while (my $row = <$fh_file_1>){
         system ($cmd_generator);
         # print "$recessive_stat_file_4\n"; }
     }else{
-        #my $cmd_generator = "cat $recessive_stat_file_5 | cut -f 1,2,7,22,24,27,28,41,43,53,69 | sed -n \'1!p\' | head -n 10 >> $recessive_resource_file";
-        my $cmd_generator = "cat $recessive_stat_file_5 | cut -f 1,2,7,19,21,24,25,38,40,50,66 | sed -n \'1!p\' | head -n 10 >> $recessive_resource_file";
+        my $cmd_generator = "cat $recessive_stat_file_5 | cut -f 1,2,7,22,24,27,28,41,43,53,69 | sed -n \'1!p\' | head -n 10 >> $recessive_resource_file";
         system ($cmd_generator);
         # print "$recessive_stat_file_5\n";}
     last;}  
@@ -74,8 +73,7 @@ while (my $row = <$fh_file_2>){
         system ($cmd_generator);
         # print "$dominant_stat_file_4\n"; }
     }else{
-        #my $cmd_generator = "cat $dominant_stat_file_5 | cut -f 1,2,7,22,24,27,28,41,43,53,69 | sed -n \'1!p\' | head -n 10 >> $dominant_resource_file";
-        my $cmd_generator = "cat $dominant_stat_file_5 | cut -f 1,2,7,19,21,24,25,38,40,50,66 | sed -n \'1!p\' | head -n 10 >> $dominant_resource_file";
+        my $cmd_generator = "cat $dominant_stat_file_5 | cut -f 1,2,7,22,24,27,28,41,43,53,69 | sed -n \'1!p\' | head -n 10 >> $dominant_resource_file";
         system ($cmd_generator);
         # print "$dominant_stat_file_5\n";}
     last;}
@@ -107,8 +105,7 @@ while (my $row = <$fh_file_3>){
         system ($cmd_generator);
         # print "$compound_stat_file_4\n"; }
     }else{
-        #my $cmd_generator = "cat $compound_stat_file_5 | cut -f 1,2,8,23,25,28,29,42,44,54,70 | sed -n \'1!p\' | head -n 10 >> $compound_resource_file";
-        my $cmd_generator = "cat $compound_stat_file_5 | cut -f 1,2,8,20,22,25,26,39,41,51,67 | sed -n \'1!p\' | head -n 10 >> $compound_resource_file";
+        my $cmd_generator = "cat $compound_stat_file_5 | cut -f 1,2,8,23,25,28,29,42,44,54,70 | sed -n \'1!p\' | head -n 10 >> $compound_resource_file";
         system ($cmd_generator);
         #print "$compound_stat_file_5\n";}
     last;}
