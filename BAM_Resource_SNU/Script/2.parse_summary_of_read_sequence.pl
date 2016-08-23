@@ -37,16 +37,16 @@ foreach ( @list_delivery_tbi_id ){
         chomp $sequence_read;
         $sequence_read = num($sequence_read);
     
-        my $deduplicated_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 9 `;
+        my $deduplicated_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 8 `;
         chomp $deduplicated_read;
         $deduplicated_read = num($deduplicated_read);
-	my $deduplicated_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 10 | head -n 1`;
+	my $deduplicated_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 9 | head -n 1`;
 	chomp($deduplicated_read_rate);
 
-        my $mapping_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 11 `;
+        my $mapping_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 10 `;
         chomp $mapping_read;
         $mapping_read = num($mapping_read);
-	my $mapping_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 12 | head -n 1`;
+	my $mapping_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 11 | head -n 1`;
 	chomp($mapping_read_rate);
 
         my $unique_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 17 `;
@@ -55,10 +55,10 @@ foreach ( @list_delivery_tbi_id ){
 	my $unique_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 18 | head -n 1`;
 	chomp($unique_read_rate);
 
-        my $on_target_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 20`;
+        my $on_target_read = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 19`;
         chomp $on_target_read;
         $on_target_read = num($on_target_read);
-	my $on_target_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 21 | head -n 1`;
+	my $on_target_read_rate = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 20 | head -n 1`;
 	chomp($on_target_read_rate);
  
 	print "$delivery_id\t$sequence_read\t$deduplicated_read\\n($deduplicated_read_rate)\t$mapping_read\\n($mapping_read_rate)\t$unique_read\\n($unique_read_rate)\t$on_target_read\\n($on_target_read_rate)\n";
