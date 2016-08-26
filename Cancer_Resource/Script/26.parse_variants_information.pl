@@ -35,9 +35,9 @@ for (my $i=0; $i < @list_pair_id; $i++){
     my $SNP_snpeff_tsv = "$project_path/result/30-2_snpeff_cancer_run/".$somatic_id."/".$somatic_id.".SNP.snpeff.isoform.tsv";
     my $INDEL_snpeff_tsv = "$project_path/result/32-2_snpeff_cancer_run/".$somatic_id."/".$somatic_id.".INDEL.snpeff.isoform.tsv";
     
-    my $output_new_page = "$resource_path/7_".$i."_0_new_page.txt";
-    my $output_label = "$resource_path/7_".$i."_label.txt";
-    my $output_table = "$resource_path/7_".$i."_table_01.txt";
+    my $output_new_page = "$resource_path/7_".$i."0_0_new_page.txt";
+    my $output_label = "$resource_path/7_".$i."0_label.txt";
+    my $output_table = "$resource_path/7_".$i."0_table_01.txt";
 
 #    my $output_new_page = "3.4.1 ".$i."_0_new_page.txt";
 #    my $output_label = "3.4.1 ".$i."_label.txt";

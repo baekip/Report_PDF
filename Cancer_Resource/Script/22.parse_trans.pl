@@ -17,19 +17,31 @@ my $in_pipeline_config = $ARGV[1];
 my %hash;
 read_sample_config ($in_sample_config, \%hash);
 
-my @list_sample_id = split /\,/, $hash{delivery_tbi_id};
+my @list_delivery_id = split /\,/, $hash{delivery_tbi_id};
+my @list_pair_id = split /\,/, $hash{pair_id};
 # my @trans_arr;
+
+my %delivery_hash;
+delivery_split (\@list_delivery_id, \%delivery_hash);
 
 my $project_path = $hash{project_path};
 my $alignment_statistics_xls = "$project_path/report/alignment.statistics.xls";
 checkFile ( $alignment_statistics_xls );
 
-print "[[11],[],[],[100]]\n";
-print "Sample ID\tTS\tTV\tTs/Tv\tHetero\\nVariants\tHomo\\nVariants\tHetero\\n/Homo\n";
+print "[[11]]\n";
+#print "Sample ID\tTS\tTV\tTs/Tv\tHetero\\nVariants\tHomo\\nVariants\tHetero\\n/Homo\n";
+print "Sample ID\tTS\tTV\tTs/Tv ratio\n";
 
-foreach (@list_sample_id) {
-    my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
-    my $html = "$project_path/result/14_snpeff_human_run/".$tbi_id."/".$tbi_id.".BOTH.snpeff.html";
+for (my $i=0; $i < @list_pair_id; $i++){
+    my $no_somatic = $i + 1;
+    my $somatic_id = $list_pair_id[$i];
+    my ($control, $case) = split /\_/, $list_pair_id[$i];
+    my $delivery_case = substr ($delivery_hash{$case}, 0, 25);
+    my $tmp_id = $delivery_case."_".$no_somatic;
+    my $html = "$project_path/result/30-2_snpeff_cancer_run/".$somatic_id."/".$somatic_id.".SNP.snpeff.html";
+    checkFile($html);
+#    my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
+#    my $html = "$project_path/result/14_snpeff_human_run/".$tbi_id."/".$tbi_id.".BOTH.snpeff.html";
 
 #print $html."\n";
     open my $fh_html, '<:encoding(UTF-8)', $html or die;
@@ -53,27 +65,41 @@ foreach (@list_sample_id) {
             }
         } 
         
-        my ($Ts_type, $transition, $transition_1) = split /\,/, $Ts[1];
-        my ($Tv_type, $transversion, $transversion_1) = split /\,/,$Tv[1];
-        my $ratio = $transition / $transversion;
-        $ratio = &RoundXL ($ratio, 3);
+        my ($Ts_type, $transition_1, $transition_2, $total_ts) = split /\,/, $Ts[1];
+        my ($Tv_type, $transversion_1, $transversion_2, $total_tv) = split /\,/,$Tv[1];
+        my $ratio;
+        if ( $total_tv ) {
+            $ratio = $total_ts / $total_tv;
+            $ratio = &RoundXL ($ratio, 3);
+        }else{
+            $total_tv = 0;
+            $ratio = "Illegal Division";
+        }
 
-        my $ts = num($transition);
-        my $tv = num($transversion);
+        my $ts = num($total_ts);
+        my $tv = num($total_tv);
        
-        my $hetero = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 35 | head -n 1 `;
-        chomp $hetero;
-        $hetero = num($hetero);
-
-        my $homo = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 36 | head -n 1 `;
-        chomp $homo;
-        $homo = num($homo);
+#        my $hetero = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 35 | head -n 1 `;
+#        chomp $hetero;
+#        $hetero = num($hetero);
+        #
+#        my $homo = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 36 | head -n 1 `;
+#        chomp $homo;
+#        $homo = num($homo);
+#        
+#        my $hh_ratio = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 37 | head -n 1 `;
+#        chomp $hh_ratio;
+#        $hh_ratio = num($hh_ratio);
         
-        my $hh_ratio = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 37 | head -n 1 `;
-        chomp $hh_ratio;
-        $hh_ratio = num($hh_ratio);
-        
-        print "$delivery_id\t$ts\t$tv\t$ratio\t$hetero\t$homo\t$hh_ratio\n";
+        print "$tmp_id\t$ts\t$tv\t$ratio\n";
+#        print "$delivery_id\t$ts\t$tv\t$ratio\t$hetero\t$homo\t$hh_ratio\n";
+}
+sub delivery_split {
+    my ($delivery_list, $del_ref_hash) = @_;
+    for (@$delivery_list){
+    my ($delivery_id, $tbi_id, $type_id) = split /\:/, $_;
+    $del_ref_hash->{$tbi_id}=$delivery_id;
+    }
 }
 
 sub RoundXL {
