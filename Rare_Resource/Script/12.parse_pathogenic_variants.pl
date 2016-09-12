@@ -27,9 +27,9 @@ for (my $i=0; $i < @list_delivery_id; $i++){
     my $in_pathogenic_snpeff_tsv = "$project_path/result/14_snpeff_human_run/".$tbi_id."/".$tbi_id.".BOTH.snpeff.isoform.tsv";
 
     my $m = roundup($i);   
-    my $output_new_page = "$resource_path/1_".$i."_0_new_page.txt";
-    my $output_label = "$resource_path/1_".$i."_label.txt";
-    my $output_table = "$resource_path/1_".$i."_table_01.txt";
+    my $output_new_page = "$resource_path/$m_".$i."_0_new_page.txt";
+    my $output_label = "$resource_path/$m_".$i."_label.txt";
+    my $output_table = "$resource_path/$m_".$i."_table_01.txt";
     
 
 #    my $output_new_page = "3.4.1 ".$i."_0_new_page.txt";
