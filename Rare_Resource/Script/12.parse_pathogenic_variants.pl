@@ -26,6 +26,7 @@ for (my $i=0; $i < @list_delivery_id; $i++){
     my ($delivery_id, $tbi_id, $type_id) = split /\:/, $list_delivery_id[$i];
     my $in_pathogenic_snpeff_tsv = "$project_path/result/14_snpeff_human_run/".$tbi_id."/".$tbi_id.".BOTH.snpeff.isoform.tsv";
 
+    my $m = roundup($i);   
     my $output_new_page = "$resource_path/1_".$i."_0_new_page.txt";
     my $output_label = "$resource_path/1_".$i."_label.txt";
     my $output_table = "$resource_path/1_".$i."_table_01.txt";
@@ -127,6 +128,10 @@ sub tran_disease {
     # return $dis;
 }
 =cut
+sub roundup{
+    my $n = shift;
+    return (($n == int($n)) ? $n : int($n+1))
+}
 
 sub comma {
     my $file = shift;
