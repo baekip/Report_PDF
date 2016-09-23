@@ -5,6 +5,7 @@
 ##################################################
 #truseq_exome
 #aligent_oneseq_target
+#sureselect_exon_focus
 #sureselect_mouse_exon
 #sureselect_human_exon_v3
 #sureselect_human_exon_v4
@@ -38,6 +39,8 @@ if ($kit_type eq "truseq_exome"){
     cp_kit_sh("OneSeq_Target.sh");
 }elsif ($kit_type eq "sureselect_mouse_exon"){
     cp_kit_sh("SureSelect_Mouse.sh");
+}elsif ($kit_type eq "sureselect_human_focuse"){
+    cp_kit_sh("SureSelect_focus.sh");
 }elsif ($kit_type eq "sureselect_human_exon_v3"){
     cp_kit_sh("SureSelect_v3.sh");
 }elsif ($kit_type eq "sureselect_human_exon_v4"){
