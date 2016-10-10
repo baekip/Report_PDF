@@ -25,7 +25,7 @@ checkFile( $Sequencing_Statistics_Result_xls );
 
 my %hash_sample;
 print "[[12],[],[],[0,90]]\n";
-print "Delivery ID\tSample ID\tTotal\\nreads\tTotal\\nbases (Gbp)\tGC\\nPercent\tQ30 MoreBasesRate\n";
+print "Delivery ID\\n(TBI ID)\tTotal\\nreads\tTotal\\nbases (bp)\tTotal\\nbases (Gbp)\tGC\\nPercent\tQ30 MoreBasesRate\n";
 foreach ( @list_delivery_tbi_id ){
 	my ($delivery_id,$tbi_id,$type_id) = split /\:/, $_;
 
@@ -33,6 +33,10 @@ foreach ( @list_delivery_tbi_id ){
 	chomp($total_reads);
     	$total_reads = num($total_reads);
 	
+	my $total_bases = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 4`;
+	chomp($total_bases);
+    	$total_bases = num($total_bases);
+        
         my $total_yield = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 5`;
 	chomp($total_yield);
         #$total_yield = changeGbp($total_yield);
@@ -47,7 +51,7 @@ foreach ( @list_delivery_tbi_id ){
 	my $q30_base_pf = `cat $Sequencing_Statistics_Result_xls | grep \"^$tbi_id\" | cut -f 15`;
 	chomp($q30_base_pf);
 
-	print "$delivery_id\t$tbi_id\t$total_reads\t$total_yield\t$GC_percent\t$q30_base_pf\n";
+	print "$delivery_id\\n($tbi_id)\t$total_reads\t$total_bases\t$total_yield\t$GC_percent\t$q30_base_pf\n";
 }
 
 #cat /BiO/BioProjects/FOM-Human-WES-2015-07-TBO150049/result/01_fastqc_orig/TN1507D0293/TN1507D0293_1_fastqc/fastqc_data.txt | grep "Total Sequences" | sed 's/Total Sequences\s//g'

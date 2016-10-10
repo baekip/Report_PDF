@@ -1,7 +1,7 @@
 use warnings;
 use strict;
 
-my $version = "V0.1";
+my $version = "V0.2";
 
 use File::Basename;
 use Cwd qw(abs_path);
