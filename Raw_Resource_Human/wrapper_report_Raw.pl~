@@ -112,8 +112,8 @@ sub run_script{
 }
 
 sub run_script_1{
-    my ($script, $config, $pipe) = @_;
-    my $command = "perl $script $config $pipe";
+    my ($script, $config) = @_;
+    my $command = "perl $script $config";
     print $command."\n";
     system($command);
 }

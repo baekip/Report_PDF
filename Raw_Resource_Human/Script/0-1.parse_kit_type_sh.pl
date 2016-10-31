@@ -13,6 +13,7 @@
 #sureselect_human_exon_v5_plus_UTRs
 #sureselect_human_exon_v6
 #sureselect_human_exon_v6_plus_UTRs
+#customized_kit
 use strict;
 use warnings;
 
@@ -21,6 +22,7 @@ if ( @ARGV != 2 ) {
 }
 
 my $sample_config = $ARGV[0];
+my $pipe_config = $ARGV[1];
 
 my %info;
 read_sample_config ($sample_config,\%info);
@@ -52,6 +54,8 @@ if ($kit_type eq "truseq_exome"){
     cp_kit_sh("SureSelect_v6.sh");
 }elsif ($kit_type eq "sureselect_human_exon_v6_plus_UTRs"){
     cp_kit_sh("SureSelect_v6_UTR.sh");
+}elsif ($kit_type eq "customized_kit"){
+    cp_kit_pl("customized_kit.pl");
 }else { 
     print "ERROR! not found your kit type!!\n"; 
 }
@@ -65,6 +69,13 @@ sub cp_kit_sh {
     my $cmd_sh = "bash $kit_sh_path/$target_kit $read_length $project_path/report/resource/2_Workflow/1_e_table_01.txt";
     #checkFile($kit_path/$target_kit);
     system ($cmd_sh);
+}
+
+sub cp_kit_pl {
+    my $target_kit = shift;
+    print "Kit_type: $target_kit\n";
+    my $cmd_pl = "perl $kit_sh_path/$target_kit $read_length $project_path/report/resource/2_Workflow/1_e_table_01.txt";
+    system($cmd_pl);
 }
 
 sub checkFile {
