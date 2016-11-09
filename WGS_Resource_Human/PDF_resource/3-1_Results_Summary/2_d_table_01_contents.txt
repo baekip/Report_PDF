@@ -1,0 +1,9 @@
+[[10]]
+¡Ü Sample ID: ID provided from customer
+¡Ü Average Depth: Mean coverage of all baits in the experiment
+¡Ü Coverage 1X rate (%): The rate of cumulative mapping depth against reference genome coverage more than 1X
+¡Ü Coverage 5X rate (%): The rate of cumulative mapping depth against reference genome coverage more than 5X
+¡Ü Coverage 10X rate (%): The rate of cumulative mapping depth against reference genome coverage more than 10X
+¡Ü Coverage 20X rate (%): The rate of cumulative mapping depth against reference genome coverage more than 20X
+¡Ü Coverage 50X rate (%): The rate of cumulative mapping depth against reference genome coverage more than 50X
+
