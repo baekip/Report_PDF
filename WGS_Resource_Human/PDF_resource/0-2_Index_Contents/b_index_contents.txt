@@ -7,7 +7,7 @@ General Information
 	1.2 Analysis Contents
 
 Workflow
-	2.1 Exome Capturing Process
+	2.1 Whole Genome Process
 	2.2 Sequencing Method
 	2.3 Analysis Pipeline
 
