@@ -5,4 +5,3 @@
 ¡Ü Deduplicated read: Discarded clean reads following PCR duplicate
 ¡Ü Mapping read: De-duplicated reads followed by mapping onto the reference genome 
 ¡Ü Unique read: Reads with the same starting position on each end
-¡Ü On-target read: Mapped de-duplicated reads (on-target region)

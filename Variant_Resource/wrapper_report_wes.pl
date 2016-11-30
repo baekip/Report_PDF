@@ -28,7 +28,7 @@ my $project_path = $info{project_path};
 my $out_path = "$project_path/report";
 my $project_id = $info{project_id};
 my $dev_path = $info{dev_path};
-my $Rscript = "Rscript";
+my $Rscript = "/BiO/BioTools/miniconda2/bin/Rscript";
 my $java = "/BiO/BioTools/java/jre1.7.0_51/bin/java";
 checkFile( $java );
 my $text2pdf = "$dev_path/etc/text2pdf.jar"; 

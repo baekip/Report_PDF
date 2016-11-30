@@ -61,15 +61,15 @@ foreach (@list_sample_id) {
         my $ts = num($transition);
         my $tv = num($transversion);
        
-        my $hetero = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 30 | head -n 1 `;
+        my $hetero = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 35 | head -n 1 `;
         chomp $hetero;
         $hetero = num($hetero);
 
-        my $homo = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 31 | head -n 1 `;
+        my $homo = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 36 | head -n 1 `;
         chomp $homo;
         $homo = num($homo);
         
-        my $hh_ratio = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 32 | head -n 1 `;
+        my $hh_ratio = `cat $alignment_statistics_xls | grep \"^$tbi_id\" | cut -f 37 | head -n 1 `;
         chomp $hh_ratio;
         $hh_ratio = num($hh_ratio);
         
