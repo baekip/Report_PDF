@@ -16,7 +16,7 @@ my $pipeline_config_file = $ARGV[1];
 my %info;
 read_general_config( $general_config_file, \%info );
 
-my $java = "/BiO/BioTools/java/jre1.7.0_51/bin/java";
+my $java = $info{java_1_7}; 
 checkFile( $java );
 
 my $Rscript = "Rscript";
