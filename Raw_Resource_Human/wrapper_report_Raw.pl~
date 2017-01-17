@@ -74,7 +74,7 @@ my $script_6 = $script_path."/6.parse_fastqc_results.pl";
 checkFile( $script_6 );
 
 run_script ( $script_0, $general_config_file, "$resource_path/0-1. Cover_page/0-1. c_intro_title.txt" );
-#run_script_1 ( $script_0_1, $general_config_file, $pipeline_config_file);
+run_script_1 ( $script_0_1, $general_config_file, $pipeline_config_file);
 run_script ( $script_1, $general_config_file, "$resource_path/1-1. Sample_Information/1-1 c_table_01.txt" );
 run_script_1 ( $script_2, $general_config_file, $pipeline_config_file);
 run_script ( $script_6, $general_config_file, "$resource_path/3-1. Results_QualityControls/3.1.1 c_photoMap_01.txt" );

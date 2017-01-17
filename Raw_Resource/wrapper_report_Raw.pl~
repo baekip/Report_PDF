@@ -1,25 +1,25 @@
 use warnings;
 use strict;
 
-my $version = "V0.2";
+my $version = "V0.1";
 
 use File::Basename;
 use Cwd qw(abs_path);
 my $now_script_path = dirname (abs_path $0);
 my $script_path = $now_script_path."/Script";
 
-if (@ARGV != 2){
+if (@ARGV != 1){
 	printUsage();
 }
 
 my $general_config_file = $ARGV[0];
-my $pipeline_config_file = $ARGV[1];
+#my $pipeline_config_file = $ARGV[1];
 
 my %info;
 read_general_config( $general_config_file, \%info );
 
 my $Rscript = "Rscript";
-my $java = $info{java_1_7};
+my $java = $info{java_path};
 checkFile( $java );
 
 my $dev_path = $info{dev_path};
@@ -30,7 +30,7 @@ my $out_path = "$project_path/report";
 my $text2pdf = "$dev_path/wes/etc/text2pdf.jar";
 checkFile ( $text2pdf );
 
-my $template_resource_path = "$dev_path/wes/Raw_Resource_Human/PDF_Resource"; ###
+my $template_resource_path = "$dev_path/wes/Raw_Resource/PDF_Resource"; ###
 if (!-d $template_resource_path){
 	die "ERROR ! not found template resource directory\n";
 }
@@ -62,8 +62,6 @@ my $resource_path = "$out_path/resource";
 my $cmd_copy_template = "cp -rL $template_resource_path $resource_path";
 system ($cmd_copy_template) and die "ERROR with".$!."\n";
 
-my $script_0_1 = $script_path."/0-1.parse_kit_type_sh.pl";
-checkFile($script_0_1);
 my $script_0 = $script_path."/0.parse_project_id.pl";
 checkFile( $script_0 );
 my $script_1 = $script_path."/1.parse_sample_information.pl";
@@ -74,9 +72,8 @@ my $script_6 = $script_path."/6.parse_fastqc_results.pl";
 checkFile( $script_6 );
 
 run_script ( $script_0, $general_config_file, "$resource_path/0-1. Cover_page/0-1. c_intro_title.txt" );
-#run_script_1 ( $script_0_1, $general_config_file, $pipeline_config_file);
 run_script ( $script_1, $general_config_file, "$resource_path/1-1. Sample_Information/1-1 c_table_01.txt" );
-run_script_1 ( $script_2, $general_config_file, $pipeline_config_file);
+run_script_1 ( $script_2, $general_config_file);
 run_script ( $script_6, $general_config_file, "$resource_path/3-1. Results_QualityControls/3.1.1 c_photoMap_01.txt" );
 #run_script ( $script_7, $general_config_file, $pipeline_config_file, "$resource_path/3-2. Results_QualityControl/3.2.2 b_photoMap_01.txt" );
 #my $cmd_script_8_plot = "$Rscript $script_8_plot \"$project_path/report/alignment.statistics.xls\" \"$resource_path/3-3. Results_Sequence/3.3.1 b_photo_01.PNG\"";
@@ -112,8 +109,8 @@ sub run_script{
 }
 
 sub run_script_1{
-    my ($script, $config, $pipe) = @_;
-    my $command = "perl $script $config $pipe";
+    my ($script, $config) = @_;
+    my $command = "perl $script $config";
     print $command."\n";
     system($command);
 }

@@ -13,8 +13,8 @@ my %info;
 read_sample_config($in_sample_config, \%info);
 
 my $dev_path = $info{dev_path};
-my $figure_path = "$dev_path/wes/Raw_Resource/Figure";
-my $text_path = "$dev_path/wes/Raw_Resource/Text";
+my $figure_path = "$dev_path/wes/Raw_Resource_Human/Figure";
+my $text_path = "$dev_path/wes/Raw_Resource_Human/Text";
 my $raw_type = $info{raw_type};
 my $report_path = $info{report_path};
 my $resource_path = "$report_path/resource";
@@ -26,25 +26,25 @@ print "Raw_Report_Type: ".$raw_format."\n";
 
 print $resource_path."\n";
 if ($raw_type eq "dna"){
-`cp $figure_path/DNA_library.png "$resource_path/2. Workflow/2.1 c_photo_01.png" \n`;
-`cp $text_path/DNA_library.txt "$resource_path/2. Workflow/2.1 c_label.txt" \n`;
-`cp $text_path/copyright_Ill.txt "$resource_path/2. Workflow/2.1 d_label.txt" \n`;
+`cp $figure_path/DNA_library.png "$resource_path/2_Workflow/1_c_photo_01.png" \n`;
+`cp $text_path/DNA_library.txt "$resource_path/2_Workflow/1_c_label.txt" \n`;
+`cp $text_path/copyright_Ill.txt "$resource_path/2_Workflow/1_d_label.txt" \n`;
 }elsif ($raw_type eq "wes"){
-`cp $figure_path/WES.png "$resource_path/2. Workflow/2.1 c_photo_01.png" \n`;
-`cp $text_path/WES.txt "$resource_path/2. Workflow/2.1 c_label.txt" \n`;
-`cp $text_path/copyright_agilent.txt "$resource_path/2. Workflow/2.1 d_label.txt" \n`;
+`cp $figure_path/WES.png "$resource_path/2_Workflow/1_c_photo_01.png" \n`;
+`cp $text_path/WES.txt "$resource_path/2_Workflow/1_c_label.txt" \n`;
+`cp $text_path/copyright_agilent.txt "$resource_path/2_Workflow/1_d_label.txt" \n`;
 }elsif ($raw_type eq "mate"){
-`cp $figure_path/Mate_Pair.png "$resource_path/2. Workflow/2.1 c_photo_01.png" \n`;
-`cp $text_path/Mate_Pair.txt "$resource_path/2. Workflow/2.1 c_label.txt" \n`;
-`cp $text_path/copyright_Ill.txt "$resource_path/2. Workflow/2.1 d_label.txt" \n`;
+`cp $figure_path/Mate_Pair.png "$resource_path/2_Workflow/1_c_photo_01.png" \n`;
+`cp $text_path/Mate_Pair.txt "$resource_path/2_Workflow/1_c_label.txt" \n`;
+`cp $text_path/copyright_Ill.txt "$resource_path/2_Workflow/1_d_label.txt" \n`;
 }elsif ($raw_type eq "rna"){
-`cp $figure_path/mRNA_isolation.png "$resource_path/2. Workflow/2.1 c_photo_01.png" \n`;
-`cp $text_path/mRNA_isolation.txt "$resource_path/2. Workflow/2.1 c_label.txt" \n`;
-`cp $text_path/copyright_Ill.txt "$resource_path/2. Workflow/2.1 d_label.txt" \n`;
+`cp $figure_path/mRNA_isolation.png "$resource_path/2_Workflow/1_c_photo_01.png" \n`;
+`cp $text_path/mRNA_isolation.txt "$resource_path/2_Workflow/1_c_label.txt" \n`;
+`cp $text_path/copyright_Ill.txt "$resource_path/2_Workflow/1_d_label.txt" \n`;
 }elsif ($raw_type eq "strand"){
-`cp $figure_path/RNA_Stranded.png "$resource_path/2. Workflow/2.1 c_photo_01.png" \n`;
-`cp $text_path/RNA_Stranded.txt "$resource_path/2. Workflow/2.1 c_label.txt" \n`;
-`cp $text_path/copyright_Ill.txt "$resource_path/2. Workflow/2.1 d_label.txt" \n`;
+`cp $figure_path/RNA_Stranded.png "$resource_path/2_Workflow/1_c_photo_01.png" \n`;
+`cp $text_path/RNA_Stranded.txt "$resource_path/2_Workflow/1_c_label.txt" \n`;
+`cp $text_path/copyright_Ill.txt "$resource_path/2_Workflow/1_d_label.txt" \n`;
 }
 sub read_sample_config {
     my ($config, $hash_ref) = @_;
