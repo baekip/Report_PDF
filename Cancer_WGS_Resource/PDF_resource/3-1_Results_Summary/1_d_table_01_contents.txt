@@ -1,0 +1,8 @@
+[[10]]
+¡Ü The mapping process is to compare the sequenced reads to a customer-designated reference gonome using string alignment algorithm.
+¡Ü Sample ID: ID provided from customer
+¡Ü Sequence read: Unfiltered sequence
+¡Ü Deduplicated read: Discarded clean reads following PCR duplicate
+¡Ü Mapping read: De-duplicated reads followed by mapping onto the reference genome 
+¡Ü Unique read: Reads with the same starting position on each end
+¡Ü On-target read: Mapped de-duplicated reads (on-target region)
