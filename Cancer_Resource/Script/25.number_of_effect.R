@@ -24,7 +24,7 @@ CairoPNG (output_png, width=2200, height=1200, res=480)
 ggplot(data=Variant_table_malted, aes(x=Temporary.ID, y=value, fill=variable))  + 
   geom_bar(stat="identity", position="dodge", width=.5) + 
 #  theme_bw() +
-  theme
+  theme(
 	axis.title.x=element_text(size=9, face="bold"),
 	axis.text.x=element_text(angle=-90, size=5),
 
