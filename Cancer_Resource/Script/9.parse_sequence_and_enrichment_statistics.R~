@@ -18,15 +18,15 @@ CairoPNG (output_png, width=2200, height=1200, res=480)
 ggplot(data=Variant_table_malted, aes(x=Sample.ID, y=value, fill=variable)) + 
   geom_bar(stat="identity", position="dodge", width=.5) +  
 #  theme_bw() +
-  theme(
+  theme(axis.title.x = element_blank(),
 	axis.title.x = element_text(size=9, face="bold"),
         axis.text.x = element_text(angle=-90, size=5),
-       
+        axis.title.y = element_blank(),
         axis.title.y = element_text(size=9, face="bold"),
         axis.text.y = element_text(size=5),
         legend.key.width = unit (1,"mm"),
         legend.key.height = unit (3, "mm"),
-      
+        legend.title = element_blank(),
         legend.title = element_text (size=9, face = "bold"),
         legend.text = element_text (size=5),
         legend.position = "right") + 
