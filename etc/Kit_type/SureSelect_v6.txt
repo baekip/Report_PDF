@@ -2,6 +2,6 @@
 Reference	hg19
 Library Prep Kit	SureSelect XT V6
 Read length	101 x 2
-Target size	58Mb
+Target size	60Mb
 Number of probes	738,690
 Coverage uniformity (10X)	กร 90%
