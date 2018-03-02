@@ -41,7 +41,9 @@ if ($kit_type eq "truseq_exome"){
     cp_kit_sh("SureSelect_Mouse.sh");
 }elsif ($kit_type eq "sureselect_human_focuse"){
     cp_kit_sh("SureSelect_focus.sh");
-}elsif ($kit_type eq "sureselect_human_exon_v3"){
+}elsif ($kit_type eq "clinical_exome_v2"){
+    cp_kit_sh("Clinical_Exome_V2.sh");
+}elsif ($kit_type eq "sureselect_human_exon_v5"){
     cp_kit_sh("SureSelect_v3.sh");
 }elsif ($kit_type eq "sureselect_human_exon_v4"){
     cp_kit_sh("SureSelect_v4.sh");
