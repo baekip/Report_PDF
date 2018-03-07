@@ -48,9 +48,9 @@ if (!-d $out_path){
 my $output_pdf;
 # check before reults
 if ($kit_type eq "clinical_exome_v2"){
-    $output_pdf = "$out_path/Analysis_ClinicalReport_".$project_id.".pdf";
-}else{
     $output_pdf = "$out_path/Analysis_Report_".$project_id.".pdf";
+}else{
+    $output_pdf = "$out_path/Analysis_ClinicalReport_".$project_id.".pdf";
 }
 
 

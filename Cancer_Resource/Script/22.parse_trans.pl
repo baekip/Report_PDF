@@ -123,6 +123,7 @@ sub num {
         1;
     }
     my $result = sprintf "%s", $cnum;
+    if (!-e $cnum) {$cnum = 0;}
     return $result;
 }
 
